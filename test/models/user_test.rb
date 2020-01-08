@@ -4,12 +4,10 @@
 #
 #  id              :bigint           not null, primary key
 #  email           :string           not null
-#  first_name      :string           not null
-#  last_name       :string           not null
+#  fname           :string           not null
+#  lname           :string           not null
 #  password_digest :string           not null
-#  phone           :integer          not null
 #  session_token   :string           not null
-#  username        :string           not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
@@ -17,7 +15,6 @@
 #
 #  index_users_on_email          (email) UNIQUE
 #  index_users_on_session_token  (session_token) UNIQUE
-#  index_users_on_username       (username) UNIQUE
 #
 
 require 'test_helper'

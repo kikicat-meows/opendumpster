@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
     helper_method :logged_in?, :current_user
 
     def current_user
+        return nil unless session[:session_token]
         @current_user = User.find_by(session_token: session[:session_token])
     end
 
@@ -10,11 +11,13 @@ class ApplicationController < ActionController::Base
         !!current_user
     end
 
-    # def require_login
-        # redirect_to new_session_url unless logged_in?
-    # end
+    def require_login
+        unless current_user
+            render json: { base: ['Invalid Credentials'] }, status: 401
+        end
+    end
 
-    def login!(user)
+    def login(user)
         session[:session_token] = user.reset_session_token!
         @current_user = user
     end
