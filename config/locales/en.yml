@@ -31,3 +31,12 @@
 
 en:
   hello: "Hello world"
+
+
+en:
+  activerecord:
+    attributes:
+      user:
+        fname: 'First Name'
+        lname: 'Last Name'
+
