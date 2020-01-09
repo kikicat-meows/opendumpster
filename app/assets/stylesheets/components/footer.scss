@@ -1,0 +1,51 @@
+.bottom-bar {
+    background-color: $dark-grey;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    color: $grey;
+
+}
+
+
+.bottom-bar-content {
+    padding-top: 3rem;
+    padding-bottom: 1rem;
+
+    .bottom-bar-desc {
+        float: left;
+        width: 40%;
+
+        h3 {
+            line-height: 2em;
+            margin-bottom: 0.5rem;
+        }
+        
+        h4 {
+            line-height: 1.5em;
+            margin-bottom: 0.5rem;
+        }
+    }
+
+    .bottom-bar-nav {
+        float: right;
+        display: flex;
+        justify-content: flex-end;
+        width: 20%;
+        line-height: 1.5em;
+
+        .font-awesome-icon {
+            margin-left: 1rem;
+            font-size: 2rem;
+            &:hover {
+                color: $white;
+            }
+        }
+    }
+    
+}
+
+.bottom-bar-disc {
+    padding-bottom: 2rem;
+}

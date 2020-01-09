@@ -8,6 +8,7 @@ const Header = () => (
         <div className="legacy-top-bar clearfix" />
 
         <div className='top-bar clearfix'>
+            
             <div className='top-bar-logo'>
                 <Link to="/">
                     <img src="/assets/trashcan-logo" alt="dumpster logo" className='top-bar-logo-img' />
