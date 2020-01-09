@@ -59,43 +59,47 @@ class LoginForm extends React.Component {
 
     render () {
         return (
-            <div className='login-form'>
-                <h2>Please sign in</h2>
-                <hr />
-                {this.renderErrors()}
-                <form onSubmit={this.handleSubmit}>
-                    <input
-                        className="login-form-field"
-                        type="text"
-                        placeholder="Email"
-                        value={this.state.email}
-                        onChange={this.update('email')}
-                        required
-                    />
-                    <input
-                        className="login-form-field"
-                        type="password"
-                        placeholder="Password"
-                        value={this.state.password}
-                        onChange={this.update('password')}
-                        required
-                    />
-                    <button className='login-form-button'>
-                        Sign In
+            <div className='login-modal-container'>
+                <Link exact to="/" className="form-close-x">&times;</Link>
+                <div className='login-modal-content'>
+                    <h2>Please sign in</h2>
+                    <hr />
+                    {this.renderErrors()}
+                    <form onSubmit={this.handleSubmit} className='login-form'>
+                        <input
+                            className="login-form-field"
+                            type="text"
+                            placeholder="Email"
+                            value={this.state.email}
+                            onChange={this.update('email')}
+                            required
+                        />
+                        <input
+                            className="login-form-field"
+                            type="password"
+                            placeholder="Password"
+                            value={this.state.password}
+                            onChange={this.update('password')}
+                            required
+                        />
+                        <button className='login-form-button'>
+                            Sign In
                     </button>
-                    <button className='login-form-button'
+                        <button className='login-form-button'
                             onClick={this.handleDemo}>
-                        Demo
+                            Demo
                     </button>
-                </form>
-                <hr />
-                <h3>New to OpenTable?&nbsp;  
+                    </form>
+                    <hr />
+                    <h3>New to OpenDumpster?&nbsp;
                     <span>
-                        <Link to="/signup">Create an Account</Link>
-                    </span>
-                </h3>
-                {/* <p>This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.</p> */}
+                            <Link to="/signup">Create an Account</Link>
+                        </span>
+                    </h3>
+                    {/* <p>This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.</p> */}
+                </div>
             </div>
+
         );
     }
 };

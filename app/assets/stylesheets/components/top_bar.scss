@@ -1,0 +1,60 @@
+.legacy-top-bar {
+    background-color: $lightest-grey;
+    // font-size: 13px;
+    height: 1.75rem;
+}
+
+
+.top-bar {
+    padding-left: 2.25rem;
+    padding-right: 2.25rem;
+
+    .top-bar-logo {
+        float: left;
+        display: flex;
+        margin: 0.25rem 0 0;
+        
+
+        h1 {
+            font-size: 1.5rem;
+        }
+
+        img {
+            height: 2.75rem;
+
+        }
+    }
+
+    .top-bar-nav {
+        float: right;
+        margin-right: -.5rem;
+        display: flex;
+
+        .top-bar-nav-button, .top-bar-nav-link, h3 {
+            padding: 0 1rem;
+            line-height: 2rem;
+
+        }
+
+        .top-bar-nav-button {
+            font-size: 0.9rem !important;
+            margin: 0.6875rem 0 0;
+            background-color: $ocean-blue;
+            border-color: $ocean-blue-border;
+            &:hover {
+                background-color: $darker-ocean-blue;
+            }
+        }
+
+        .top-bar-nav-link, h3 {
+            font-size: 1rem;
+            display: block;
+            white-space: nowrap;
+            margin: 0.6875rem 0 0;
+        }
+
+        // h3 {
+        //     white-space: nowrap;
+        // }
+    }
+}

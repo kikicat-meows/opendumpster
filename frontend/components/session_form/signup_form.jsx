@@ -45,50 +45,54 @@ class SignUpForm extends React.Component {
 
     render() {
         return (
-            <div className='signup-form'>
-                <h2>Welcome to OpenTable!</h2>
-                <hr />
-                {this.renderErrors()}
-                <form onSubmit={this.handleSubmit}>
-                    <input
-                        className="signup-form-field" 
-                        type="text"
-                        placeholder="First Name*"
-                        value={this.state.fname}
-                        onChange={this.update('fname')}
-                        required
+            <div className='signup-modal-container'>
+                <Link exact to="/" className="form-close-x">&times;</Link>
+                <div className='signup-modal-content'>
+                    <h2>Welcome to OpenDumpster!</h2>
+                    <hr />
+                    {this.renderErrors()}
+                    <form onSubmit={this.handleSubmit} className='signup-form'>
+                        <input
+                            className="signup-form-field"
+                            type="text"
+                            placeholder="First Name*"
+                            value={this.state.fname}
+                            onChange={this.update('fname')}
+                            required
                         />
-                    <input
-                        className="signup-form-field"
-                        type="text"
-                        placeholder="Last Name*"
-                        value={this.state.lname}
-                        onChange={this.update('lname')}
-                        required
-                    />
-                    <input
-                        className="signup-form-field"
-                        type="text"
-                        placeholder="Enter email*"
-                        value={this.state.email}
-                        onChange={this.update('email')}
-                        required
-                    />
-                    <input
-                        className="signup-form-field"
-                        type="password"
-                        placeholder="Enter password*"
-                        value={this.state.password}
-                        onChange={this.update('password')}
-                        required
-                    />
-                    <button className="signup-form-button">
-                        Create Account
+                        <input
+                            className="signup-form-field"
+                            type="text"
+                            placeholder="Last Name*"
+                            value={this.state.lname}
+                            onChange={this.update('lname')}
+                            required
+                        />
+                        <input
+                            className="signup-form-field"
+                            type="text"
+                            placeholder="Enter email*"
+                            value={this.state.email}
+                            onChange={this.update('email')}
+                            required
+                        />
+                        <input
+                            className="signup-form-field"
+                            type="password"
+                            placeholder="Enter password*"
+                            value={this.state.password}
+                            onChange={this.update('password')}
+                            required
+                        />
+                        <button className="signup-form-button">
+                            Create Account
                     </button>
-                </form>
-                <hr />
-                <p>By creating an account you agree to the OpenTable Terms of Use and Privacy Policy.</p>
+                    </form>
+                    <hr />
+                    <p>By creating an account you agree to the OpenDumpster Terms of Use and Privacy Policy.</p>
+                </div>
             </div>
+
         );
     }
 };

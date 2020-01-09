@@ -8,9 +8,23 @@
 
 User.destroy_all
 
-guest = User.create(
+demo = User.create(
         email: 'fsp_demo@gmail.com', 
         password: 'password', 
-        fname: 'Demo',
-        lname: 'GuestAccount'
+        fname: 'TrashPanda',
+        lname: 'Demo'
+        )
+
+guest1 = User.create(
+        email: 'helenkei.cheung@gmail.com', 
+        password: '07071988', 
+        fname: 'Helen',
+        lname: 'Cheung'
+        )
+
+guest2 = User.create(
+        email: 'bobbysiu85@gmail.com', 
+        password: '7788kiki', 
+        fname: 'Bobby',
+        lname: 'Siu'
         )

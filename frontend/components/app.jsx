@@ -15,9 +15,16 @@ import SignupFormContainer from './session_form/signup_form_container';
 
 const App = () => (
     <div>
-        <header className='top-bar'>
+        <div className="legacy-top-bar clearfix" />
+
+        <header className='top-bar clearfix'>
             <div className='top-bar-logo'>
-                <h1>OpenTable</h1>
+                <Link to="/">
+                    <img src="/assets/trashcan-logo" alt="dumpster logo" className='top-bar-logo-img'/>
+                </Link>
+                <Link to="/">
+                    <h1>OpenDumpster</h1>
+                </Link>
             </div>
 
             <GreetingContainer />
@@ -25,6 +32,7 @@ const App = () => (
 
         <AuthRoute path="/login" component={LoginFormContainer} />
         <AuthRoute path="/signup" component={SignupFormContainer} />
+    
     </div>
 );
 
