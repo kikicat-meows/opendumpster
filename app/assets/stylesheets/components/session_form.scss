@@ -44,6 +44,12 @@
         width: 375px;
     }
 
+    span {
+        a {
+            color: $red;
+        }
+    }
+
     .signup-form, .login-form {
         margin-block-end: 1em;
 
@@ -60,6 +66,7 @@
             margin-top: 0.5rem;
             margin-bottom: 0.5rem;
         }
+
     }
     
 }
