@@ -30,7 +30,10 @@ class LoginForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const user = Object.assign({}, this.state);
-        this.props.login(user);
+        setTimeout(() => (
+            this.props.login(user)
+                .then(() => this.props.history.goBack())
+        ), 0);
     };
 
     handleDemo(e) {
@@ -41,7 +44,7 @@ class LoginForm extends React.Component {
         });
         setTimeout(() => (
             this.props.login(this.state)
-                // .then(() => this.props.history.goBack());
+                .then(() => this.props.history.goBack())
         ), 0)
         // this.props.login(this.state);
     };
@@ -90,13 +93,13 @@ class LoginForm extends React.Component {
                             onChange={this.update('password')}
                             required
                         />
-                        <button className='login-form-button'>
+                        <button className='login-form-button' onClick={this.handleSubmit}>
                             Sign In
-                    </button>
+                        </button>
                         <button className='login-form-button'
                             onClick={this.handleDemo}>
                             Demo
-                    </button>
+                        </button>
                     </form>
                     <hr />
                     <h3>New to OpenDumpster?&nbsp;

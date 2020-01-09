@@ -29,7 +29,10 @@ class SignUpForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const user = Object.assign({}, this.state);
-        this.props.signup(user);
+        setTimeout(() => (
+            this.props.signup(user)
+                .then(() => this.props.history.goBack())
+        ), 0);
     }
 
     closeModal(e) {
@@ -92,9 +95,9 @@ class SignUpForm extends React.Component {
                             onChange={this.update('password')}
                             required
                         />
-                        <button className="signup-form-button">
+                        <button className="signup-form-button" onClick={this.handleSubmit}>
                             Create Account
-                    </button>
+                        </button>
                     </form>
                     <hr />
                     <p>By creating an account you agree to the OpenDumpster Terms of Use and Privacy Policy.</p>
