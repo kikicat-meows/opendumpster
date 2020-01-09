@@ -13,6 +13,7 @@ class LoginForm extends React.Component {
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleDemo = this.handleDemo.bind(this);
+        this.closeModal = this.closeModal.bind(this);
     };
 
     componentDidMount() {
@@ -45,6 +46,13 @@ class LoginForm extends React.Component {
         // this.props.login(this.state);
     };
 
+    closeModal(e) {
+        e.preventDefault();
+        if (e.target === e.currentTarget) {
+            this.props.history.goBack();
+        }
+    }
+
     renderErrors() {
         return (
             <ul className="session-errors">
@@ -59,9 +67,9 @@ class LoginForm extends React.Component {
 
     render () {
         return (
-            <div className='login-modal-container'>
+            <div className='login-modal-container' onClick={this.closeModal}>
+                <strong className='form-close-x' onClick={() => this.props.history.goBack()}>&times;</strong>
                 <div className='login-modal-content'>
-                <Link exact to="/" className="form-close-x">&times;</Link>
                     <h2>Please sign in</h2>
                     <hr />
                     {this.renderErrors()}

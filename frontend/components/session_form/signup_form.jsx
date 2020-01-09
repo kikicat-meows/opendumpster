@@ -12,6 +12,7 @@ class SignUpForm extends React.Component {
             lname: '',
         };
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.closeModal = this.closeModal.bind(this);
     };
 
     componentDidMount() {
@@ -31,6 +32,13 @@ class SignUpForm extends React.Component {
         this.props.signup(user);
     }
 
+    closeModal(e) {
+        e.preventDefault();
+        if (e.target === e.currentTarget) {
+            this.props.history.goBack();
+        }
+    }
+
     renderErrors() {
         return (
             <ul className="session-errors">
@@ -45,9 +53,9 @@ class SignUpForm extends React.Component {
 
     render() {
         return (
-            <div className='signup-modal-container'>
+            <div className='signup-modal-container' onClick={this.closeModal}>
+                <strong className='form-close-x' onClick={() => this.props.history.goBack()}>&times;</strong>
                 <div className='signup-modal-content'>
-                <Link exact to="/" className="form-close-x">&times;</Link>
                     <h2>Welcome to OpenDumpster!</h2>
                     <hr />
                     {this.renderErrors()}
