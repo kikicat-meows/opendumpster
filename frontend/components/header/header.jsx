@@ -11,7 +11,7 @@ const Header = () => (
             
             <div className='top-bar-logo'>
                 <Link to="/">
-                    <img src="/assets/trashcan-logo" alt="dumpster logo" className='top-bar-logo-img' />
+                    <img src={window.trashcanURL} alt="dumpster logo" className='top-bar-logo-img' />
                 </Link>
                 <Link to="/">
                     <h1>OpenDumpster</h1>
