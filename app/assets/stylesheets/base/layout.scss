@@ -46,6 +46,11 @@ button {
     
     &:hover {
         background: $darker-red;
+        cursor: pointer;
+    }
+
+    &:focus {
+        outline: 2px solid rgba(0,0,0,0.3);
     }
 }
 

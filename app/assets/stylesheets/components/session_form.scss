@@ -19,7 +19,7 @@
         top: 1rem;
         cursor: pointer;
         text-decoration: none;
-        font-size: 2rem;
+        font-size: 1.25rem;
     }
 }
 
@@ -40,8 +40,13 @@
         padding-right: 1rem;
     }
 
+    h2 {
+        margin-top: 1.25rem;
+    }
+
     hr {
         width: 375px;
+        margin-bottom: 1rem;
     }
 
     span {
@@ -60,11 +65,17 @@
             border-radius: 3px;
             width: 100%;
             margin-bottom: 0.5rem;
+
+            &:focus {
+                border: 2px solid rgba(0,0,0,0.3);
+                border-radius: 0;
+                outline: none;
+            }
         }
 
         button {
             margin-top: 0.5rem;
-            margin-bottom: 0.5rem;
+            // margin-bottom: 0.5rem;
         }
 
     }

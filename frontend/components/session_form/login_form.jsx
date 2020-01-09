@@ -60,8 +60,8 @@ class LoginForm extends React.Component {
     render () {
         return (
             <div className='login-modal-container'>
-                <Link exact to="/" className="form-close-x">&times;</Link>
                 <div className='login-modal-content'>
+                <Link exact to="/" className="form-close-x">&times;</Link>
                     <h2>Please sign in</h2>
                     <hr />
                     {this.renderErrors()}

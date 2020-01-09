@@ -46,8 +46,8 @@ class SignUpForm extends React.Component {
     render() {
         return (
             <div className='signup-modal-container'>
-                <Link exact to="/" className="form-close-x">&times;</Link>
                 <div className='signup-modal-content'>
+                <Link exact to="/" className="form-close-x">&times;</Link>
                     <h2>Welcome to OpenDumpster!</h2>
                     <hr />
                     {this.renderErrors()}
