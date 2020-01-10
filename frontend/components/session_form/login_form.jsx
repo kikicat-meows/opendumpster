@@ -32,7 +32,7 @@ class LoginForm extends React.Component {
         const user = Object.assign({}, this.state);
         setTimeout(() => (
             this.props.login(user)
-                .then(() => this.props.history.goBack())
+                .then(() => this.props.closeModal())
         ), 0);
     };
 
@@ -44,7 +44,7 @@ class LoginForm extends React.Component {
         });
         setTimeout(() => (
             this.props.login(this.state)
-                .then(() => this.props.history.goBack())
+                .then(() => this.props.closeModal())
         ), 0)
         // this.props.login(this.state);
     };

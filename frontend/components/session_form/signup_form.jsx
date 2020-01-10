@@ -12,7 +12,6 @@ class SignUpForm extends React.Component {
             lname: '',
         };
         this.handleSubmit = this.handleSubmit.bind(this);
-        this.closeModal = this.closeModal.bind(this);
     };
 
     componentDidMount() {
@@ -31,15 +30,8 @@ class SignUpForm extends React.Component {
         const user = Object.assign({}, this.state);
         setTimeout(() => (
             this.props.signup(user)
-                .then(() => this.props.history.goBack())
+                .then(() => this.props.closeModal())
         ), 0);
-    }
-
-    closeModal(e) {
-        e.preventDefault();
-        if (e.target === e.currentTarget) {
-            this.props.history.goBack();
-        }
     }
 
     renderErrors() {
