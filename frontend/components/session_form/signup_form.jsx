@@ -56,8 +56,6 @@ class SignUpForm extends React.Component {
 
     render() {
         return (
-            <div className='signup-modal-container' onClick={this.closeModal}>
-                <strong className='form-close-x' onClick={() => this.props.history.goBack()}>&times;</strong>
                 <div className='signup-modal-content'>
                     <h2>Welcome to OpenDumpster!</h2>
                     <hr />
@@ -102,8 +100,6 @@ class SignUpForm extends React.Component {
                     <hr />
                     <p>By creating an account you agree to the OpenDumpster Terms of Use and Privacy Policy.</p>
                 </div>
-            </div>
-
         );
     }
 };

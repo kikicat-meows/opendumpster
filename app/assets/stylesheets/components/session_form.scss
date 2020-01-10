@@ -1,4 +1,4 @@
-.signup-modal-container, .login-modal-container {
+.modal-container {
     background-color: rgba(0,0,0,0.4);
     position: fixed;
     top: 0;
@@ -54,9 +54,8 @@
     }
 
     span {
-        a {
-            color: $red;
-        }
+        color: $red;
+        cursor: pointer;
     }
 
     .signup-form, .login-form {

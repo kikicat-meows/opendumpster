@@ -13,7 +13,7 @@ class LoginForm extends React.Component {
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleDemo = this.handleDemo.bind(this);
-        this.closeModal = this.closeModal.bind(this);
+        this.signUpModal = this.signUpModal.bind(this);
     };
 
     componentDidMount() {
@@ -49,11 +49,10 @@ class LoginForm extends React.Component {
         // this.props.login(this.state);
     };
 
-    closeModal(e) {
+    signUpModal(e) {
         e.preventDefault();
-        if (e.target === e.currentTarget) {
-            this.props.history.goBack();
-        }
+        this.props.closeModal();
+        this.props.openModal('signup');
     }
 
     renderErrors() {
@@ -70,8 +69,7 @@ class LoginForm extends React.Component {
 
     render () {
         return (
-            <div className='login-modal-container' onClick={this.closeModal}>
-                <strong className='form-close-x' onClick={() => this.props.history.goBack()}>&times;</strong>
+            
                 <div className='login-modal-content'>
                     <h2>Please sign in</h2>
                     <hr />
@@ -103,13 +101,12 @@ class LoginForm extends React.Component {
                     </form>
                     <hr />
                     <h3>New to OpenDumpster?&nbsp;
-                    <span>
-                            <Link to="/signup">Create an Account</Link>
+                        <span onClick={this.signUpModal}>
+                            Create an Account
                         </span>
                     </h3>
                     {/* <p>This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.</p> */}
                 </div>
-            </div>
 
         );
     }
