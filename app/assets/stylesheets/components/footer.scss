@@ -5,12 +5,13 @@
     left: 0;
     width: 100%;
     color: $grey;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
 
 }
 
 
 .bottom-bar-content {
-    padding-top: 3rem;
     padding-bottom: 1rem;
 
     .bottom-bar-desc {
@@ -47,5 +48,4 @@
 }
 
 .bottom-bar-disc {
-    padding-bottom: 2rem;
 }
