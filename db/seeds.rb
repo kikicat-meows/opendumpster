@@ -52,18 +52,49 @@ cities = City.create([
 
 
 # Restaurants
-# restaurants = Restaurant.create ([
-#         {id: 1,
-#         name: "",
-#         address: "",
-#         phone: "",
-#         website: "",
-#         description: ""
-#         city_id: 1}
-# ])
+restaurants = Restaurant.create ([
+        {id: 1,
+        name: "Test 1",
+        address: "000 fake ave",
+        phone: "123-456-7890",
+        website: "",
+        description: "",
+		city_id: 1},
+		{id: 2,
+        name: "Test 2",
+        address: "000 fake ave",
+        phone: "123-456-7890",
+        website: "",
+        description: "",
+		city_id: 1},
+		{id: 3,
+        name: "Test 3 - San Francisco",
+        address: "000 fake ave",
+        phone: "123-456-7890",
+        website: "",
+        description: "",
+		city_id: 2},
+		{id: 4,
+        name: "Test 4",
+        address: "000 fake ave",
+        phone: "123-456-7890",
+        website: "",
+        description: "",
+        city_id: 2}
+
+])
 
 
 # cuisines
+cuisines = Cuisine.create([
+	{name: 'American',
+	restaurant_id: 4},
+	{name: 'San Francisco',
+	restaurant_id: 4}
+])
+
+
+
 
 # Timeslots
 days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]

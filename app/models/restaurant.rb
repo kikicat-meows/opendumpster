@@ -30,13 +30,13 @@ class Restaurant < ApplicationRecord
 
 
     def self.find_by_search(search_term)
-        restaurants = Restaurant.includes(:city).includes(:cuisines)
+        # restaurants = Restaurant.includes(:city).includes(:cuisines)
 
-        result_city = Restaurant.joins(:city).where("lower(cities.name) like ?", "%#{search_term.downcase}%")
-        result_name = Restaurant.where("lower(name) like ?", "%#{search_term.downcase}%")
-        result_cuisine = Restaurant.joins(:cuisines).where("lower(cuisines.type like ?", "%#{search_term.downcase}%")
+        res_city = Restaurant.joins(:city).where("lower(cities.name) like ?", "%#{search_term.downcase}%")
+        res_name = Restaurant.where("lower(name) like ?", "%#{search_term.downcase}%")
+        res_cuisine = Restaurant.joins(:cuisines).where("lower(cuisines.name) like ?", "%#{search_term.downcase}%")
 
-        result = result_city + result_name + result_cuisine
+        result = res_city + res_name + res_cuisine
     end
 
 end
