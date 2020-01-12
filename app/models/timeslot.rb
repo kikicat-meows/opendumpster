@@ -18,4 +18,5 @@ class Timeslot < ApplicationRecord
 
     has_many :operation_hours, inverse_of: :timeslot
 
+
 end

@@ -22,17 +22,21 @@ class Restaurant < ApplicationRecord
     validates :name, :address, :phone, presence: true
 
     belongs_to :city, inverse_of: :restaurants
+
     has_many :cuisines, inverse_of: :restaurant
+
     has_many :operation_hours, inverse_of: :restaurant
+    has_many :operation_timeslots, through: :operation_hours, source: :timeslot
 
 
     def self.find_by_search(search_term)
-        Restaurant.includes(:city).includes(:cuisines)
+        restaurants = Restaurant.includes(:city).includes(:cuisines)
 
-
-        result_city = Restaurant.where("lower(city) like ?", "%#{search_term.downcase}%")
+        result_city = Restaurant.joins(:city).where("lower(cities.name) like ?", "%#{search_term.downcase}%")
         result_name = Restaurant.where("lower(name) like ?", "%#{search_term.downcase}%")
-        result = result_city + result_name
+        result_cuisine = Restaurant.joins(:cuisines).where("lower(cuisines.type like ?", "%#{search_term.downcase}%")
+
+        result = result_city + result_name + result_cuisine
     end
 
 end
