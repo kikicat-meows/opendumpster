@@ -18,4 +18,6 @@ class Cuisine < ApplicationRecord
     validates :name, presence: true
 
     belongs_to :restaurant, inverse_of: :cuisines
+
+
 end

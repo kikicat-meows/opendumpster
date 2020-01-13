@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_12_122814) do
+ActiveRecord::Schema.define(version: 2020_01_12_124429) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 2020_01_12_122814) do
     t.string "day", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "time", null: false
+    t.float "time", null: false
     t.index ["day"], name: "index_timeslots_on_day"
   end
 

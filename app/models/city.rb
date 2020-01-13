@@ -16,4 +16,9 @@ class City < ApplicationRecord
     validates :name, presence: true
 
     has_many :restaurants, inverse_of: :city
+
+    def restaurant_count
+        self.restaurants.length
+    end
+
 end

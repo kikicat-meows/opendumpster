@@ -23,9 +23,9 @@ class Restaurant < ApplicationRecord
 
     belongs_to :city, inverse_of: :restaurants
 
-    has_many :cuisines, inverse_of: :restaurant
+    has_many :cuisines, inverse_of: :restaurant, dependent: :destroy
 
-    has_many :operation_hours, inverse_of: :restaurant
+    has_many :operation_hours, inverse_of: :restaurant, dependent: :destroy
     has_many :operation_timeslots, through: :operation_hours, source: :timeslot
 
 
@@ -37,6 +37,38 @@ class Restaurant < ApplicationRecord
         res_cuisine = Restaurant.joins(:cuisines).where("lower(cuisines.name) like ?", "%#{search_term.downcase}%")
 
         result = res_city + res_name + res_cuisine
+    end
+
+    def hours_of_operation
+        timeslots = self.operation_hours.includes(:timeslot)
+        opendays = Hash.new { |h, k| h[k] = [] }
+
+        timeslots.each do |timeslot|
+            opendays[timeslot.timeslot.day] << timeslot.timeslot.time
+        end
+
+        opendays
+    end
+
+    def open_close_hours
+        opendays = self.hours_of_operation
+        open_close = Hash.new {|h,k| h[k] = {} }
+
+        opendays.each do |day, hours|
+            value = { "open" => hours.min, "close" => hours.max }
+            open_close[day] = value
+
+        end
+
+        open_close
+    end
+
+    def map_cuisine_by_name
+        cuisines = self.cuisines
+
+        names = cuisines.map { |cuisine| cuisine.name }
+
+        names
     end
 
 end
