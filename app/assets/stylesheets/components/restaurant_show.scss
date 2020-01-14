@@ -1,0 +1,55 @@
+.restaurant-show-page-banner {
+    width: 100%;
+    height: 459px;
+    background-image: image-url('res-show-ph-banner.png');
+    background-size: cover;
+    background-position: center;
+    
+    img {
+        width: 100%;
+    }
+}
+
+
+.restaurant-show-page-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 2rem;
+
+    .restaurant-show-overview {
+        padding: 2rem 1rem 1rem;
+    }
+
+    .restaurant-show-addinfo {
+        padding: 2rem 1rem 1rem;
+
+        div {
+            padding-top: 1rem;
+            h4 {
+                padding-bottom: 0.5rem;
+            }
+        }
+
+        .restaurant-show-hours {
+
+            .restaurant-show-hours-info {
+                width: 60%;
+                display: flex;
+                justify-content: space-between;
+            }
+        }
+    }
+}
+
+
+.show-left {
+    border: 1px solid black;
+    width: 60%;
+    
+}
+
+.show-right {
+    border: 1px solid black;
+    width: 35%;
+}

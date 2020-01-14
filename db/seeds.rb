@@ -139,7 +139,7 @@ end
 tsuta = Restaurant.create(id: 1,
         name: "Tsuta Japanese Soba Noodles",
         address: "155 4th Street",
-        phone: "415-757-0092",
+        phone: "(415) 757-0092",
         website: "https://tsutaramenusa.com",
         description: "A Michelin-starred ramen outfit from Tokyo brings high-minded noodles & sides to buzzy quarters.",
 		city_id: 1)
@@ -191,7 +191,7 @@ end
 niku = Restaurant.create(id: 2,
         name: "Niku Steakhouse",
         address: "61 Division St",
-        phone: "415-829-7817",
+        phone: "(415) 829-7817",
         website: "https://nikusteakhouse.com",
         description: "Japanese-American menu of house-cut wagyu & local sides by the Omakase Group (Omakase, Udon Time).",
 		city_id: 1)
@@ -244,7 +244,7 @@ end
 foreign_cinema = Restaurant.create(id: 3,
         name: "Foreign Cinema",
         address: "2534 Mission St",
-        phone: "415-648-7600",
+        phone: "(415) 648-7600",
         website: "https://www.foreigncinema.com",
         description: "Crowds eat Californian-Mediterranean fare (& a popular brunch) in an outdoor space screening films.",
 		city_id: 1)
@@ -295,7 +295,7 @@ end
 als_place = Restaurant.create(id: 4,
         name: "AL's Place",
         address: "1499 Valencia St",
-        phone: "415-416-6136",
+        phone: "(415) 416-6136",
         website: "https://alsplacesf.com",
         description: "Relaxed, modern New American restaurant for an inventive take on seafood & vegetable dishes.",
 		city_id: 1)
@@ -342,7 +342,7 @@ end
 hakka_sf = Restaurant.create(id: 5,
         name: "Hakkasan - San Francisco",
         address: "1 Kearny St",
-        phone: "415-829-8148",
+        phone: "(415) 829-8148",
         website: "https://hakkasan.com",
         description: "Link in an upscale Chinese chain produces Cantonese specialties in glitzy digs with a hip lounge.",
 		city_id: 1)
@@ -391,7 +391,7 @@ end
 hakka_ny = Restaurant.create(id: 6,
         name: "Hakkasan - New York",
         address: "311 W 43rd St",
-        phone: "212-776-1818",
+        phone: "(212) 776-1818",
         website: "https://hakkasan.com",
         description: "Cavernous outpost of a London-based chain showcasing modern Cantonese cuisine in a slick setting.",
 		city_id: 2)
@@ -444,7 +444,7 @@ end
 momofuku_ny = Restaurant.create(id: 7,
         name: "Momofuku Noodle Bar",
         address: "171 1st Avenue",
-        phone: "212-777-7773",
+        phone: "(212) 777-7773",
         website: "https://noodlebar-ny.momofuku.com",
         description: "David Chang's Asian-accented American fare comes with an open kitchen, spare decor & dinner crowds.",
 		city_id: 2)
@@ -495,7 +495,7 @@ end
 momofuku_lv = Restaurant.create(id: 8,
         name: "Momofuku",
         address: "Boulevard Tower 3708, Las Vegas Blvd S Level 2",
-        phone: "702-698-2663",
+        phone: "(702) 698-2663",
         website: "https://noodlebar-ny.momofuku.com",
         description: "David Chang offers inventive takes on Asian fare at this hip, spacious outpost in the Cosmopolitan.",
 		city_id: 4)
@@ -548,7 +548,7 @@ end
 anjelica_ny = Restaurant.create(id: 9,
         name: "Anjelica's Restaurant",
         address: "1070 Ocean Ave",
-        phone: "732-842-2800",
+        phone: "(732) 842-2800",
         website: "https://anjelicas.com",
         description: "Cozy BYOB eatery with a buzzy vibe offers classic Southern Italian plates & seafood specialties.",
 		city_id: 2)
@@ -593,7 +593,7 @@ end
 la_folie = Restaurant.create(id: 10,
         name: "La Folie",
         address: "2316 Polk St",
-        phone: "415-776-5577",
+        phone: "(415) 776-5577",
         website: "",
         description: "Classic French dinners for a fixed price served in an ornate dining room with an adjacent lounge.",
 		city_id: 1)
@@ -636,7 +636,7 @@ end
 sons_daughters = Restaurant.create(id: 11,
         name: "Sons & Daughters",
         address: "708 Bush St",
-        phone: "415-391-8311",
+        phone: "(415) 391-8311",
         website: "https://sonsanddaughterssf.com",
         description: "Cozy spot with open kitchen serving a seasonal tasting menu sourced from local gardens, plus wines.",
 		city_id: 1)

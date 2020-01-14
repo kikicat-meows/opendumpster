@@ -5,6 +5,7 @@ import Root from './components/root';
 
 
 import * as APIUtil from './util/session_api_util';
+import * as RestaurantAPIUtil from './util/restaurant_api_util';
 
 document.addEventListener('DOMContentLoaded', () => {
     let store;
@@ -26,6 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
     window.getState = store.getState;
     window.dispatch = store.dispatch;
     window.login = APIUtil.login;
+    window.fetchRestaurants = RestaurantAPIUtil.fetchRestaurants;
+    window.fetchARestaurant = RestaurantAPIUtil.fetchARestaurant;
 
     const root = document.getElementById('root');
     ReactDOM.render(<Root store={store}/>, root);

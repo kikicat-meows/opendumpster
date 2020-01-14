@@ -1,4 +1,4 @@
-const formatOpeningTime = (timeString) => {
+export const formatOpeningTime = (timeString) => {
     let timeInt = parseFloat(timeString);
 
     let minutes = timeInt % 1;
@@ -23,7 +23,7 @@ const formatOpeningTime = (timeString) => {
 };
 
 
-const formatClosingTime = (timeString) => {
+export const formatClosingTime = (timeString) => {
     let timeInt = parseFloat(timeString);
     timeInt = timeInt + 0.5;
 

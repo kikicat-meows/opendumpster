@@ -14,7 +14,7 @@ export const receiveRestaurants = (restaurants) => {
     };
 };
 
-export const receiveRestaurant = (restaurant) => {
+export const receiveARestaurant = (restaurant) => {
     return {
         type: RECEIVE_RESTAURANT,
         restaurant,
@@ -28,25 +28,40 @@ export const receiveRestaurantErrors = (errors) => {
     };
 };
 
-export const loadingRestaurant = () => {
-    return {
-        type: LOADING_RESTAURANT,
-    };
+// export const loadingRestaurant = () => {
+//     return {
+//         type: LOADING_RESTAURANT,
+//     };
+// };
+
+// export const loadingRestaurants = () => {
+//     return {
+//         type: LOADING_RESTAURANTS,
+//     };
+// };
+
+
+
+
+export const requestAllRestaurants = () => dispatch => {
+    return RestaurantAPIUtil.fetchAllRestaurants()
+        .then(
+            restaurants => dispatch(receiveRestaurants(restaurants))
+            )
 };
 
-export const loadingRestaurants = () => {
-    return {
-        type: LOADING_RESTAURANTS,
-    };
+export const requestARestaurant = id => dispatch => {
+    return RestaurantAPIUtil.fetchARestaurant(id)
+        .then(
+            restaurant => dispatch(receiveARestaurant(restaurant))
+        );
 };
-
-
 
 
 export const searchRestaurants = searchTerm => dispatch => {
-    return RestaurantAPIUtil.fetchSearchRestaurants(searchTerm).then(response => dispatch(receiveRestaurants(response)), err => dispatch(receiveRestaurantErrors(err.responseJSON)));
+    return RestaurantAPIUtil.fetchRestaurants(searchTerm)
+        .then(
+            response => dispatch(receiveRestaurants(response))
+        );
 };
 
-export const requestRestaurant = (id) => dispatch => {
-    return RestaurantApiUtil.fetchRestaurant(id).then(restaurant => dispatch(receiveRestaurant(restaurant)));
-};
