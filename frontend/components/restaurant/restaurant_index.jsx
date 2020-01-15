@@ -22,7 +22,7 @@ class RestaurantIndex extends React.Component {
         let indexContainer;
             if (this.props.restaurants) {
                 indexContainer = 
-                    <div className='restaurants-index-container clearfix'>
+                    <div className='restaurants-index-container clearfix wrapper'>
                         <ul>
                             {
                                 restaurants.map(restaurant => (

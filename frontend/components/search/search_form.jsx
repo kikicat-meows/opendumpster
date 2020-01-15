@@ -49,29 +49,41 @@ class SearchForm extends React.Component {
         if (this.props.page === 'homepage') {
             return (
                 <div className='homepage-search-bar'>
-                    <h1>Find your table for any occasion</h1>
-                    <form onSubmit={this.handleHomepageSubmit}>
-                        <FontAwesomeIcon icon={faSearch} />
-                        <input
-                            type="text"
-                            value={this.state.searchTerm}
-                            onChange={this.update('searchTerm')}placeholder="Location, Restaurant, or Cuisine" />
-                        <button className='search-button' onClick={this.handleHomepageSubmit}>Find a Dumpster</button>
-                    </form>  
+                    <div className='homepage-search-header'>
+                        <h1>Find your table for any occasion</h1>
+                    </div>
+                    <div className='homepage-search-form'>
+                        <form onSubmit={this.handleHomepageSubmit}>
+                            <span className='homepage-search-form-input'>
+                                <FontAwesomeIcon icon={faSearch} />
+                                <input
+                                    type="text"
+                                    value={this.state.searchTerm}
+                                    onChange={this.update('searchTerm')}placeholder="Location, Restaurant, or Cuisine" />
+                            </span>
+                            <button className='search-button' onClick={this.handleHomepageSubmit}>Let's go</button>
+                        </form>  
+                    </div>
+                    
                 </div>
             )
         } else {
             return (
                 <div className='index-search-bar'>
-                    <form onSubmit={this.handleSubmit}>
-                        <FontAwesomeIcon icon={faSearch} />
-                        <input
-                            type="text"
-                            value={this.state.searchTerm}
-                            onChange={this.update('searchTerm')}
-                            placeholder="Location, Restaurant, or Cuisine" />
-                        <button className='search-button' onClick={this.handleSubmit}>Find a Dumpster</button>
-                    </form>  
+                    <div className='index-search-form'>
+                        <form onSubmit={this.handleSubmit}>
+                            <span className='index-search-form-input'>
+                                <FontAwesomeIcon icon={faSearch} />
+                                <input
+                                    type="text"
+                                    value={this.state.searchTerm}
+                                    onChange={this.update('searchTerm')}
+                                    placeholder="Location, Restaurant, or Cuisine" />
+                            </span>
+                            <button className='search-button' onClick={this.handleSubmit}>Find Dumpster</button>
+                        </form>  
+                    </div>
+
                 </div>
             )
         }

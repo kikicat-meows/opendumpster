@@ -7,6 +7,8 @@ import SearchFormContainer from '../search/search_form_container';
 const Homepage = () => (
     <div className='homepage'>
         <SearchFormContainer page="homepage"/>
+
+        <div className='homepage-content wrapper'></div>
     </div>
 );
 
