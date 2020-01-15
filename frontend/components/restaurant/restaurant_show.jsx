@@ -22,9 +22,10 @@ class RestaurantShow extends React.Component {
 
     hourOfOperations(restaurant) {
         let weekdays = Object.keys(restaurant.hours);
+        let weekdays_reversed = weekdays.reverse();
 
         return (
-            weekdays.map(day => (
+            weekdays_reversed.map(day => (
                 <p key={day} className='restaurant-show-hours-info'>{day} : 
                     <span>
                         {formatOpeningTime(restaurant.hours[day].open)} - {formatClosingTime(restaurant.hours[day].close)}
