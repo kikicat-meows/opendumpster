@@ -26,6 +26,8 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 gem 'jquery-rails'
 gem 'rails_12factor'
+gem 'faker'
+
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
@@ -43,7 +45,6 @@ group :development, :test do
   gem 'better_errors'
   gem 'annotate'
   gem 'pry-rails'
-  gem 'faker'
   
 end
 
