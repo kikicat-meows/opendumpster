@@ -9,18 +9,16 @@ class RestaurantIndex extends React.Component {
     };
 
     componentDidMount() {
-        if (this.props.restaurants.length === 0) {
-            this.props.requestAllRestaurants();
-        }
+        let keywords = this.props.location.search.substring(3).split("%20").join(" ");
+        this.props.searchRestaurants(keywords);
     }
-
 
 
     render () {
         let {restaurants} = this.props;
 
         let indexContainer;
-            if (this.props.restaurants) {
+            if (this.props.restaurants && this.props.restaurants.length > 0) {
                 indexContainer = 
                     <div className='restaurants-index-container clearfix wrapper'>
                         <ul>
@@ -33,6 +31,13 @@ class RestaurantIndex extends React.Component {
                             }
                         </ul>
                     </div>
+            } else if (this.props.restaurants && this.props.restaurants.length === 0) {
+                indexContainer = 
+                <div className='restaurants-index-container clearfix wrapper'>
+                    <div className='restaurants-index-content-none'>
+                        <h2>Please enter a valid location, restaurant, or cuisine to begin your search.</h2>
+                    </div>
+                </div>
             }
 
         return (

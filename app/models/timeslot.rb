@@ -18,4 +18,7 @@ class Timeslot < ApplicationRecord
 
     has_many :operation_hours, inverse_of: :timeslot
 
+    has_many :restaurant_timeslot_capacities, inverse_of: :timeslot
+    
+
 end

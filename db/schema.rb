@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_12_124429) do
+ActiveRecord::Schema.define(version: 2020_01_15_201938) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,28 @@ ActiveRecord::Schema.define(version: 2020_01_12_124429) do
     t.datetime "updated_at", null: false
     t.index ["restaurant_id"], name: "index_operation_hours_on_restaurant_id"
     t.index ["timeslot_id"], name: "index_operation_hours_on_timeslot_id"
+  end
+
+  create_table "reservations", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.date "date", null: false
+    t.integer "seats", null: false
+    t.boolean "cancellation", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "restaurant_timeslot_capacity_id", null: false
+    t.index ["restaurant_timeslot_capacity_id"], name: "index_reservations_on_restaurant_timeslot_capacity_id"
+    t.index ["user_id"], name: "index_reservations_on_user_id"
+  end
+
+  create_table "restaurant_timeslot_capacities", force: :cascade do |t|
+    t.integer "restaurant_id", null: false
+    t.integer "timeslot_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "capacity", default: 20, null: false
+    t.index ["restaurant_id"], name: "index_restaurant_timeslot_capacities_on_restaurant_id"
+    t.index ["timeslot_id"], name: "index_restaurant_timeslot_capacities_on_timeslot_id"
   end
 
   create_table "restaurants", force: :cascade do |t|

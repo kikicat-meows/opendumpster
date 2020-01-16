@@ -28,6 +28,9 @@ class Restaurant < ApplicationRecord
     has_many :operation_hours, inverse_of: :restaurant, dependent: :destroy
     has_many :operation_timeslots, through: :operation_hours, source: :timeslot
 
+    has_many :restaurant_timeslot_capacities, inverse_of: :restaurant, dependent: :destroy
+    has_many :reservations, through: :restaurant_timeslot_capacities, source: :reservations
+
 
     def self.find_by_search(search_term)
         # restaurants = Restaurant.includes(:city).includes(:cuisines)
