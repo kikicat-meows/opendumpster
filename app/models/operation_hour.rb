@@ -3,6 +3,7 @@
 # Table name: operation_hours
 #
 #  id            :bigint           not null, primary key
+#  capacity      :integer          default(20), not null
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #  restaurant_id :integer          not null
@@ -15,6 +16,7 @@
 #
 
 class OperationHour < ApplicationRecord
+    validates :capacity, presence: true
 
     belongs_to :restaurant, inverse_of: :operation_hours
     belongs_to :timeslot, inverse_of: :operation_hours

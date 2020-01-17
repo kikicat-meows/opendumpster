@@ -28,16 +28,14 @@ class Restaurant < ApplicationRecord
     has_many :operation_hours, inverse_of: :restaurant, dependent: :destroy
     has_many :operation_timeslots, through: :operation_hours, source: :timeslot
 
-    has_many :restaurant_timeslot_capacities, inverse_of: :restaurant, dependent: :destroy
-    has_many :reservations, through: :restaurant_timeslot_capacities, source: :reservations
-
+    has_many :reservations, inverse_of: :restaurant, dependent: :destroy
 
     def self.find_by_search(search_term)
         # restaurants = Restaurant.includes(:city).includes(:cuisines)
 
-        res_city = Restaurant.joins(:city).where("lower(cities.name) like ?", "%#{search_term.downcase}%")
-        res_name = Restaurant.where("lower(name) like ?", "%#{search_term.downcase}%")
-        res_cuisine = Restaurant.joins(:cuisines).where("lower(cuisines.name) like ?", "%#{search_term.downcase}%")
+        res_city = Restaurant.joins(:city).where("lower(cities.name) like ?", "%#{search_term.downcase}%").includes(:operation_hours).includes(:reservations)
+        res_name = Restaurant.where("lower(name) like ?", "%#{search_term.downcase}%").includes(:operation_hours).includes(:reservations)
+        res_cuisine = Restaurant.joins(:cuisines).where("lower(cuisines.name) like ?", "%#{search_term.downcase}%").includes(:operation_hours).includes(:reservations)
 
         result = res_city + res_name + res_cuisine
     end
@@ -72,6 +70,27 @@ class Restaurant < ApplicationRecord
         names = cuisines.map { |cuisine| cuisine.name }
 
         names
+    end
+
+    def restaurant_capacity(timeslot_id)
+        timeslot = self.operation_hours.find_by(timeslot_id: timeslot_id)
+        timeslot ? timeslot.capacity : 0
+    end
+
+    def find_valid_reservations(date, timeslot_id)
+        self.reservations.where(
+            date: date,
+            timeslot_id: timeslot_id,
+            cancellation: false
+        )
+    end
+
+    def reserved_seats(date, timeslot_id)
+        self.find_valid_reservations(date, timeslot_id).pluck(:seats).sum
+    end
+
+    def available_seats(date, timeslot_id)
+        self.restaurant_capacity(timeslot_id) - self.reserved_seats(date, timeslot_id)
     end
 
 end

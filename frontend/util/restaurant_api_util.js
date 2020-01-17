@@ -6,11 +6,11 @@ export const fetchAllRestaurants = () => (
 )
 
 
-export const fetchRestaurants = (searchTerm) => (
+export const fetchRestaurants = (search) => (
     $.ajax({
         method: 'GET',
         url: '/api/restaurants',
-        data: { searchTerm },
+        data: { search },
     })
 );
 

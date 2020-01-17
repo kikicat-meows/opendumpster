@@ -10,6 +10,7 @@ Restaurant.destroy_all
 Cuisine.destroy_all
 Timeslot.destroy_all
 OperationHour.destroy_all
+Reservation.destroy_all
 
 demo = User.create(
     	id: 1,
@@ -114,7 +115,8 @@ cuisine_sub = [
 	'Sushi',
 	'Ramen',
 	'Dim Sum',
-	'Seafood'
+	'Seafood',
+	'Tapas / Small Plates'
 ]
 
 
@@ -159,32 +161,33 @@ Cuisine.create([
 # S: 155-176 (11 - 10)
 # S: 185-204 (11 - 9)
 
+
 (5..24).each do |i|
-	OperationHour.create(timeslot_id: i, restaurant_id: 1)
+	OperationHour.create(timeslot_id: i, restaurant_id: 1, capacity: 10)
 end
 
 (35..56).each do |i|
-	OperationHour.create(timeslot_id: i, restaurant_id: 1)
+	OperationHour.create(timeslot_id: i, restaurant_id: 1, capacity: 10)
 end
 
 (65..84).each do |i|
-	OperationHour.create(timeslot_id: i, restaurant_id: 1)
+	OperationHour.create(timeslot_id: i, restaurant_id: 1, capacity: 10)
 end
 
 (95..114).each do |i|
-	OperationHour.create(timeslot_id: i, restaurant_id: 1)
+	OperationHour.create(timeslot_id: i, restaurant_id: 1, capacity: 10)
 end
 
 (125..146).each do |i|
-	OperationHour.create(timeslot_id: i, restaurant_id: 1)
+	OperationHour.create(timeslot_id: i, restaurant_id: 1, capacity: 10)
 end
 
 (155..176).each do |i|
-	OperationHour.create(timeslot_id: i, restaurant_id: 1)
+	OperationHour.create(timeslot_id: i, restaurant_id: 1, capacity: 10)
 end
 
 (185..204).each do |i|
-	OperationHour.create(timeslot_id: i, restaurant_id: 1)
+	OperationHour.create(timeslot_id: i, restaurant_id: 1, capacity: 10)
 end
 
 ## Niku:
@@ -261,6 +264,8 @@ Cuisine.create([
 # F: 138-148 (5:30 - 11)
 # S: 168-178 (5:30 - 11)
 # S: 198-206 (5:30 - 10)
+
+
 
 (18..26).each do |i|
 	OperationHour.create(timeslot_id: i, restaurant_id: 3)
@@ -675,3 +680,110 @@ end
 (197..205).each do |i|
 	OperationHour.create(timeslot_id: i, restaurant_id: 11)
 end
+
+
+## LihoLiho:
+liholiho = Restaurant.create(id: 12,
+        name: "Liholiho Yacht Club",
+        address: "871 Sutter St",
+        phone: "(415) 440-5446",
+        website: "https://liholihoyachtclub.com",
+        description: "Buzzy, casual eatery for Hawaiian, Indian & Chinese dishes in a brick-walled space with booths.",
+		city_id: 1)
+
+Cuisine.create([
+	{name: cuisine_sub[4],
+	restaurant_id: 12}
+])
+
+# M: 17-27 (5 - 10:30)
+# T: 47-57 (5 - 10:30)
+# W: 77-87 (5 - 10:30)
+# R: 107-117 (5 - 10:30)
+# F: 137-148 (5 - 11)
+# S: 167-178 (5 - 11)
+# S: Closed
+
+(17..27).each do |i|
+	OperationHour.create(timeslot_id: i, restaurant_id: 12)
+end
+
+(47..57).each do |i|
+	OperationHour.create(timeslot_id: i, restaurant_id: 12)
+end
+
+(77..87).each do |i|
+	OperationHour.create(timeslot_id: i, restaurant_id: 12)
+end
+
+(107..117).each do |i|
+	OperationHour.create(timeslot_id: i, restaurant_id: 12)
+end
+
+(137..148).each do |i|
+	OperationHour.create(timeslot_id: i, restaurant_id: 12)
+end
+
+(167..178).each do |i|
+	OperationHour.create(timeslot_id: i, restaurant_id: 12)
+end
+
+
+## Mott 32
+mott32 = Restaurant.create(id: 13,
+        name: "Mott 32 Las Vegas",
+        address: "3325 S Las Vegas Blvd #206",
+        phone: "(702) 607-3232",
+        website: "https://mott32.com",
+        description: "Mott 32 represents modern Hong Kong as well as a new chapter of Chinese dining. Named after the famed convenience store on 32 Mott Street in New York, the restaurant captures the dynamism of NYC’s vibrant Chinatown.",
+		city_id: 4)
+
+Cuisine.create([
+	{name: cuisine_origin[7],
+	restaurant_id: 13}
+])
+
+# M: 17-28 (5 - 11)
+# T: 47-58 (5 - 11)
+# W: 77-88 (5 - 11)
+# R: 107-118 (5 - 11)
+# F: 137-148 (5 - 11)
+# S: 167-178 (5 - 11)
+# S: 197-208 (5 - 11)
+
+(17..28).each do |i|
+	OperationHour.create(timeslot_id: i, restaurant_id: 13)
+end
+
+(47..58).each do |i|
+	OperationHour.create(timeslot_id: i, restaurant_id: 13)
+end
+
+(77..88).each do |i|
+	OperationHour.create(timeslot_id: i, restaurant_id: 13)
+end
+
+(107..118).each do |i|
+	OperationHour.create(timeslot_id: i, restaurant_id: 13)
+end
+
+(137..148).each do |i|
+	OperationHour.create(timeslot_id: i, restaurant_id: 13)
+end
+
+(167..178).each do |i|
+	OperationHour.create(timeslot_id: i, restaurant_id: 13)
+end
+
+(197..208).each do |i|
+	OperationHour.create(timeslot_id: i, restaurant_id: 13)
+end
+
+
+# Test Field
+# Reservation.create(
+# 	user_id: 2,
+# 	date: Date.parse("Jan 20, 2020"),
+# 	seats: 2,
+# 	restaurant_timeslot_capacity_id: 1
+# )

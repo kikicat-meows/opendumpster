@@ -6,9 +6,11 @@ import {
 
 import RestaurantShow from './restaurant_show';
 
+import { currentUser } from '../../reducers/selector';
+
 
 const mSTP = (state, ownProps) => ({
-    currentUser: state.session.currentUser,
+    currentUser: currentUser(state),
     restaurant: state.entities.restaurants[ownProps.match.params.restaurantId],
 });
 

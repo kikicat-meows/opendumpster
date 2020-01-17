@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
     resources :cities, only: [:index, :show]
 
+    resources :reservations, only: [:show, :create, :update]
+
   end
 
   root to: 'static_pages#root'

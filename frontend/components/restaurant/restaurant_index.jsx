@@ -10,7 +10,13 @@ class RestaurantIndex extends React.Component {
 
     componentDidMount() {
         let keywords = this.props.location.search.substring(3).split("%20").join(" ");
-        this.props.searchRestaurants(keywords);
+        let search = { 
+            searchTerm: keywords,
+            date: this.props.date,
+            time: this.props.time,
+            seats: this.props.seats 
+        }
+        this.props.searchRestaurants(search);
     }
 
 
@@ -25,7 +31,16 @@ class RestaurantIndex extends React.Component {
                             {
                                 restaurants.map(restaurant => (
                                     <li key={restaurant.id}>
-                                        <RestaurantIndexItem restaurant={restaurant} />
+                                        <RestaurantIndexItem 
+                                            currentUser={this.props.currentUser} 
+                                            restaurant={restaurant}
+                                            openModal={this.props.openModal}
+                                            receiveSearch={this.props.receiveSearch}
+                                            searchTerm={this.props.searchTerm}
+                                            date={this.props.date}
+                                            seats={this.props.seats}
+                                            time={this.props.time} 
+                                        />
                                     </li>
                                 ))
                             }
@@ -35,7 +50,7 @@ class RestaurantIndex extends React.Component {
                 indexContainer = 
                 <div className='restaurants-index-container clearfix wrapper'>
                     <div className='restaurants-index-content-none'>
-                        <h2>Please enter a valid location, restaurant, or cuisine to begin your search.</h2>
+                        <h2>No restaurant found based on your search criteria.</h2>
                     </div>
                 </div>
             }
