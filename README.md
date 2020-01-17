@@ -1,24 +1,47 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# OpenDumpster
 
-Things you may want to cover:
+OpenDumpster, an OpenTable clone, is an online platform for users to search and book reservations for restaurants.
 
-* Ruby version
+## Background and Overview
 
-* System dependencies
+OpenDumpster uses Ruby on Rails with a PostgreSQL database on the back-end, and React / Redux on the front-end to render the application. 
 
-* Configuration
+## Technologies
 
-* Database creation
+* Database: PostgreSQL
+* Backend: Ruby on Rails
+* Frontend: React.js, Redux.js, Javascript, jQuery
 
-* Database initialization
+## Installation
 
-* How to run the test suite
+### Prerequisites
 
-* Services (job queues, cache servers, search engines, etc.)
+Postgres Database is required for OpenDumpster to operate correctly.
 
-* Deployment instructions
+### Setup
 
-* ...
+Please navigate to your main folder, and run the following commands:
+
+`bundle install`
+`npm install`
+`bundle exec rails db:create`
+`bundle exec rails db:migrate`
+`bundle exec rails db:seed`
+
+### Executing App
+
+Please open two separate windows in your terminal and run the following commands:
+
+`rails s`
+`npm start`
+
+## Features
+
+### User Authenticity
+
+* Users can search for restaurants without requiring to be logged in.
+* Users can only make reservations if they are logged in.
+* A demo account has been provided for ease of access to test the features.
+
