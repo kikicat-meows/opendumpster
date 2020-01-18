@@ -2,6 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 
+                  
+import {
+    requestARestaurant
+} from '../../actions/restaurant_actions';
 import { 
     createReservation
  } from '../../actions/reservation_actions';
@@ -9,27 +13,27 @@ import {
 
 import BookReservationForm from './book_reservation_form';
 
-const mSTP = ({ session, entities: { users, restaurants }, search }) => {
-    const params = new URLSearchParams(document.location.search.substring(4));
-    const restaurantId = new URLSearchParams(location.search).get('restaurantId');
-    // let restaurantId = params.get('restaurantId');
+const mSTP = ({ session, entities: { users, restaurants }, search }, ownProps) => {
+    // debugger;
+    const params = new URLSearchParams(ownProps.history.location.search);
+    let restaurantId = params.get('restaurantId');
     
     return {
         reservationForm: {
             user_id: session.id,
-            date: search.date,
-            seats: search.seats,
-            restaurant_id: search.restaurant_id,
-            timeslot_id: search.timeslot_id,
+            date: params.get('date'),
+            seats: params.get('seats'),
+            restaurant_id: restaurantId,
+            timeslot_id: params.get('timeslotId'),
         },
-        time: new URLSearchParams(location.search).get('time'),
-        restaurant: restaurants[search.restaurant_id],
-        params: params.get('timeslotId')
+        time: params.get('time'),
+        restaurant: restaurants[restaurantId],
     }
 }
 
 const mDTP = dispatch => ({
     createReservation: (reservation) => dispatch(createReservation(reservation)),
+    requestARestaurant: id => dispatch(requestARestaurant(id)),
 })
 
 export default withRouter(connect(mSTP, mDTP)(BookReservationForm));

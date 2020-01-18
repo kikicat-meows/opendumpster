@@ -33,18 +33,18 @@ class RestaurantIndexItem extends React.Component {
                 this.props.openModal('login');
                 return;
             }
-            this.props.receiveSearch({
-                searchTerm: this.props.searchTerm,
-                date: this.props.date,
-                time: this.props.time,
-                seats: this.props.seats,
-                restaurant_id: this.props.restaurant.id,
-                timeslot_id: timeslotId
-            });
+            // this.props.receiveSearch({
+            //     searchTerm: this.props.searchTerm,
+            //     date: this.props.date,
+            //     time: this.props.time,
+            //     seats: this.props.seats,
+            //     restaurant_id: this.props.restaurant.id,
+            //     timeslot_id: timeslotId
+            // });
 
             this.props.history.push({
                 pathname: '/reservations/new',
-                search: `restaurantId=${this.props.restaurant.id}&timeslotId=${timeslotId}&time=${e.target.value}`
+                search: `restaurantId=${this.props.restaurant.id}&seats=${this.props.seats}&date=${this.props.date}&timeslotId=${timeslotId}&time=${e.target.value}`
             });
         }
     }

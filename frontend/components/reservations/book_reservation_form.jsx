@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { formatOpeningTime } from '../../util/format_time_util'
 
 
 class BookReservationForm extends React.Component {
@@ -9,6 +9,10 @@ class BookReservationForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    componentDidMount() {
+        this.props.requestARestaurant(this.props.reservationForm.restaurant_id)
+    }
+
     handleSubmit(e) {
         e.preventDefault();
         this.props.createReservation(this.state)
@@ -16,24 +20,33 @@ class BookReservationForm extends React.Component {
     }
 
     render() {
-        return (
-            <div className='book-reservation-page'>
-                <form onSubmit={this.handleSubmit}>
-                    {/* <p>
+        let renderedComponent;
+
+        if (this.props.restaurant) {
+            renderedComponent = 
+                <div className='book-reservation-page'>
+                    <form onSubmit={this.handleSubmit}>
+                        <p>
                         {this.props.restaurant.name}
-                    </p> */}
-                    <p>
-                        {this.props.time}
                     </p>
-                    <p>
-                        Date: {this.props.reservationForm.date}
-                    </p>
-                    <p>
-                        Seats: {this.props.reservationForm.seats}
-                    </p>
-                    <button onSubmit={this.handleSubmit}>Make Reservation</button>
-                </form>
-            </div>
+                        <p>
+                            {formatOpeningTime(this.props.time)}
+                        </p>
+                        <p>
+                            Date: {this.props.reservationForm.date}
+                        </p>
+                        <p>
+                            Seats: {this.props.reservationForm.seats}
+                        </p>
+                        <button onSubmit={this.handleSubmit}>Make Reservation</button>
+                    </form>
+                </div>
+        }
+
+        return (
+            <>
+                {renderedComponent}
+            </>
         );
     }
 }
