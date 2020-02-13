@@ -25,8 +25,8 @@ import ReservationShowContainer from './reservations/reservation_show_container'
 const App = () => (
     <div>
         <Modal />
+        <main>
         <Header />
-
         <Switch>
             {/* <AuthRoute path="/login" component={LoginFormContainer} /> */}
             {/* <AuthRoute path="/signup" component={SignupFormContainer} /> */}
@@ -37,6 +37,7 @@ const App = () => (
             <Route path="/restaurants" component={RestaurantIndexContainer} />
             <Route path="/" component={Homepage}/>
         </Switch>
+        </main>
     
         <Footer />
     </div>
