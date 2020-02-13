@@ -1,5 +1,5 @@
 json.id @reservation.id
-json.user_id @reservation.user_id
+# json.user_id @reservation.user_id
 json.restaurant_id @reservation.restaurant_id
 json.restaurant @reservation.restaurant.name
 json.date @reservation.date

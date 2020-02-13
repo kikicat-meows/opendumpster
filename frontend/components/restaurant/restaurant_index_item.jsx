@@ -82,9 +82,9 @@ class RestaurantIndexItem extends React.Component {
             } 
 
         return (
-            <div>
+            <>
                 {indexItem}
-            </div>
+            </>
 
         )
     }

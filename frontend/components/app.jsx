@@ -19,7 +19,7 @@ import Homepage from './homepage/homepage';
 import RestaurantIndexContainer from './restaurant/restaurant_index_container';
 import RestaurantShowContainer from './restaurant/restaurant_show_container';
 import BookReservationFormContainer from './reservations/book_reservation_form_container';
-
+import ReservationShowContainer from './reservations/reservation_show_container';
 
 
 const App = () => (
@@ -31,7 +31,8 @@ const App = () => (
             {/* <AuthRoute path="/login" component={LoginFormContainer} /> */}
             {/* <AuthRoute path="/signup" component={SignupFormContainer} /> */}
             {/* <Route>{'404'}</Route> */}
-            <Route path='/reservations/new' component={BookReservationFormContainer}/>
+            <Route exact path='/reservations/new' component={BookReservationFormContainer}/>
+            <Route exact path='/reservations/:reservationId' component={ReservationShowContainer}/>
             <Route exact path="/restaurants/:restaurantId" component={RestaurantShowContainer}/>
             <Route path="/restaurants" component={RestaurantIndexContainer} />
             <Route path="/" component={Homepage}/>

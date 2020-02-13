@@ -16,8 +16,9 @@ class BookReservationForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         this.props.createReservation(this.state)
-            .then( () => this.props.history.push(`/`) );
+            .then( res => this.props.history.push(`/reservations/${res.reservation.id}`) );
     }
+
 
     render() {
         let renderedComponent;
@@ -25,12 +26,13 @@ class BookReservationForm extends React.Component {
         if (this.props.restaurant) {
             renderedComponent = 
                 <div className='book-reservation-page'>
+                    <h2>You're almost done!</h2>
                     <form onSubmit={this.handleSubmit}>
                         <p>
                         {this.props.restaurant.name}
-                    </p>
+                        </p>
                         <p>
-                            {formatOpeningTime(this.props.time)}
+                            Time: {formatOpeningTime(this.props.time)}
                         </p>
                         <p>
                             Date: {this.props.reservationForm.date}
@@ -38,7 +40,8 @@ class BookReservationForm extends React.Component {
                         <p>
                             Seats: {this.props.reservationForm.seats}
                         </p>
-                        <button onSubmit={this.handleSubmit}>Make Reservation</button>
+                        <button onClick={this.handleSubmit}>Complete Reservation</button>
+                        <p onClick={() => this.props.history.goBack()}>Cancel</p>
                     </form>
                 </div>
         }
