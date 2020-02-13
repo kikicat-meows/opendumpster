@@ -1,4 +1,3 @@
-import React from 'react';
 import { connect } from 'react-redux';
 import { searchRestaurants } from '../../actions/restaurant_actions';
 import { receiveSearch } from '../../actions/search_actions';
