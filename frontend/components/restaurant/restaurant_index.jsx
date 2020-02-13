@@ -35,11 +35,9 @@ class RestaurantIndex extends React.Component {
                                             currentUser={this.props.currentUser} 
                                             restaurant={restaurant}
                                             openModal={this.props.openModal}
-                                            receiveSearch={this.props.receiveSearch}
-                                            searchTerm={this.props.searchTerm}
                                             date={this.props.date}
                                             seats={this.props.seats}
-                                            time={this.props.time} 
+                                            // time={this.props.time} 
                                         />
                                     </li>
                                 ))
