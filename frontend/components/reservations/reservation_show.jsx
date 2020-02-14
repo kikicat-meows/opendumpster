@@ -5,6 +5,9 @@ import {
 import {
     formatDate
 } from '../../util/format_date_util';
+import {
+    formatSeat
+} from '../../util/format_seat_util';
 
 class ReservationShow extends React.Component {
     constructor(props) {
@@ -31,22 +34,25 @@ class ReservationShow extends React.Component {
                         <h2>Thanks! Your reservation is confirmed</h2>
                         <h4>Placeholder for Confirmation #</h4>
                     </div>
-                    <div className='show-reservation-details'>
+                    <div className='show-reservation-info'>
                         <div className="show-reservation-image">
                             <img src={window.trashcanURL}
                                 alt="placeholder-restaurant-image"
                                 className='restaurant-index-item-img' />
                         </div>
-                        <h3>
-                            {this.props.reservation.restaurant}
-                        </h3>
-                        <p>
-                            {formatDate(this.props.reservation.date)},&nbsp; 
-                            {formatOpeningTime(this.props.reservation.time)}
-                        </p>
-                        <p>
-                            {this.props.reservation.seats}
-                        </p>
+                        <div className="show-restaurant-details">
+                            <h3>
+                                {this.props.reservation.restaurant}
+                            </h3>
+                            <p>
+                                {formatDate(this.props.reservation.date)},&nbsp;
+                                {formatOpeningTime(this.props.reservation.time)}
+                            </p>
+                            <p>
+                                {formatSeat(this.props.reservation.seats)}
+                            </p>
+                        </div>
+
                     </div>
                 </div>
         }

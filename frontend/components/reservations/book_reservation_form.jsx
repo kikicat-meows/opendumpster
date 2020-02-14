@@ -1,6 +1,13 @@
 import React from 'react';
-import { formatOpeningTime } from '../../util/format_time_util'
-
+import { 
+    formatOpeningTime 
+} from '../../util/format_time_util'
+import {
+    formatDate
+} from '../../util/format_date_util';
+import {
+    formatSeat
+} from '../../util/format_seat_util';
 
 class BookReservationForm extends React.Component {
     constructor(props) {
@@ -27,22 +34,31 @@ class BookReservationForm extends React.Component {
             renderedComponent = 
                 <div className='book-reservation-page'>
                     <h2>You're almost done!</h2>
-                    <form onSubmit={this.handleSubmit}>
-                        <p>
-                        {this.props.restaurant.name}
-                        </p>
-                        <p>
-                            Time: {formatOpeningTime(this.props.time)}
-                        </p>
-                        <p>
-                            Date: {this.props.reservationForm.date}
-                        </p>
-                        <p>
-                            Seats: {this.props.reservationForm.seats}
-                        </p>
+
+                    <form onSubmit={this.handleSubmit} className='book-reservation-container'>
+                        <div className="book-reservation-info">
+                            <div className="book-reservation-image">
+                                <img src={window.trashcanURL}
+                                    alt="placeholder-restaurant-image"
+                                    className='restaurant-index-item-img' />     
+                            </div>
+                            <div className="book-reservation-details">
+                                <h3>
+                                    {this.props.restaurant.name}
+                                </h3>
+                                <p>
+                                    {formatDate(this.props.reservationForm.date)},&nbsp;
+                                    {formatOpeningTime(this.props.time)}
+                                </p>
+                                <p>
+                                    {formatSeat(this.props.reservationForm.seats)}
+                                </p>
+                            </div>
+                        </div>
                         <button onClick={this.handleSubmit}>Complete Reservation</button>
                         <p onClick={() => this.props.history.goBack()}>Cancel</p>
                     </form>
+
                 </div>
         }
 
