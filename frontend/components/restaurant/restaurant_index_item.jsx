@@ -28,13 +28,17 @@ class RestaurantIndexItem extends React.Component {
                     {formatOpeningTime(timeslot.time)}
                 </button>
             )
-
+            
+            let count = 1;
             while (displayButtons.length < 5) {
                 displayButtons.push(
                 <button 
-                    className='restaurant-index-item-times-disabled' disabled>
+                    className='restaurant-index-item-times-disabled'
+                    key={`disabled${count}`}
+                    disabled>
                         #:## ##
                 </button>)
+                count++;
             }
 
             return displayButtons;
