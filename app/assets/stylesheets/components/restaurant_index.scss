@@ -71,11 +71,35 @@
             }
         }
 
+        .restaurant-index-item-times {
+            display: flex;
+            justify-content: space-between;
+
+            button {
+                font-size: 0.9rem !important;
+                white-space: nowrap;
+                width: 100%;
+                padding: 0.5em 0.6em;
+                margin-right: 0.5em;
+            }
+
+            .restaurant-index-item-times-disabled {
+                cursor: default;
+                background-color: $light-grey;
+                border-color: $light-grey;
+                color: $light-grey;
+            }
+        }
     }
     
 }
 
 .restaurants-index-container {
+
+    ul {
+        padding-inline-start: 0px;
+    }
+
     .restaurants-index-content-none {
         padding: 2rem;
     }

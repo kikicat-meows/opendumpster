@@ -17,7 +17,8 @@ class RestaurantIndexItem extends React.Component {
 
         if (this.props.restaurant.available_timeslots) {
             availableTimeslots = this.props.restaurant.available_timeslots;
-            return availableTimeslots.map(timeslot =>
+
+            let displayButtons = availableTimeslots.map(timeslot =>
                 <button
                     // type='submit'
                     className='restaurant-index-item-times-button'
@@ -27,6 +28,16 @@ class RestaurantIndexItem extends React.Component {
                     {formatOpeningTime(timeslot.time)}
                 </button>
             )
+
+            while (displayButtons.length < 5) {
+                displayButtons.push(
+                <button 
+                    className='restaurant-index-item-times-disabled' disabled>
+                        #:## ##
+                </button>)
+            }
+
+            return displayButtons;
         }
     }
 
