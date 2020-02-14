@@ -2,6 +2,9 @@ import React from 'react';
 import {
     formatOpeningTime
 } from '../../util/format_time_util';
+import {
+    formatDate
+} from '../../util/format_date_util';
 
 class ReservationShow extends React.Component {
     constructor(props) {
@@ -38,13 +41,11 @@ class ReservationShow extends React.Component {
                             {this.props.reservation.restaurant}
                         </h3>
                         <p>
-                            Time: {formatOpeningTime(this.props.reservation.time)}
+                            {formatDate(this.props.reservation.date)},&nbsp; 
+                            {formatOpeningTime(this.props.reservation.time)}
                         </p>
                         <p>
-                            Date: {this.props.reservation.date}
-                        </p>
-                        <p>
-                            Seats: {this.props.reservation.seats}
+                            {this.props.reservation.seats}
                         </p>
                     </div>
                 </div>
