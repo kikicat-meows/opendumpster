@@ -26,12 +26,17 @@ class ReservationShow extends React.Component {
                 <div className='show-reservation-page'>
                     <div className='show-reservation-header'>
                         <h2>Thanks! Your reservation is confirmed</h2>
-                        <p>Placeholder for Confirmation #</p>
+                        <h4>Placeholder for Confirmation #</h4>
                     </div>
                     <div className='show-reservation-details'>
-                        <p>
+                        <div className="show-reservation-image">
+                            <img src={window.trashcanURL}
+                                alt="placeholder-restaurant-image"
+                                className='restaurant-index-item-img' />
+                        </div>
+                        <h3>
                             {this.props.reservation.restaurant}
-                        </p>
+                        </h3>
                         <p>
                             Time: {formatOpeningTime(this.props.reservation.time)}
                         </p>

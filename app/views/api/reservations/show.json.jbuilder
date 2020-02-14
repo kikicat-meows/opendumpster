@@ -5,4 +5,5 @@ json.restaurant @reservation.restaurant.name
 json.date @reservation.date
 json.time @reservation.timeslot.time
 json.seats @reservation.seats
+json.confNum @reservation.confirm
 json.cancellation @reservation.cancellation

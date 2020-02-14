@@ -4,6 +4,7 @@
 #
 #  id            :bigint           not null, primary key
 #  cancellation  :boolean          default(FALSE), not null
+#  confirm       :integer          not null
 #  date          :date             not null
 #  seats         :integer          not null
 #  created_at    :datetime         not null
@@ -14,11 +15,13 @@
 #
 # Indexes
 #
+#  index_reservations_on_confirm  (confirm) UNIQUE
 #  index_reservations_on_user_id  (user_id)
 #
 
 class Reservation < ApplicationRecord
     validates :date, :seats, presence: true
+    before_validation :generate_confirmation_number
 
     belongs_to :user, inverse_of: :reservations
     belongs_to :restaurant, inverse_of: :reservations
@@ -30,4 +33,16 @@ class Reservation < ApplicationRecord
             reservation.timeslot_id) >= reservation.seats
     end
     
+    def generate_confirmation_number
+        conf_num = rand(10**4..10**5-1)
+
+        if !Reservation.find_by(confirm: conf_num)
+            self.confirm = conf_num
+        else
+            self.generate_confirmation_number
+        end
+
+        self.confirm
+    end
+
 end

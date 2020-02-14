@@ -4,6 +4,7 @@
 #
 #  id            :bigint           not null, primary key
 #  cancellation  :boolean          default(FALSE), not null
+#  confirm       :integer          not null
 #  date          :date             not null
 #  seats         :integer          not null
 #  created_at    :datetime         not null
@@ -14,6 +15,7 @@
 #
 # Indexes
 #
+#  index_reservations_on_confirm  (confirm) UNIQUE
 #  index_reservations_on_user_id  (user_id)
 #
 
