@@ -4,7 +4,7 @@ class Api::ReservationsController < ApplicationController
         @reservation = Reservation.new(reservation_params)
 
         if !Reservation.is_valid?(@reservation)
-            render json: ["Sorry, the seats are no longer available, please select another time."], status: 418
+            render json: ["Sorry, the seats are no longer available, please return and select another time."], status: 418
             return
         end
 

@@ -32,7 +32,7 @@ class BookReservationForm extends React.Component {
 
         if (this.props.restaurant) {
             renderedComponent = 
-                <div className='book-reservation-page'>
+                <div className='book-reservation-page wrapper'>
                     <h2>You're almost done!</h2>
 
                     <form onSubmit={this.handleSubmit} className='book-reservation-container'>

@@ -16,6 +16,7 @@ import Footer from './footer/footer';
 // import SignupFormContainer from './session_form/signup_form_container';
 
 import Homepage from './homepage/homepage';
+import ErrorPage from './404';
 import RestaurantIndexContainer from './restaurant/restaurant_index_container';
 import RestaurantShowContainer from './restaurant/restaurant_show_container';
 import BookReservationFormContainer from './reservations/book_reservation_form_container';
@@ -35,6 +36,7 @@ const App = () => (
             <Route exact path='/reservations/:reservationId' component={ReservationShowContainer}/>
             <Route exact path="/restaurants/:restaurantId" component={RestaurantShowContainer}/>
             <Route path="/restaurants" component={RestaurantIndexContainer} />
+            <Route path='/error' component={ErrorPage} />
             <Route path="/" component={Homepage}/>
         </Switch>
         </main>

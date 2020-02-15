@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from "react-router-dom";
 import { formatOpeningTime } from '../../util/format_time_util';
 
 

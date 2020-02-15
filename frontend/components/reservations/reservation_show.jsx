@@ -26,13 +26,12 @@ class ReservationShow extends React.Component {
 
     render() {
         let renderedComponent;
-
-        if (this.props.reservation) {
+        if (this.props.reservation && !this.props.reservation.cancellation) {
             renderedComponent = 
-                <div className='show-reservation-page'>
+                <div className='show-reservation-page wrapper'>
                     <div className='show-reservation-header'>
                         <h2>Thanks! Your reservation is confirmed</h2>
-                        <h4>Placeholder for Confirmation #</h4>
+                        <h4>Confirmation #{this.props.reservation.confNum}</h4>      
                     </div>
                     <div className='show-reservation-info'>
                         <div className="show-reservation-image">
@@ -55,7 +54,7 @@ class ReservationShow extends React.Component {
 
                     </div>
                 </div>
-        }
+        } 
 
         return (
             <>
