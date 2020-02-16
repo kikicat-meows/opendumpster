@@ -5,10 +5,7 @@ import Root from './components/root';
 
 
 import * as APIUtil from './util/session_api_util';
-import * as RestaurantAPIUtil from './util/restaurant_api_util';
-import * as ReservationAPIUtil from './util/reservation_api_util';
-import * as ReservationActions from './actions/reservation_actions';
-import * as RestaurantActions from './actions/restaurant_actions';
+import * as TimeslotActions from './actions/timeslot_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
     let store;
@@ -30,12 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.getState = store.getState;
     window.dispatch = store.dispatch;
     window.login = APIUtil.login;
-    window.fetchRestaurants = RestaurantAPIUtil.fetchRestaurants;
-    window.fetchARestaurant = RestaurantAPIUtil.fetchARestaurant;
-    window.fetchAReservation = ReservationAPIUtil.fetchAReservation;
-    window.createReservation = ReservationAPIUtil.createReservation;
-    window.getAReservation = ReservationActions.findAReservation;
-    window.requestARestaurant = RestaurantActions.requestARestaurant;
+    window.getTimeslotsForRestaurant = TimeslotActions.getTimeslotsForRestaurant;
 
     const root = document.getElementById('root');
     ReactDOM.render(<Root store={store}/>, root);
