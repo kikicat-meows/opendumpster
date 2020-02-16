@@ -8,6 +8,9 @@ import {
 import { 
     createReservation
  } from '../../actions/reservation_actions';
+import {
+    openModal
+} from '../../actions/modal_actions';
 
 
 import BookReservationForm from './book_reservation_form';
@@ -18,6 +21,7 @@ const mSTP = ({ session, entities: { users, restaurants }, search }, ownProps) =
     let restaurantId = params.get('restaurantId');
     
     return {
+        currentUser: users[session.id],
         reservationForm: {
             user_id: session.id,
             date: params.get('date'),
@@ -33,6 +37,7 @@ const mSTP = ({ session, entities: { users, restaurants }, search }, ownProps) =
 const mDTP = dispatch => ({
     createReservation: (reservation) => dispatch(createReservation(reservation)),
     requestARestaurant: id => dispatch(requestARestaurant(id)),
+    openModal: ctx => dispatch(openModal(ctx)),
 })
 
 export default withRouter(connect(mSTP, mDTP)(BookReservationForm));
