@@ -46,7 +46,7 @@ class EditReservationForm extends React.Component {
             }
 
             if (this.props.currentUser !== this.props.reservation.user_id) {
-                return;
+                this.props.history.push('/denied');
             } else {
                 this.props.history.push({
                     pathname: '/reservations/change',

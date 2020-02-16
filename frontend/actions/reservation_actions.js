@@ -19,7 +19,7 @@ export const findAReservation = id => dispatch => (
 );
 
 export const cancelReservation = id => dispatch => (
-    ReservationAPIUtil.updateReservation({id: id, cancellation: true})
+    ReservationAPIUtil.updateReservation({reservationId: id, reservation: {cancellation: true}})
         .then(reservation => dispatch(receiveAReservation(reservation)))
 )
 
