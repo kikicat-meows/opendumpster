@@ -27,8 +27,33 @@
     }
 }
 
+.cancel-modal-content {    background: #fff;
+    padding: 3rem 2rem;
+    width: 600px;
+    position: absolute;
+    left: 50%;
+    top: 25%;
+    transform: translate(-50%, -10%);
+    white-space: nowrap;
+    text-align: center;
 
-.signup-modal-content, .login-modal-content {
+    button {
+        font-size: 1rem !important;
+    }
+
+    .cancel-discard-link {
+        display: block;
+        padding: 1.25rem 1.75rem 1rem;
+        font-weight: 700;
+        font-size: 1.1rem;
+        color: $grey;
+        cursor: pointer;
+    }
+    
+}
+
+
+.signup-modal-content, .login-modal-content{
     background: #fff;
     padding: 1.875rem 1rem;
     width: 460px;

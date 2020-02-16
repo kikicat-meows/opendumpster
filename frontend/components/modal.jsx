@@ -5,6 +5,8 @@ import { closeModal } from '../actions/modal_actions';
 
 import SignUpFormContainer from './session_form/signup_form_container';
 import LogInFormContainer from './session_form/login_form_container';
+import CancelReservationContainer from './reservations/cancel_reservation_container';
+
 
 const mSTP = ({ui}) => ({
     modal: ui.modal
@@ -20,16 +22,22 @@ const Modal = ({modal, closeModal}) => {
     }
 
     let component;
-    switch (modal) {
-        case 'login':
+
+    if (Array.isArray(modal)) {
+        component = <CancelReservationContainer id={modal[1]} user_id={modal[2]}/>
+    } else {
+        switch (modal) {
+        case "login":
             component = <LogInFormContainer />;
             break;
-        case 'signup':
+        case "signup":
             component = <SignUpFormContainer />;
             break;
         default:
             return null;
+        }
     }
+
 
     return (
         <div className='modal-container' onClick={closeModal}>

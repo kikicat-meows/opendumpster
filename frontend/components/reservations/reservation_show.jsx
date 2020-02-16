@@ -25,6 +25,21 @@ class ReservationShow extends React.Component {
         }
     }
 
+    displayButtons() {
+        if (this.props.reservation && !this.props.reservation.cancellation) {
+            return (
+                <div className="show-reservation-actions">
+                    <button>Modify</button>
+                    <span>
+                        <a 
+                            className='show-reservation-actions-cancel'
+                            onClick={() => this.props.openModal(['cancel', this.props.match.params.reservationId, this.props.reservation.user_id])}>Cancel</a>
+                    </span>
+                </div>
+            )
+        }
+    }
+
     render() {
         let renderedComponent;
         if (this.props.reservation && !this.props.reservation.cancellation) {
@@ -52,6 +67,7 @@ class ReservationShow extends React.Component {
                                 {formatSeat(this.props.reservation.seats)}
                             </p>
                         </div>
+                        {this.displayButtons()}
 
                     </div>
                 </div>

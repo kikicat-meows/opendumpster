@@ -3,7 +3,6 @@ import {
     RECEIVE_RESTAURANT 
 } from '../actions/restaurant_actions';
 
-import merge from 'lodash/merge';
 
 const restaurantsReducer = (state = {}, action) => {
     Object.freeze(state);
