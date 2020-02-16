@@ -2,6 +2,9 @@ import { connect } from 'react-redux';
 import {
     requestARestaurant
 } from '../../actions/restaurant_actions';
+import {
+    clearTimeslots
+} from '../../actions/timeslot_actions';
 
 import RestaurantShow from './restaurant_show';
 
@@ -17,6 +20,7 @@ const mSTP = (state, ownProps) => ({
 const mDTP = dispatch => ({
     requestARestaurant: (id) => 
                 dispatch(requestARestaurant(id)),
+    clearTimeslots: () => dispatch(clearTimeslots()),
 });
 
 

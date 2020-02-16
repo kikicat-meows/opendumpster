@@ -7,9 +7,7 @@ const defaultSearch = Object.freeze({
     date: today,
     time: 19,
     seats: 2,
-    restaurant_id: "",
-    timeslot_id: "",
-})
+});
 
 const searchReducer = (state = defaultSearch, action) => {
     Object.freeze(state);

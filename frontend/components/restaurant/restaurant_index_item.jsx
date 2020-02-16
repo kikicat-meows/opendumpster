@@ -20,7 +20,6 @@ class RestaurantIndexItem extends React.Component {
             
             for (let i = 0; i < availableTimeslots.length; i++) {
                 let timeslot = availableTimeslots[i];
-                let htmlButton;
 
                 if (timeslot.id !== "none") {
                     displayButtons.push(

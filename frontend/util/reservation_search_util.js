@@ -44,3 +44,20 @@ export const selectNumOfSeats = () => {
         </option>
     })
 }
+
+export const selectNumOfSeatsShow = () => {
+  const seats = [];
+  for (let i = 1; i <= 10; i++) {
+    seats.push(i);
+  }
+  let sizeString;
+  return seats.map((opt, i) => {
+    sizeString = `For ${opt}`
+
+    return (
+      <option className="show-search-select-seats" key={i} value={`${opt}`}>
+        {sizeString}
+      </option>
+    );
+  });
+};

@@ -2,6 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { formatOpeningTime, formatClosingTime } from '../../util/format_time_util';
 
+import RestaurantReservationContainer from './restaurant_reservation_container';
+
+
 class RestaurantShow extends React.Component {
     constructor(props) {
         super(props);
@@ -11,7 +14,9 @@ class RestaurantShow extends React.Component {
     componentDidMount() {
         window.scrollTo(0, 0);
         // setTimeout(this.props.requestARestaurant(this.props.match.params.restaurantId).then(()=>this.forceUpdate()), 0);
+        this.props.clearTimeslots();
         this.props.requestARestaurant(this.props.match.params.restaurantId);
+        
     }
 
     componentDidUpdate(prevProps) {
@@ -56,6 +61,8 @@ class RestaurantShow extends React.Component {
                     </div>
 
                     <div className='show-right'>
+                        <RestaurantReservationContainer />
+
                         <div className='restaurant-show-addinfo'>
                             <div className='restaurant-show-hours'>
                                 <h4>Hours of Operation</h4>

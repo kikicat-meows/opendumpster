@@ -9,6 +9,7 @@ import {
     formatSeat
 } from '../../util/format_seat_util';
 
+
 class ReservationShow extends React.Component {
     constructor(props) {
         super(props);
