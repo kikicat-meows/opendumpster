@@ -55,61 +55,63 @@ class SearchForm extends React.Component {
     render () {
         if (this.props.page === 'homepage') {
             return (
-              <div className="homepage-search-bar ">
-                <div className="homepage-search-header wrapper">
-                  <h1>Find your table for any occasion</h1>
-                </div>
-                <div className="homepage-search-form wrapper">
-                  <form onSubmit={this.handleHomepageSubmit}>
-                    <div className="homepage-search-selectors">
-                      <span className="homepage-search-calendar">
-                        <FontAwesomeIcon icon={faCalendar} />
+              <div className="homepage-banner">
+                <div className="homepage-search-bar wrapper">
+                  <div className="homepage-search-header">
+                    <h1>Find your table for any occasion</h1>
+                  </div>
+                  <div className="homepage-search-form">
+                    <form onSubmit={this.handleHomepageSubmit}>
+                      <div className="homepage-search-selectors">
+                        <span className="homepage-search-calendar">
+                          <FontAwesomeIcon icon={faCalendar} />
+                          <input
+                            type="date"
+                            value={this.state.date}
+                            min={new Date().toISOString().substring(0, 10)}
+                            onChange={this.update("date")}
+                            required
+                          />
+                        </span>
+
+                        <span className="homepage-search-clock">
+                          <FontAwesomeIcon icon={faClock} />
+                          <select
+                            value={this.state.time}
+                            onChange={this.update("time")}
+                          >
+                            {selectTimeslots()}
+                          </select>
+                        </span>
+
+                        <span className="homepage-search-seats">
+                          <FontAwesomeIcon icon={faUser} />
+                          <select
+                            value={this.state.seats}
+                            onChange={this.update("seats")}
+                          >
+                            {selectNumOfSeats()}
+                          </select>
+                        </span>
+                      </div>
+
+                      <span className="homepage-search-form-input">
+                        <FontAwesomeIcon icon={faSearch} />
                         <input
-                          type="date"
-                          value={this.state.date}
-                          min={new Date().toISOString().substring(0, 10)}
-                          onChange={this.update("date")}
-                          required
+                          type="text"
+                          value={this.state.searchTerm}
+                          onChange={this.update("searchTerm")}
+                          placeholder="Location, Restaurant, or Cuisine"
                         />
                       </span>
-
-                      <span className="homepage-search-clock">
-                        <FontAwesomeIcon icon={faClock} />
-                        <select
-                          value={this.state.time}
-                          onChange={this.update("time")}
-                        >
-                          {selectTimeslots()}
-                        </select>
-                      </span>
-
-                      <span className="homepage-search-seats">
-                        <FontAwesomeIcon icon={faUser} />
-                        <select
-                          value={this.state.seats}
-                          onChange={this.update("seats")}
-                        >
-                          {selectNumOfSeats()}
-                        </select>
-                      </span>
-                    </div>
-
-                    <span className="homepage-search-form-input">
-                      <FontAwesomeIcon icon={faSearch} />
-                      <input
-                        type="text"
-                        value={this.state.searchTerm}
-                        onChange={this.update("searchTerm")}
-                        placeholder="Location, Restaurant, or Cuisine"
-                      />
-                    </span>
-                    <button
-                      className="search-button"
-                      onClick={this.handleHomepageSubmit}
-                    >
-                      Let's go
-                    </button>
-                  </form>
+                      <button
+                        className="search-button"
+                        onClick={this.handleHomepageSubmit}
+                      >
+                        Let's go
+                      </button>
+                    </form>
+                  </div>
                 </div>
               </div>
             );

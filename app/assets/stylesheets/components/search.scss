@@ -1,23 +1,28 @@
-.homepage-search-bar {
+.homepage-banner {
     background-image: image-url('splash-search-banner.png');
     background-size: cover;
     background-position: center;
     height: 450px;
     width: 100%;
+
+}
+
+
+.homepage-search-bar {
     padding-top: 4rem;
     padding-bottom: 2rem;
+    height: 450px;
     line-height: 1rem;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: flex-end;
     align-content: center;
     div {
         width: 100%;
     }
 
     .homepage-search-header {
-        width: 100%;
-        margin: 0;
+        // width: 100%;
 
         h1 {
             color: $white;
