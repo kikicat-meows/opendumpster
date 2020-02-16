@@ -5,3 +5,16 @@ export const formatDate = dateString => {
 
     return myDate.toLocaleDateString('en-US', options);
 };
+
+export const formatDateShort = dateString => {
+  const options = {
+    timeZone: "UTC",
+    year: "numeric",
+    month: "short",
+    day: "numeric"
+  };
+
+  let myDate = new Date(dateString);
+
+  return myDate.toLocaleDateString("en-US", options);
+};

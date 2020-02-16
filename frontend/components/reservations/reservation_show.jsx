@@ -17,9 +17,13 @@ import {
   faTimesCircle
 } from "@fortawesome/free-regular-svg-icons";
 
+
+import EditReservationFormContainer from './edit_reservation_form_container';
+
 class ReservationShow extends React.Component {
     constructor(props) {
         super(props);
+        this.toggleEditForm = this.toggleEditForm.bind(this);
     }
 
     componentDidMount() {
@@ -36,7 +40,9 @@ class ReservationShow extends React.Component {
         if (this.props.reservation && !this.props.reservation.cancellation) {
             return (
               <div className="show-reservation-actions">
-                <button className="show-reservations-action-button">
+                <button 
+                  className="show-reservations-action-button"
+                  onClick={this.toggleEditForm}>
                   Modify
                 </button>
                 <div>
@@ -56,6 +62,14 @@ class ReservationShow extends React.Component {
               </div>
             );
         }
+    }
+
+    toggleEditForm() {
+        let editForm = document.querySelector('.modify-reservation-content');
+        let buttons = document.querySelector('.show-reservation-actions-container');
+        this.props.clearTimeslots();
+        editForm.classList.toggle('hidden');
+        buttons.classList.toggle('hidden');
     }
 
     render() {
@@ -94,7 +108,14 @@ class ReservationShow extends React.Component {
                   </div>
                 </div>
                   <hr />
-                  {this.displayButtons()}
+                  <div className="show-reservation-actions-container">
+
+                    {this.displayButtons()}
+                  </div>
+
+                  <EditReservationFormContainer 
+                    reservation={this.props.reservation}
+                    toggleEditForm={this.toggleEditForm}/>
               </div>
             );
         } else if (this.props.reservation && this.props.reservation.cancellation) {

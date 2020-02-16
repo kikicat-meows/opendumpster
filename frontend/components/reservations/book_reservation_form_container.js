@@ -19,6 +19,7 @@ const mSTP = ({ session, entities: { users, restaurants }, search }, ownProps) =
     // debugger;
     const params = new URLSearchParams(ownProps.history.location.search);
     let restaurantId = params.get('restaurantId');
+    console.log(params.get('timeslotId'));
     
     return {
         currentUser: users[session.id],

@@ -107,9 +107,177 @@
         }
     }
 
-
 }
 
 .show-reservation-page {
     padding-top: 1.5rem;
+}
+
+
+.modify-reservation-content {
+    // display: block;
+    position: relative;
+    padding: 1.5rem;
+    padding-top: 0;
+    padding-bottom: 0;
+
+    .modify-reservation-header {
+        display: flex;
+        -webkit-box-align: baseline;
+        align-items: baseline;
+        margin-top: 1.5rem;
+
+        h3 {
+            line-height: 1.3em;
+            margin-bottom: 1.5rem;
+        }
+
+        a.cancel-modify {
+            color: $ocean-blue-border;
+            font-size: 0.875rem;
+            margin-left: auto;
+            cursor: pointer;
+        }
+    }
+
+    .modify-reservation-search-wrapper {
+        margin-bottom: 1.5rem;
+        box-shadow: none;
+        padding: 0px;
+        height: 3rem;
+
+        .modify-reservation-search-bar {
+            // border: 1px solid rgba(0,0,0,0.08);
+            border-radius: 3px;
+
+            .modify-reservaton-seats {
+                border-top-left-radius: 3px;
+                width: 25%;
+            }
+
+            .modify-reservation-seats, .modify-reservation-date, .modify-reservation-time {
+                float: left;
+                position: relative;
+                height: 3rem;
+                margin: 0;
+                border: 1px solid rgba(0,0,0,0.08);
+                display: block;
+                width: 25%;
+
+                .modify-reservation-label {
+                    padding: 0.8125rem 1rem;
+                    text-align: left;
+                    position: relative;
+                    display: block;
+                    height: 3rem;
+                    line-height: 1.2rem;
+                    z-index: 1;
+                    width: 100%;
+
+                    &::after {
+                        top: 0.50rem;
+                        right: 1.25rem;
+                        font-family: 'icons';
+                        speak: none;
+                        line-height: 1;
+                        content: '⌄';
+                        font-size: 1.3125rem;
+                        position: 1.3125rem;
+                        position: absolute;
+                        margin-right: -0.75rem;
+                        bottom: 0;
+                        color: $grey;
+                    }
+                }
+
+                select {
+                    position: absolute;
+                    opacity: 0;
+                    top: 0;
+                    height: 100%;
+                    width: 100%;
+                    cursor: pointer;
+                    -webkit-appearance: none;
+                    -webkit-border-radius: 0;
+                    background-color: $white;
+                    z-index: 2;
+                }
+
+            }
+
+
+
+            .modify-reservation-date {
+
+                .modify-reservation-label {
+                    overflow: hidden;
+                    white-space: nowrap;
+                    pointer-events: none;
+
+                }
+
+                input[type=date] {
+                    outline: 0;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    margin: 0;
+                    cursor: pointer;
+                    height: 100%;
+                    border: 0;
+                    opacity: 0;
+                    width: 100%;
+                    z-index: 2;
+                }
+            }
+
+            button {
+                -webkit-appearance: button;
+                clear: none;
+                float: right;
+                width: 25%;
+                border-radius: 0px;
+                border-top-right-radius: 3px;
+                border-bottom-right-radius: 3px;
+                height: 3rem;
+                margin: 0;
+                display: inline-block;
+                font-size: 1rem !important;
+                text-shadow: none;
+            }
+
+        }
+    }
+
+    .modify-reservation-timeslots {
+        border-top: none;
+        padding: 0;
+        padding-bottom: 1.5rem;
+
+        p {
+            padding-left: 1rem;
+            font-size: 0.875rem;
+            line-height: 1.5;
+        }
+    
+        .modify-reservation-timeslots-buttons {
+            margin-left: 0;
+            display: flex;
+            flex-shrink: 1;
+            flex-wrap: wrap;
+            align-items: center;
+            margin-top: -8px;
+            width: 100%;
+
+            button {
+                width: 106px;
+                font-size: 1rem !important;
+                margin-right: 0.875rem;
+                margin-top: 8px;
+                white-space: nowrap;
+                padding: 0.75rem 1.35rem 0.75rem;
+            }
+        }
+    }
+
 }
