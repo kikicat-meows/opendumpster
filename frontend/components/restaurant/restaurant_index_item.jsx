@@ -11,38 +11,42 @@ class RestaurantIndexItem extends React.Component {
     }
 
     timeslotButtons() {
-        // const availableTimeslots = this.props.restaurant.available_timeslots;
         let availableTimeslots;
 
         if (this.props.restaurant.available_timeslots) {
             availableTimeslots = this.props.restaurant.available_timeslots;
 
-            let displayButtons = availableTimeslots.map(timeslot =>
-                <button
-                    // type='submit'
-                    className='restaurant-index-item-times-button'
-                    value={timeslot.time}
-                    key={timeslot.id}
-                    onClick={this.makeReservation(timeslot.id)}>
-                    {formatOpeningTime(timeslot.time)}
-                </button>
-            )
+            let displayButtons = [];
             
-            let count = 1;
-            while (displayButtons.length < 5) {
-                displayButtons.push(
-                <button 
-                    className='restaurant-index-item-times-disabled'
-                    key={`disabled${count}`}
-                    disabled>
-                        #:## ##
-                </button>)
-                count++;
-            }
+            for (let i = 0; i < availableTimeslots.length; i++) {
+                let timeslot = availableTimeslots[i];
+                let htmlButton;
 
+                if (timeslot.id !== "none") {
+                    displayButtons.push(
+                      <button
+                        // type='submit'
+                        className="restaurant-index-item-times-button"
+                        value={timeslot.time}
+                        key={timeslot.id}
+                        onClick={this.makeReservation(timeslot.id)}>
+                        {formatOpeningTime(timeslot.time)}
+                      </button>
+                    )
+                } else {
+                    displayButtons.push(
+                      <button
+                        className="restaurant-index-item-times-disabled"
+                        key={`disabled${i}`}
+                        disabled>
+                        #:## ##
+                      </button>
+                    );
+                }
+            }
             return displayButtons;
         }
-    }
+    };
 
 
     makeReservation(timeslotId) {
@@ -58,7 +62,7 @@ class RestaurantIndexItem extends React.Component {
                 search: `restaurantId=${this.props.restaurant.id}&seats=${this.props.seats}&date=${this.props.date}&timeslotId=${timeslotId}&time=${e.target.value}`
             });
         }
-    }
+    };
 
     render () {
         let restaurant = this.props.restaurant;

@@ -6,7 +6,9 @@ class Api::RestaurantsController < ApplicationController
         requested_day = restaurant_params[:date].to_time.strftime("%A")
         format_day = requested_day[0,3]
 
-        req_timeslots = Timeslot.generate_searching_timeslots(requested_time, format_day)
+        req_timeslot = Timeslot.find_by(time: requested_time, day: format_day)
+        reqday_timeslots = Timeslot.find_timeslots_by_day(format_day)
+        # req_timeslots = Timeslot.generate_searching_timeslots(requested_time, format_day)
 
         if params[:search][:searchTerm]
             restaurants = Restaurant.find_by_search(params[:search][:searchTerm])
@@ -17,12 +19,12 @@ class Api::RestaurantsController < ApplicationController
         @available_restaurants = []
 
         restaurants.each do |restaurant|
-            avail_timeslots = []
-            req_timeslots.each do |timeslot|
-                if restaurant.available_seats(requested_date, timeslot.id) >= requested_seats
-                    avail_timeslots.push(timeslot)
-                end
-            end
+            avail_timeslots = restaurant.find_timeslots(requested_date, requested_seats, req_timeslot, reqday_timeslots)
+            # req_timeslots.each do |timeslot|
+            #     if restaurant.available_seats(requested_date, timeslot.id) >= requested_seats
+            #         avail_timeslots.push(timeslot)
+            #     end
+            # end
             @available_restaurants.push([restaurant, avail_timeslots]) unless avail_timeslots.empty?
         end
 

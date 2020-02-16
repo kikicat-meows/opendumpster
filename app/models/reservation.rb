@@ -45,4 +45,6 @@ class Reservation < ApplicationRecord
         self.confirm
     end
 
+    
+
 end

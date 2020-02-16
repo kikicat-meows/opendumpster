@@ -5,6 +5,12 @@
         json.name restaurant_timeslot.first.name
         json.city restaurant_timeslot.first.city.name
         json.cuisine restaurant_timeslot.first.map_cuisine_by_name
-        json.available_timeslots restaurant_timeslot[1], :id, :day, :time
+        json.available_timeslots(restaurant_timeslot[1]) do |timeslot|
+            if timeslot != "none"
+                json.extract! timeslot, :id, :day, :time
+            else
+                json.id "none"
+            end
+        end
     end
 end

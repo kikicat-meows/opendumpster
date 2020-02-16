@@ -12,46 +12,7 @@ class Api::TimeslotsController < ApplicationController
 
         reqday_timeslots = Timeslot.find_timeslots_by_day(format_day)
 
-        req_timeslot_idx = reqday_timeslots.index(req_timeslot)
-        before_timeslots = reqday_timeslots[0...req_timeslot_idx]
-        after_timeslots = reqday_timeslots[req_timeslot_idx + 1..-1]
-
-        prior = []
-        latter = []
-
-        before_timeslots.each do |timeslot|
-            if restaurant.available_seats(requested_date, timeslot.id) >= requested_seats
-                prior.push(timeslot)
-            end
-        end
-
-        after_timeslots.each do |timeslot|
-            if restaurant.available_seats(requested_date, timeslot.id) >=
-                requested_seats
-                latter.push(timeslot)
-            end
-        end
-
-        while prior.length < 2
-            prior.unshift('none')
-        end
-
-        while latter.length < 2
-            latter.push('none')
-        end
-
-        if restaurant.available_seats(requested_date, req_timeslot.id) < requested_seats
-            req_timeslot = 'none'
-        end
-
-        available_timeslots = prior[-2..-1].concat([req_timeslot]).concat(latter[0..1])
-
-        if available_timeslots.uniq.length == 1
-            @available_timeslots = []
-        else
-            @available_timeslots = available_timeslots
-        end
-
+        @available_timeslots = restaurant.find_timeslots(requested_date, requested_seats, req_timeslot, reqday_timeslots)
     end
 
 
