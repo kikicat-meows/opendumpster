@@ -46,13 +46,13 @@ class RestaurantReservation extends React.Component {
             availableTimeslots =
                 <p>Sorry, there are no more reservations available on this date. Please try again.</p>
         } else if (this.props.timeslots) {
-            availableTimeslots = [];
+            let timeslotsArray = [];
 
             for (let i = 0; i < this.props.timeslots.length; i++) {
                 let timeslot = this.props.timeslots[i];
 
                 if (timeslot.id !== "none") {
-                    availableTimeslots.push(
+                    timeslotsArray.push(
                       <button
                         className="restaurant-show-search-timeslot-button"
                         value={timeslot.time}
@@ -64,6 +64,15 @@ class RestaurantReservation extends React.Component {
                     )
                 } 
             }
+
+            availableTimeslots = 
+              <>
+                <h3>Select a time:</h3>
+                <div className="restaurant-show-search-timeslot-buttons">
+
+                  {timeslotsArray}
+                </div>
+              </>
         }
 
         return availableTimeslots;
@@ -88,7 +97,11 @@ class RestaurantReservation extends React.Component {
     render() {
         return (
           <div className="restaurant-show-search">
-            <h2>Make a reservation</h2>
+            <div className="restaurant-show-search-header">
+              <h2>
+                <span>Make a reservation</span>
+              </h2>
+            </div>
             <form
               className="restaurant-show-search-form"
               onSubmit={this.handleSubmit}
@@ -135,7 +148,7 @@ class RestaurantReservation extends React.Component {
               </button>
             </form>
             <div className="restaurant-show-search-timeslots">
-                {this.displayTimeslots()}
+              {this.displayTimeslots()}
             </div>
           </div>
         );

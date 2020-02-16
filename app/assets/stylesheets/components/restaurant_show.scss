@@ -16,6 +16,7 @@
     justify-content: space-between;
     width: 100%;
     margin-bottom: 2rem;
+    margin-top: -3rem;
 
     .restaurant-show-overview {
         padding: 2rem 1rem 1rem;
@@ -45,12 +46,177 @@
 
 
 .show-left {
-    border: 1px solid black;
+    // border: 1px solid black;
     width: 60%;
+    background: $white;
     
 }
 
 .show-right {
-    border: 1px solid black;
+    // border: 1px solid black;
     width: 35%;
+    background: $white;
+    border-radius: 5px;
+}
+
+
+
+.restaurant-show-search {
+    border: 1px solid black;
+    border-radius: 5px;
+
+    .restaurant-show-search-header {
+        height: 3rem;
+        display: flex;
+        justify-content: flex-end;
+        flex-direction: column;
+        text-align: center;
+        padding: 0 1rem;
+
+        h2 {
+            height: 100%;
+            font-size: 1.3rem;
+            border-bottom: 1px solid $grey;
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            span {
+                display: inline-block;
+                line-height: 1.5rem;
+            }
+        }
+    }
+
+    .restaurant-show-search-form {
+        padding: 0.5rem 1rem 1rem;
+        flex-direction: column;
+
+        .restaurant-show-search-size {
+            position: relative;
+            padding-top: 1rem;
+            border-bottom: 1px solid $grey;
+            flex: 1 50%;
+
+            p {
+                font-size: 0.875rem;
+                padding-bottom: 0.25rem;
+                padding-left: 0.5rem;
+                font-weight: bold;
+            }
+
+            .restaurant-show-search-size-selector {
+                font-size: 0.875rem;
+                display: block;
+                cursor: pointer;
+                height: 35px;
+                width: 100%;
+                outline: none;
+                text-transform: none;
+                border: none;
+                border-radius: 0;
+                background-color: transparent;
+
+                .show-search-select-seats {
+                    display: block;
+                    white-space: pre;
+                    min-height: 1.2em;
+                    padding: 0px 2px 1px;
+                }
+            }
+        }
+
+        .restaurant-show-search-datetime {
+                margin-top: 0.75rem;
+                display: flex;
+                flex: 1 100%;
+
+            .restaurant-show-search-date, .restaurant-show-search-time {
+                flex: 1 50%;
+                border-bottom: 1px solid $grey;
+
+                p {
+                    font-size: 0.875rem;
+                    padding-bottom: 0.25rem;
+                    font-weight: bold;
+                }
+            }
+
+            .restaurant-show-search-date {
+                padding-left: 0.5rem;
+
+                .restaurant-show-search-date-selector {
+                    font-size: 0.875rem;
+                    cursor: pointer;
+                    position: relative;
+                    height: 35px;
+                    width: 100%;
+                    outline: none;
+                    border: none;
+                    background-color: transparent;
+                }
+            }
+            
+            .restaurant-show-search-time {
+                margin-left: 0.5rem;
+
+                p {
+                    padding-left: 0.5rem;
+                }
+
+                .restaurant-show-search-time-selector {
+                    font-size: 0.875rem;
+                    cursor: pointer;
+                    position: relative;
+                    height: 35px;
+                    width: 100%;
+                    outline: none;
+                    border: none;
+                    background-color: transparent;   
+                }
+            }
+
+        }
+
+        button {
+            border: none;
+            padding: 0.75rem 1.75rem 0.75rem;
+            margin: 1rem auto 0;
+            overflow: hidden;
+            width: 100%;
+            font-size: 1.125rem !important;
+            font-weight: normal;
+        }
+
+    }
+
+    .restaurant-show-search-timeslots {
+        margin-bottom: 1rem;
+        width: 100%;
+        padding: 0.5rem 1rem 1rem;
+
+        h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.125rem;
+            line-height: 1.5rem;
+        }
+
+        .restaurant-show-search-timeslot-buttons {
+            margin-bottom: calc(-1*0.5rem);
+
+
+            button {
+                border: none;
+                font-size: 0.875rem !important;
+                padding: 0;
+                height: 32px;
+                min-width: 72px;
+                display: inline-block;
+                margin-right: 0.5rem;
+                margin-bottom: 0.5rem;
+                vertical-align: top;
+                border-radius: 2px;
+            }
+        }
+    }
+
 }
