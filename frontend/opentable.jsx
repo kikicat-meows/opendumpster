@@ -5,6 +5,7 @@ import Root from './components/root';
 
 
 import * as APIUtil from './util/session_api_util';
+import * as ReservationActions from './actions/reservation_actions';
 import * as TimeslotActions from './actions/timeslot_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -28,6 +29,8 @@ document.addEventListener('DOMContentLoaded', () => {
     window.dispatch = store.dispatch;
     window.login = APIUtil.login;
     window.getTimeslotsForRestaurant = TimeslotActions.getTimeslotsForRestaurant;
+    window.cancelReservation = ReservationActions.cancelReservation;
+    window.updateReservation = ReservationActions.updateReservation;
 
     const root = document.getElementById('root');
     ReactDOM.render(<Root store={store}/>, root);

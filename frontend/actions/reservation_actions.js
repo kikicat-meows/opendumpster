@@ -17,3 +17,13 @@ export const findAReservation = id => dispatch => (
     ReservationAPIUtil.fetchAReservation(id)
         .then(reservation => dispatch(receiveAReservation(reservation)))
 );
+
+export const cancelReservation = id => dispatch => (
+    ReservationAPIUtil.updateReservation({id: id, cancellation: true})
+        .then(reservation => dispatch(receiveAReservation(reservation)))
+)
+
+export const updateReservation = reservation => dispatch => (
+    ReservationAPIUtil.updateReservation(reservation)
+        .then(reservation => dispatch(receiveAReservation(reservation)))
+);

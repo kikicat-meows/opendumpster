@@ -1,4 +1,7 @@
 import { RECEIVE_RESERVATION } from '../actions/reservation_actions';
+import {
+  LOGOUT_CURRENT_USER
+} from "../actions/session_actions";
 
 const reservationsReducer = (state = {}, action) => {
     Object.freeze(state);
@@ -8,6 +11,10 @@ const reservationsReducer = (state = {}, action) => {
         case RECEIVE_RESERVATION:
             nextState[action.reservation.id] = action.reservation;            
             return nextState;
+            
+        case LOGOUT_CURRENT_USER:
+            return {};
+
         default:
             return state;
     }

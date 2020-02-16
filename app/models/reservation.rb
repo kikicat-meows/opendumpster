@@ -21,7 +21,8 @@
 
 class Reservation < ApplicationRecord
     validates :date, :seats, presence: true
-    before_validation :generate_confirmation_number
+    validates :cancellation, inclusion: { in: [true, false] }
+    after_initialize :generate_confirmation_number
 
     belongs_to :user, inverse_of: :reservations
     belongs_to :restaurant, inverse_of: :reservations
@@ -32,19 +33,17 @@ class Reservation < ApplicationRecord
         restaurant.available_seats(reservation.date, 
             reservation.timeslot_id) >= reservation.seats
     end
-    
+
     def generate_confirmation_number
         conf_num = rand(10**4..10**5-1)
 
         if !Reservation.find_by(confirm: conf_num)
-            self.confirm = conf_num
+            self.confirm ||= conf_num
         else
             self.generate_confirmation_number
         end
 
         self.confirm
     end
-
-    
 
 end
