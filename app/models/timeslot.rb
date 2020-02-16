@@ -33,10 +33,10 @@ class Timeslot < ApplicationRecord
         Timeslot.where("time IN (?) and day = ?", time_range, day)
     end
 
-    def self.find_timeslot_ids_by_day(day)
+    def self.find_timeslots_by_day(day)
         timeslots = Timeslot.where(day: day)
 
-        ids = timeslots.map { |el| el.id }
+        ids = timeslots.map { |el| el }
     end
 
 end
