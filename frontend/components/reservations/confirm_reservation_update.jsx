@@ -14,6 +14,7 @@ class ConfirmReservationUpdate extends React.Component {
         reservation: this.props.reservationForm,
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleCancel = this.handleCancel.bind(this);
   }
 
   componentDidMount() {
@@ -36,15 +37,30 @@ class ConfirmReservationUpdate extends React.Component {
             this.props.history.push(`/reservations/${res.reservation.id}`)
             );
     }
+  }
 
+  handleCancel(e) {
+    e.preventDefault();
+    this.props.history.push(`/reservations/${this.props.reservationId}`);
+    this.props.clearReservationErrors();
+  }
+
+  renderErrors() {
+    return (
+      <ul className="reservation-errors">
+        {this.props.errors.map((err, i) => (
+          <li key={`res-error-${i}`}>{err}</li>
+        ))}
+      </ul>
+    );
   }
 
   render() {
     let renderedComponent;
-    console.log(this.props.reservation);
     if (this.props.reservation) {
       renderedComponent = (
         <div className="book-reservation-content wrapper">
+          {this.renderErrors()}
           <div className="book-reservation-header">
             <h2>You're almost done!</h2>
           </div>
@@ -79,7 +95,7 @@ class ConfirmReservationUpdate extends React.Component {
             <div className="book-reservation-actions">
               <button onClick={this.handleSubmit}>Complete Reservation</button>
               <div>
-                <a onClick={() => this.props.history.goBack()}>Cancel</a>
+                <a onClick={this.handleCancel}>Cancel</a>
               </div>
             </div>
             <div className="book-reservation-disclaimer">

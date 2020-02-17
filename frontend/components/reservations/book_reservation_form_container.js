@@ -6,20 +6,19 @@ import {
     requestARestaurant
 } from '../../actions/restaurant_actions';
 import { 
-    createReservation
+    createReservation, clearReservationErrors
  } from '../../actions/reservation_actions';
 import {
     openModal
 } from '../../actions/modal_actions';
 
 
+
 import BookReservationForm from './book_reservation_form';
 
-const mSTP = ({ session, entities: { users, restaurants }, search }, ownProps) => {
-    // debugger;
+const mSTP = ({ session, entities: { users, restaurants }, errors }, ownProps) => {
     const params = new URLSearchParams(ownProps.history.location.search);
     let restaurantId = params.get('restaurantId');
-    console.log(params.get('timeslotId'));
     
     return {
         currentUser: users[session.id],
@@ -32,6 +31,7 @@ const mSTP = ({ session, entities: { users, restaurants }, search }, ownProps) =
         },
         time: params.get('time'),
         restaurant: restaurants[restaurantId],
+        errors: errors.reservation,
     }
 }
 
@@ -39,6 +39,7 @@ const mDTP = dispatch => ({
     createReservation: (reservation) => dispatch(createReservation(reservation)),
     requestARestaurant: id => dispatch(requestARestaurant(id)),
     openModal: ctx => dispatch(openModal(ctx)),
+    clearReservationErrors: () => dispatch(clearReservationErrors()),
 })
 
 export default withRouter(connect(mSTP, mDTP)(BookReservationForm));

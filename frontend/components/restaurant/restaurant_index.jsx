@@ -17,6 +17,7 @@ class RestaurantIndex extends React.Component {
             seats: this.props.seats 
         }
         this.props.searchRestaurants(search);
+        this.props.clearReservationErrors();
     }
 
 

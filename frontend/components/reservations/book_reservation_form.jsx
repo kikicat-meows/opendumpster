@@ -20,6 +20,7 @@ class BookReservationForm extends React.Component {
         super(props);
         this.state = this.props.reservationForm;
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleCancel = this.handleCancel.bind(this);
     }
 
     componentDidMount() {
@@ -37,6 +38,25 @@ class BookReservationForm extends React.Component {
             .then( res => this.props.history.push(`/reservations/${res.reservation.id}`) );
     }
 
+    handleCancel(e) {
+        e.preventDefault();
+        this.props.history.goBack();
+        this.props.clearReservationErrors();
+    }
+
+    renderErrors() {
+      return (
+        <ul className="reservation-errors">
+          {
+            this.props.errors.map((err, i) => (
+              <li key={`res-error-${i}`}>
+                {err}
+              </li>
+            ))
+          }
+        </ul>
+      )
+    }
 
     render() {
         let renderedComponent;
@@ -44,6 +64,7 @@ class BookReservationForm extends React.Component {
         if (this.props.restaurant) {
             renderedComponent = (
               <div className="book-reservation-content wrapper">
+                {this.renderErrors()}
                 <div className="book-reservation-header">
                   <h2>You're almost done!</h2>
                 </div>
@@ -80,7 +101,7 @@ class BookReservationForm extends React.Component {
                         Complete Reservation
                     </button>
                     <div>
-                        <a onClick={() => this.props.history.goBack()}>Cancel</a>
+                        <a onClick={this.handleCancel}>Cancel</a>
                     </div>
                   </div>
                   <div className="book-reservation-disclaimer">

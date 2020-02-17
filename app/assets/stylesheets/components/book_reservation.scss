@@ -3,6 +3,14 @@
     border-bottom-left-radius: 5px;
     background: $white;
 
+    .reservation-errors {
+        padding-left: 2rem;
+
+        li {
+            padding-top: 2rem;
+        }
+    }
+
     .book-reservation-header {
         padding: 1.5rem 1.5rem 0.5rem;
         padding-left: 2rem;

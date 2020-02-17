@@ -22,11 +22,18 @@
 class Reservation < ApplicationRecord
     validates :date, :seats, presence: true
     validates :cancellation, inclusion: { in: [true, false] }
+    validate :cannot_book_capacity_full
     after_initialize :generate_confirmation_number
 
     belongs_to :user, inverse_of: :reservations
     belongs_to :restaurant, inverse_of: :reservations
     belongs_to :timeslot, inverse_of: :reservations
+
+    def cannot_book_capacity_full
+        if !Reservation.is_valid?(self)
+            errors[:seats] << 'are no longer available.'
+        end
+    end
     
     def self.is_valid?(reservation)
         restaurant = Restaurant.find_by(id: reservation.restaurant_id)

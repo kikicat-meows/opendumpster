@@ -5,10 +5,9 @@ import {
 import {
     clearTimeslots
 } from '../../actions/timeslot_actions';
+import { clearReservationErrors } from "../../actions/reservation_actions";
 
 import RestaurantShow from './restaurant_show';
-
-import { currentUser } from '../../reducers/selector';
 
 
 const mSTP = (state, ownProps) => ({
@@ -21,6 +20,7 @@ const mDTP = dispatch => ({
     requestARestaurant: (id) => 
                 dispatch(requestARestaurant(id)),
     clearTimeslots: () => dispatch(clearTimeslots()),
+    clearReservationErrors: () => dispatch(clearReservationErrors()),
 });
 
 

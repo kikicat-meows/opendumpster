@@ -4,8 +4,7 @@ import {
     searchRestaurants
 } from '../../actions/restaurant_actions';
 import { openModal } from '../../actions/modal_actions';
-
-import { currentUser } from '../../reducers/selector';
+import { clearReservationErrors } from '../../actions/reservation_actions';
 
 import RestaurantIndex from './restaurant_index';
 
@@ -21,6 +20,7 @@ const mDTP = dispatch => ({
     requestAllRestaurants: () => dispatch(requestAllRestaurants()),
     searchRestaurants: (keyword) => dispatch(searchRestaurants(keyword)),
     openModal: modal => dispatch(openModal(modal)),
+    clearReservationErrors: () => dispatch(clearReservationErrors()),
 })
 
 

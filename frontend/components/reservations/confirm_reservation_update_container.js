@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
 import { 
-    findAReservation, updateReservation 
+    findAReservation, updateReservation, clearReservationErrors 
 } from '../../actions/reservation_actions';
 import {
     openModal
@@ -11,12 +11,11 @@ import {
 import ConfirmReservationUpdate from "./confirm_reservation_update";
 
 const mSTP = (
-  { session, entities: { reservations } },
+  { session, entities: { reservations }, errors },
   ownProps
 ) => {
   const params = new URLSearchParams(ownProps.history.location.search);
   let reservationId = params.get("reservationId");
-  console.log(params.get('timeslotId'));
   return {
     currentUser: session.id,
     reservationId: reservationId,
@@ -27,6 +26,7 @@ const mSTP = (
       timeslot_id: params.get("timeslotId"),
     },
     time: params.get("time"),
+    errors: errors.reservation,
   };
 };
 
@@ -34,6 +34,7 @@ const mDTP = dispatch => ({
   findAReservation: id => dispatch(findAReservation(id)),
   updateReservation: reservation => dispatch(updateReservation(reservation)),
   openModal: ctx => dispatch(openModal(ctx)),
+  clearReservationErrors: () => dispatch(clearReservationErrors()),
 });
 
 export default withRouter(connect(mSTP, mDTP)(ConfirmReservationUpdate));
