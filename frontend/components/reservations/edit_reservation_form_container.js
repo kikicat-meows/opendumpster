@@ -8,7 +8,7 @@ import EditReservationForm from './edit_reservation_form';
 import { withRouter } from 'react-router-dom';
 
 const mSTP = (state) => ({
-    currentUser: state.session.id,
+    currentUser: state.entities.users[state.session.id],
     timeslots: state.entities.timeslots,
 })
 

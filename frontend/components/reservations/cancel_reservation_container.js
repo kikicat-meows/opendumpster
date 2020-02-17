@@ -9,7 +9,7 @@ import { closeModal } from '../../actions/modal_actions';
 import CancelReservation from './cancel_reservation';
 
 const mSTP = (state) => ({
-    currentUser: state.session.id,
+    currentUser: state.entities.users[state.session.id],
 })
 
 const mDTP = dispatch => ({

@@ -10,7 +10,7 @@ class CancelReservation extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        if (!this.props.currentUser || this.props.currentUser !== this.props.user_id) {
+        if (!this.props.currentUser || this.props.currentUser.id !== this.props.user_id) {
             this.props.history.push('/denied');
             this.props.closeModal();
         } else {

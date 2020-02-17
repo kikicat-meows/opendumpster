@@ -17,7 +17,7 @@ const mSTP = (
   const params = new URLSearchParams(ownProps.history.location.search);
   let reservationId = params.get("reservationId");
   return {
-    currentUser: session.id,
+    currentUser: entities.users[session.id],
     reservationId: reservationId,
     reservation: reservations.new[reservationId],
     reservationForm: {

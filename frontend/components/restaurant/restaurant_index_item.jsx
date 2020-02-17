@@ -81,7 +81,7 @@ class RestaurantIndexItem extends React.Component {
                         </Link>
                         <div className='restaurant-index-item-content'>
                             <div className='restaurant-index-header'>
-                                <Link className='restaurant-index-item-link' to={link}>{restaurant.name}</Link>
+                                <Link className='restaurant-index-item-link' to={link} target='_blank'>{restaurant.name}</Link>
                             </div>
                             <div className='restaurant-index-item-rating'>
                                 Placeholder for Rating

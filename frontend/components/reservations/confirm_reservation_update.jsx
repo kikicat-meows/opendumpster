@@ -28,7 +28,7 @@ class ConfirmReservationUpdate extends React.Component {
       return;
     }
 
-    if (this.props.currentUser !== this.props.reservation.user_id) {
+    if (this.props.currentUser.id !== this.props.reservation.user_id) {
         this.props.history.push('/denied');
     } else {
         this.props

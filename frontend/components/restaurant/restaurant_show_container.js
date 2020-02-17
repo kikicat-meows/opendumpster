@@ -11,14 +11,14 @@ import RestaurantShow from './restaurant_show';
 
 
 const mSTP = (state, ownProps) => ({
-    currentUser: currentUser(state),
+    currentUser: state.entities.users[state.session.id],
     restaurant: state.entities.restaurants[ownProps.match.params.restaurantId],
 });
 
 
 const mDTP = dispatch => ({
     requestARestaurant: (id) => 
-                dispatch(requestARestaurant(id)),
+    dispatch(requestARestaurant(id)),
     clearTimeslots: () => dispatch(clearTimeslots()),
     clearReservationErrors: () => dispatch(clearReservationErrors()),
 });
