@@ -13,7 +13,6 @@ class RestaurantShow extends React.Component {
 
     componentDidMount() {
         window.scrollTo(0, 0);
-        // setTimeout(this.props.requestARestaurant(this.props.match.params.restaurantId).then(()=>this.forceUpdate()), 0);
         this.props.clearTimeslots();
         this.props.clearReservationErrors();
         this.props.requestARestaurant(this.props.match.params.restaurantId);

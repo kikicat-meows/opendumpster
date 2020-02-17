@@ -12,8 +12,6 @@ import {
     openModal
 } from '../../actions/modal_actions';
 
-
-
 import BookReservationForm from './book_reservation_form';
 
 const mSTP = ({ session, entities: { users, restaurants }, errors }, ownProps) => {

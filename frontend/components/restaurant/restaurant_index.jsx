@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import RestaurantIndexItem from './restaurant_index_item';
 import SearchFormContainer from '../search/search_form_container';
 
