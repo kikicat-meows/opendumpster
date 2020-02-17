@@ -46,47 +46,49 @@ class RestaurantShow extends React.Component {
 
         let mountedComponent = null;
         if (restaurant && restaurant.hours) {
-            mountedComponent = 
-            <div className = 'restaurant-show-page-container'>
-                <div className='restaurant-show-page-banner'>
-                    {/* <img src={window.showbannerURL} alt="placeholder show banner"/> */}
+            mountedComponent = (
+              <div className="restaurant-show-page-container">
+                <div className="restaurant-show-page-banner">
+                  {/* <img src={window.showbannerURL} alt="placeholder show banner"/> */}
                 </div>
 
-                <div className='restaurant-show-page-content wrapper'>
-                    <div className='show-left'>
-                        <div className='restaurant-show-overview'>
-                            <h1>{restaurant.name}</h1>
-                            <p>{restaurant.description}</p>
-                        </div>
+                <div className="restaurant-show-page-content wrapper">
+                  <div className="show-left">
+                    <div className="restaurant-show-overview">
+                      <h1>{restaurant.name}</h1>
+                      <p>{restaurant.description}</p>
                     </div>
+                  </div>
 
-                    <div className='show-right'>
-                        <RestaurantReservationContainer />
+                  <div className="show-right">
+                    <RestaurantReservationContainer />
 
-                        <div className='restaurant-show-addinfo'>
-                            <div className='restaurant-show-hours'>
-                                <h4>Hours of Operation</h4>
-                                {
-                                    this.hourOfOperations(restaurant)
-                                }
-                            </div>
-                            <div className='restaurant-show-cuisine'>
-                                <h4>Cuisines</h4>
-                                <p>{restaurant.cuisine.join(", ")}</p>
-                            </div>
-                            <div className='restaurant-show-phone'>
-                                <h4>Phone number</h4>
-                                <p>{restaurant.phone}</p>
-                            </div>
-                            <div className='restaurant-show-website'>
-                                <h4>Website</h4>
-                                <p>{restaurant.website}</p>
-                            </div>
-                        </div>
+                    <div className="restaurant-show-addinfo">
+                      <div className="restaurant-show-hours">
+                        <h4>Hours of Operation</h4>
+                        {this.hourOfOperations(restaurant)}
+                      </div>
+                      <div className="restaurant-show-cuisine">
+                        <h4>Cuisines</h4>
+                        <p>{restaurant.cuisine.join(", ")}</p>
+                      </div>
+                      <div className="restaurant-show-phone">
+                        <h4>Phone number</h4>
+                        <p>{restaurant.phone}</p>
+                      </div>
+                      <div className="restaurant-show-website">
+                        <h4>Website</h4>
+                        <p>
+                          <a href={restaurant.website} target="_blank">
+                            {restaurant.website}
+                          </a>
+                        </p>
+                      </div>
                     </div>
-
+                  </div>
                 </div>
-            </div>
+              </div>
+            );
             
         }
         
