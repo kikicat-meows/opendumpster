@@ -6,7 +6,7 @@ import { closeModal } from '../actions/modal_actions';
 import SignUpFormContainer from './session_form/signup_form_container';
 import LogInFormContainer from './session_form/login_form_container';
 import CancelReservationContainer from './reservations/cancel_reservation_container';
-
+import DropdownNavContainer from './greeting/dropdown_nav_container';
 
 const mSTP = ({ui}) => ({
     modal: ui.modal
@@ -33,20 +33,37 @@ const Modal = ({modal, closeModal}) => {
         case "signup":
             component = <SignUpFormContainer />;
             break;
+        case 'dropdown':
+            component = <DropdownNavContainer />;
+            break;
         default:
             return null;
         }
     }
 
+    let renderedComponent;
+
+    if (modal === 'dropdown') {
+        renderedComponent = 
+            <div className="nav-modal-container" onClick={closeModal}>
+                <div className="nav-modal-content" onClick={e => e.stopPropagation()}>
+                    {component}
+                </div>
+            </div>
+    } else {
+        renderedComponent = 
+            <div className='modal-container' onClick={closeModal}>
+                <strong className='form-close-x' onClick={closeModal}>&times;</strong>
+                <div className='modal-content' onClick={e => e.stopPropagation()}>
+                    {component}
+                </div>
+            </div>
+    }
 
     return (
-        <div className='modal-container' onClick={closeModal}>
-            <strong className='form-close-x' onClick={closeModal}>&times;</strong>
-            <div className='modal-content' onClick={e => e.stopPropagation()}>
-                {component}
-            </div>
-        </div>
-
+        <>
+        {renderedComponent}
+        </>
     )
 }
 
