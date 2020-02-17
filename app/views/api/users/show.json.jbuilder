@@ -1,7 +1,5 @@
 json.partial! "api/users/user", user: @user
 
-json.visited_restaurant_ids @user.visited_restaurants
-
 # json.reservations do
 #     @user.reservations.each do |reservation|
 #         json.set! reservation.id do

@@ -18,3 +18,11 @@ export const formatDateShort = dateString => {
 
   return myDate.toLocaleDateString("en-US", options);
 };
+
+export const formatDateSlash = dateString => {
+  function pad(s) { return (s < 10) ? '0' + s : s; }
+
+  let d = new Date(dateString);
+
+  return [pad(d.getUTCDate()), pad(d.getUTCMonth()+1), d.getUTCFullYear()].join('/')
+}

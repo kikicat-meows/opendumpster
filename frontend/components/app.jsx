@@ -18,12 +18,14 @@ import Footer from './footer/footer';
 import Homepage from './homepage/homepage';
 import ErrorPage from './404';
 import PermissionDenied from './permission_denied';
+
 import RestaurantIndexContainer from './restaurant/restaurant_index_container';
 import RestaurantShowContainer from './restaurant/restaurant_show_container';
 import BookReservationFormContainer from './reservations/book_reservation_form_container';
 import ReservationShowContainer from './reservations/reservation_show_container';
 import ConfirmReservationUpdateContainer from './reservations/confirm_reservation_update_container';
 
+import UserReservationsContainer from './user_profile/user_reservations_container';
 
 const App = () => (
     <div>
@@ -33,14 +35,14 @@ const App = () => (
         <Switch>
             {/* <AuthRoute path="/login" component={LoginFormContainer} /> */}
             {/* <AuthRoute path="/signup" component={SignupFormContainer} /> */}
-            {/* <Route>{'404'}</Route> */}
+            <Route exact path='/my/profile' component={UserReservationsContainer}/>
             <Route exact path='/reservations/new' component={BookReservationFormContainer}/>
             <Route exact path='/reservations/change' component={ConfirmReservationUpdateContainer}/>
             <Route exact path='/reservations/:reservationId' component={ReservationShowContainer}/>
             <Route exact path="/restaurants/:restaurantId" component={RestaurantShowContainer}/>
             <Route exact path="/restaurants" component={RestaurantIndexContainer} />
-            <Route exact path='/denied' component={PermissionDenied} />
             <Route exact path="/" component={Homepage}/>
+            <Route path='/denied' component={PermissionDenied} />
             <Route path='/error' component={ErrorPage} />
             <Route component={ErrorPage} />
         </Switch>

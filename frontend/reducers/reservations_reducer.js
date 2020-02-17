@@ -7,7 +7,7 @@ import {
 
 
 const _nullReservation = Object.freeze({
-    user: {},
+    user: null,
     new: {}
 })
 

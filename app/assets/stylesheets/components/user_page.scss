@@ -1,0 +1,161 @@
+.user-page {
+    position: relative;
+
+    .user-page-main-nav {
+        padding-left: 200px;
+        position: relative;
+        height: 100%;
+
+        .user-page-nav-wrapper {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            padding: 1.875rem 0 1rem;
+            width: 200px;
+            // background-color: white;
+
+            .user-page-nav {
+                position: relative;
+                width: 200px;
+                padding-left: 2rem;
+            
+                ul {
+                    padding: 0;
+
+                    .user-page-nav-link {
+                        outline-offset: -2px;
+                        display: block;
+                        margin-top: 0.5rem;
+                        padding: 0.5rem;
+                        font-size: 1rem;
+                        white-space: nowrap;
+                    }
+                }
+            }
+
+        }
+
+        .user-page-main-content {
+            padding: 0;
+
+            
+        }
+    }
+}
+
+.user-page-reservations {
+    position: relative;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    float: left;
+    width: 100%;
+
+    .upcoming-res {
+        margin-top: 2rem;
+    }
+
+    .user-page-content-block {
+        border-radius: 5px;
+        box-shadow: 0 1px 0 rgba(0,0,0,0.1);
+        margin-bottom: 2rem;
+        background-color: $white;
+
+        .user-page-content-block-header {
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+            padding: 1.5rem;
+            position: relative;
+
+            h2 {
+                font-size: 1.5rem;
+                line-height: 1.165;
+            }
+
+        }
+
+        .user-page-upcoming-container {
+            padding: 0 1.5rem;
+            padding-bottom: 1rem;
+            min-height: 10.9375rem;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+
+            .user-page-upcoming-row {
+                padding: 1rem 0 0.625rem 0;
+
+                .user-page-rest-row-info {
+                    padding-left: 6rem;
+                    min-height: 5rem;
+                    position: relative;
+                    line-height: 1.5rem;
+                    z-index: 0;
+
+                    .user-page-rest-row-image {
+                        max-height: 5rem;
+                        width: 5rem;
+                        border-radius: 5px;
+                        display: block;
+                        overflow: hidden;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        z-index: 1;
+                        
+                        img {
+                            width: 100%;
+                        }
+                    }
+                    
+                    .user-page-rest-row-name {
+                        padding-top: 4px;
+                        margin-right: 4rem;
+                        max-width: 22rem;
+                        display: block;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        clear: both;
+                        font-size: 1rem;
+                        line-height: 1.5rem;
+                        font-weight: bold;
+                    }
+
+                    .user-page-past-date {
+                        font-size: 1rem;
+                        line-height: 1.5rem;
+                    }
+
+                    .user-page-upcoming-date, .user-page-upcoming-seats {
+                        font-size: 0.875rem;
+                        line-height: 1.5rem;
+                    }
+
+                    .user-page-upcoming-res-links {
+                        display: flex;
+                        flex-direction: column;
+                        padding: 0;
+                        padding-bottom: 0.5rem;
+                        font-size: 0.875rem;
+
+                        .user-page-links-float {
+                            float: left!important;
+
+                            .user-page-upcoming-res-link {
+                                margin-right: 1rem;
+                                float: left;
+                                color: $darker-ocean-blue;
+                                cursor: pointer;
+                            }
+
+                            .user-page-past-res-link {
+                                margin-right: 1rem;
+                                float: left;
+                                color: $red;
+                                cursor: pointer;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

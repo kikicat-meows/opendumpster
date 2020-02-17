@@ -17,6 +17,7 @@ class CancelReservation extends React.Component {
             this.props.cancelReservation(this.props.id).then(res => {
             this.props.findAReservation(res.reservation.id);
             this.props.closeModal();
+            this.props.history.push(`/reservations/${res.reservation.id}`)
             });
         }
     }
