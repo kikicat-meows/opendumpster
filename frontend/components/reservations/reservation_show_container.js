@@ -15,7 +15,7 @@ import {
 import ReservationShow from './reservation_show';
 
 const mSTP = ({session, entities: {reservations}}, ownProps) => ({
-    reservation: reservations[ownProps.match.params.reservationId]
+    reservation: reservations.new[ownProps.match.params.reservationId]
 })
 
 const mDTP = dispatch => ({

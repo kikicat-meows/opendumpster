@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.getTimeslotsForRestaurant = TimeslotActions.getTimeslotsForRestaurant;
     window.cancelReservation = ReservationActions.cancelReservation;
     window.updateReservation = ReservationActions.updateReservation;
+    window.getUserReservations = ReservationActions.getUserReservations;
 
     const root = document.getElementById('root');
     ReactDOM.render(<Root store={store}/>, root);

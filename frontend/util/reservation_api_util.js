@@ -1,10 +1,12 @@
 // name your data objects { reservation } for backend params
 
-// export const fetchUserReservations = userId => (
-//     $.ajax({
-//         url:
-//     })
-// );
+export const fetchUserReservations = userId => (
+    $.ajax({
+        method: 'GET',
+        url: `api/users/${userId}/reservations`
+    })
+);
+
 
 export const fetchAReservation = id => (
     $.ajax({

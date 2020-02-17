@@ -19,7 +19,7 @@ const mSTP = (
   return {
     currentUser: session.id,
     reservationId: reservationId,
-    reservation: reservations[reservationId],
+    reservation: reservations.new[reservationId],
     reservationForm: {
       date: params.get("date"),
       seats: params.get("seats"),

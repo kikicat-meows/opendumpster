@@ -3,6 +3,7 @@ json.user_id @reservation.user_id
 json.restaurant_id @reservation.restaurant_id
 json.restaurant @reservation.restaurant.name
 json.date @reservation.date
+json.timeslot_id @reservation.timeslot_id
 json.time @reservation.timeslot.time
 json.seats @reservation.seats
 json.confNum @reservation.confirm

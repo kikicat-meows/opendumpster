@@ -54,7 +54,52 @@ class User < ApplicationRecord
         self.session_token ||= SecureRandom.urlsafe_base64
     end
 
+    def get_current_time
+        current_time_array = Time.now.to_s(:time).split(":").map(&:to_i)
 
-### add custom validation for phone number format?
+        if current_time_array[1] > 29
+            current_time = current_time_array[0] + 0.5
+        else
+            current_time = current_time_array[0]
+        end
+
+        current_time
+    end
+
+    def formatted_reservations
+        all_reservations = self.reservations.includes(:timeslot)
+        formatted_reservations = {
+            'cancelled'=>[],
+            'upcoming'=>[],
+            'past'=>[]
+        }
+
+        current_time = self.get_current_time
+
+        all_reservations.each do |reservation|
+
+            if reservation.cancellation
+                formatted_reservations['cancelled'] << reservation
+            else
+                if reservation.date < Date.today || 
+                    (reservation.date == Date.today && reservation.timeslot.time < current_time)
+
+                    formatted_reservations['past'] << reservation
+                else
+                    formatted_reservations['upcoming'] << reservation
+                end
+            end
+        end
+
+        formatted_reservations
+    end
+
+    def visited_restaurants
+        past_reservations = self.reservations.includes(:timeslot)
+                                .where(reservations: {cancellation: false})
+                                .where('reservations.date < ?', Date.today)
+                                .pluck(:restaurant_id)
+                                .uniq
+    end
 
 end

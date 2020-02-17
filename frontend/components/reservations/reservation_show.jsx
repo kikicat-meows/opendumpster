@@ -74,6 +74,7 @@ class ReservationShow extends React.Component {
 
     render() {
         let renderedComponent;
+
         if (this.props.reservation && !this.props.reservation.cancellation) {
             renderedComponent = (
               <div className="show-reservation-content wrapper">

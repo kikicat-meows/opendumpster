@@ -1,5 +1,12 @@
 class Api::ReservationsController < ApplicationController
 
+    def index
+        @user = User.find_by(id: params[:user_id])
+        @reservations = @user.formatted_reservations
+        render :index
+    end
+
+
     def create
         @reservation = Reservation.new(reservation_params)
 
