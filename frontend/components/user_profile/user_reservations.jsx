@@ -43,8 +43,8 @@ class UserReservations extends React.Component {
       );
     } else {
       upcomingRes = (
-        <div className="user-page-upcoming-container">
-          <p>No upcoming reservations</p>
+        <div className="user-page-nores-container">
+          <p>No upcoming reservations.</p>
         </div>
       );
     }
@@ -75,7 +75,7 @@ class UserReservations extends React.Component {
       );
     } else {
       pastRes = (
-        <div className="user-page-upcoming-container">
+        <div className="user-page-nores-container">
           <p>No past reservations.</p>
         </div>
       );
@@ -107,7 +107,7 @@ class UserReservations extends React.Component {
       );
     } else {
       cancelledRes = (
-        <div className="user-page-upcoming-container">
+        <div className="user-page-nores-container">
           <p>No cancelled reservations.</p>
         </div>
       );

@@ -73,6 +73,18 @@
 
         }
 
+        .user-page-nores-container {
+            padding: 0 1.5rem;
+            padding-bottom: 1rem;
+            min-height: 6rem;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+
+            p {
+                padding: 2rem 0 1rem 0.25rem;
+                font-size: 1rem;
+            }           
+        }
+
         .user-page-upcoming-container {
             padding: 0 1.5rem;
             padding-bottom: 1rem;

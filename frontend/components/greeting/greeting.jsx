@@ -20,7 +20,7 @@ const Greeting = ({ currentUser, logout, openModal }) => {
 
     const personalizedGreeting = () => (
         <div className="top-bar-nav clearfix">
-            <h3>Hi, {currentUser.fname}</h3>
+            <h3 onClick={() => openModal('dropdown')}>Hi, {currentUser.fname}</h3>
             <span onClick={() => openModal('dropdown')} className='drop-down'>
                 <FontAwesomeIcon icon={faAngleDown}/>
             </span>
