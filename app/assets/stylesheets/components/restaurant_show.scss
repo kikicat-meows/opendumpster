@@ -41,6 +41,16 @@
                 justify-content: space-between;
             }
         }
+
+        .restaurant-show-website {
+            a {
+                color: $red;
+
+                &:hover {
+                    text-decoration: underline;
+                }
+            }
+        }
     }
 }
 
@@ -66,7 +76,7 @@
     border-radius: 5px;
 
     .restaurant-show-search-header {
-        height: 3rem;
+        height: 3.2rem;
         display: flex;
         justify-content: flex-end;
         flex-direction: column;
@@ -82,25 +92,34 @@
             flex-direction: column;
             span {
                 display: inline-block;
-                line-height: 1.5rem;
+                margin-top: 5px;
+                line-height: 1.6rem;
             }
         }
     }
 
     .restaurant-show-search-form {
-        padding: 0.5rem 1rem 1rem;
+        padding: 1rem 1rem 0.25rem;
         flex-direction: column;
 
         .restaurant-show-search-size {
             position: relative;
             padding-top: 1rem;
+            padding-left: 0.5rem;
             border-bottom: 1px solid $grey;
             flex: 1 50%;
+
+            &:hover {
+                border-bottom: 1px solid $red;
+            }
+
+            &:focus {
+                border-bottom: 1px solid $red;
+            }
 
             p {
                 font-size: 0.875rem;
                 padding-bottom: 0.25rem;
-                padding-left: 0.5rem;
                 font-weight: bold;
             }
 
@@ -115,6 +134,11 @@
                 border: none;
                 border-radius: 0;
                 background-color: transparent;
+
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                text-indent: 1px;
+                text-overflow: '';
 
                 .show-search-select-seats {
                     display: block;
@@ -133,6 +157,10 @@
             .restaurant-show-search-date, .restaurant-show-search-time {
                 flex: 1 50%;
                 border-bottom: 1px solid $grey;
+
+                &:hover {
+                    border-bottom: 1px solid $red;
+                }
 
                 p {
                     font-size: 0.875rem;
@@ -154,14 +182,19 @@
                     border: none;
                     background-color: transparent;
                 }
+
+                input[type=date]::-webkit-inner-spin-button,
+                input[type="date"]::-webkit-calendar-picker-indicator {
+                    -webkit-appearance: none;
+                    // display: none;
+                    opacity: 0;
+                    cursor: pointer;
+                }
             }
             
             .restaurant-show-search-time {
                 margin-left: 0.5rem;
-
-                p {
-                    padding-left: 0.5rem;
-                }
+                padding-left: 0.5rem;
 
                 .restaurant-show-search-time-selector {
                     font-size: 0.875rem;
@@ -172,6 +205,11 @@
                     outline: none;
                     border: none;
                     background-color: transparent;   
+                    
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+                    text-indent: 1px;
+                    text-overflow: '';
                 }
             }
 

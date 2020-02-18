@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { faCalendar, faClock, faUser } from '@fortawesome/free-regular-svg-icons';
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
 import { selectTimeslots, selectNumOfSeats } from '../../util/reservation_search_util';
 
@@ -65,33 +66,51 @@ class SearchForm extends React.Component {
                       <div className="homepage-search-selectors">
                         <span className="homepage-search-calendar">
                           <FontAwesomeIcon icon={faCalendar} />
-                          <input
-                            type="date"
-                            value={this.state.date}
-                            min={new Date().toISOString().substring(0, 10)}
-                            onChange={this.update("date")}
-                            required
-                          />
+                          <div className="homepage-search-picker">
+                            <input
+                              type="date"
+                              value={this.state.date}
+                              min={new Date().toISOString().substring(0, 10)}
+                              onChange={this.update("date")}
+                              required
+                            />
+                            <FontAwesomeIcon
+                              icon={faAngleDown}
+                              className="homepage-search-picker-icon"
+                            />
+                          </div>
                         </span>
 
                         <span className="homepage-search-clock">
                           <FontAwesomeIcon icon={faClock} />
-                          <select
-                            value={this.state.time}
-                            onChange={this.update("time")}
-                          >
-                            {selectTimeslots()}
-                          </select>
+                          <div className="homepage-search-picker">
+                            <select
+                              value={this.state.time}
+                              onChange={this.update("time")}
+                            >
+                              {selectTimeslots()}
+                            </select>
+                            <FontAwesomeIcon
+                              icon={faAngleDown}
+                              className="homepage-search-picker-icon"
+                            />
+                          </div>
                         </span>
 
                         <span className="homepage-search-seats">
                           <FontAwesomeIcon icon={faUser} />
-                          <select
-                            value={this.state.seats}
-                            onChange={this.update("seats")}
-                          >
-                            {selectNumOfSeats()}
-                          </select>
+                          <div className="homepage-search-picker">
+                            <select
+                              value={this.state.seats}
+                              onChange={this.update("seats")}
+                            >
+                              {selectNumOfSeats()}
+                            </select>
+                            <FontAwesomeIcon
+                              icon={faAngleDown}
+                              className="homepage-search-picker-icon"
+                            />
+                          </div>
                         </span>
                       </div>
 

@@ -23,6 +23,15 @@
                 ul {
                     padding: 0;
 
+                    .user-page-nav-link.active {
+                        color: $darkest-grey;
+                        font-size: 1.05rem;
+
+                        &:hover {
+                            color: $darkest-grey;
+                        }
+                    }
+
                     .user-page-nav-link {
                         outline-offset: -2px;
                         display: block;
@@ -30,6 +39,12 @@
                         padding: 0.5rem;
                         font-size: 1rem;
                         white-space: nowrap;
+                        color: $font-grey;
+
+                        &:hover {
+                            color: $red;
+                        }
+
                     }
                 }
             }
@@ -71,6 +86,28 @@
                 line-height: 1.165;
             }
 
+        }
+
+        .user-page-nores-container-upcoming {
+            padding: 0 1.5rem;
+            padding-bottom: 1rem;
+            min-height: 6rem;
+            border-bottom: 1px solid rgba(0,0,0,0.08);
+
+            p {
+                padding: 2rem 0 1rem 0.25rem;
+                font-size: 1rem;
+                color: $font-grey;
+
+                span a {
+                    color: $ocean-blue;
+
+                    &:hover {
+                        color: $red;
+                    }
+                }
+
+            }           
         }
 
         .user-page-nores-container {
@@ -129,16 +166,23 @@
                         font-size: 1rem;
                         line-height: 1.5rem;
                         font-weight: bold;
+                        color: $darkest-grey;
+
+                        &:hover {
+                            color: black;
+                        }
                     }
 
                     .user-page-past-date {
                         font-size: 1rem;
                         line-height: 1.5rem;
+                        color: black;
                     }
 
                     .user-page-upcoming-date, .user-page-upcoming-seats {
                         font-size: 0.875rem;
                         line-height: 1.5rem;
+                        color: $darker-grey;
                     }
 
                     .user-page-upcoming-res-links {
@@ -154,8 +198,12 @@
                             .user-page-upcoming-res-link {
                                 margin-right: 1rem;
                                 float: left;
-                                color: $darker-ocean-blue;
+                                color: $ocean-blue;
                                 cursor: pointer;
+
+                                &:hover {
+                                    color: $darker-ocean-blue;
+                                }
                             }
 
                             .user-page-past-res-link {
@@ -163,6 +211,10 @@
                                 float: left;
                                 color: $red;
                                 cursor: pointer;
+
+                                &:hover {
+                                    color: $darker-red;
+                                }
                             }
                         }
                     }

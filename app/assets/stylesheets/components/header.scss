@@ -56,6 +56,7 @@
 
         span {
             padding-left: 0;
+            color: $font-grey;
         }
     }
 }
@@ -94,6 +95,10 @@
                     padding: 0.8rem 1rem;
                     position: relative;
                     cursor: pointer;
+
+                    &:hover {
+                        background: $lightest-grey;
+                    }
                 }
             }
         }

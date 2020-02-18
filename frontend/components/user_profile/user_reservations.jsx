@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 
 import UserNav from './user_nav';
 import UpcomingResItem from './upcoming_res_item';
@@ -43,8 +44,13 @@ class UserReservations extends React.Component {
       );
     } else {
       upcomingRes = (
-        <div className="user-page-nores-container">
-          <p>No upcoming reservations.</p>
+        <div className="user-page-nores-container-upcoming">
+          <p>
+            No Upcoming Reservations.&nbsp;
+            <span>
+              <Link to={`/`}>Book a Table.</Link>
+            </span>
+          </p>
         </div>
       );
     }
@@ -76,7 +82,7 @@ class UserReservations extends React.Component {
     } else {
       pastRes = (
         <div className="user-page-nores-container">
-          <p>No past reservations.</p>
+          <p>No Past Reservations.</p>
         </div>
       );
     }
@@ -108,7 +114,9 @@ class UserReservations extends React.Component {
     } else {
       cancelledRes = (
         <div className="user-page-nores-container">
-          <p>No cancelled reservations.</p>
+          <p>
+            No Cancelled Reservations. 
+          </p>
         </div>
       );
     }

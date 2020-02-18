@@ -161,7 +161,7 @@ class EditReservationForm extends React.Component {
                         </span>
                         <button className="modify-reservation-search-submit"
                             onChange={this.handleSearch}>
-                            Find a Table
+                            Find a Dumpster
                         </button>
                     </form>
                 </div>

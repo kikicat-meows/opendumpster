@@ -144,7 +144,7 @@ class RestaurantReservation extends React.Component {
                 className="restaurant-show-search-submit"
                 onClick={this.handleSubmit}
               >
-                Find a Table
+                Find a Dumpster
               </button>
             </form>
             <div className="restaurant-show-search-timeslots">

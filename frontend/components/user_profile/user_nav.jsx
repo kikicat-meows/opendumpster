@@ -1,24 +1,24 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 const UserNav = () => (
   <div className="user-page-nav-wrapper">
     <nav className="user-page-nav">
       <ul>
         <li>
-          <Link className="user-page-nav-link" to={`/my/profile`}>
+          <NavLink className="user-page-nav-link" exact to={`/my/profile`}>
                 Reservations
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link className="user-page-nav-link" to={`/my/favorites`}>
+          <NavLink className="user-page-nav-link" exact to={`/my/favorites`}>
                 Saved Restaurants
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link className="user-page-nav-link" to={`/my/profile/edit`}>
+          <NavLink className="user-page-nav-link" exact to={`/my/profile/edit`}>
                 Account Details
-          </Link>
+          </NavLink>
         </li>
       </ul>
     </nav>
