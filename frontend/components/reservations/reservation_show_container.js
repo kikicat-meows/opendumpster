@@ -11,10 +11,10 @@ import {
     clearTimeslots
 } from '../../actions/timeslot_actions'
 
-
 import ReservationShow from './reservation_show';
 
-const mSTP = ({session, entities: {reservations}}, ownProps) => ({
+const mSTP = ({session, entities: {users, reservations}}, ownProps) => ({
+    currentUser: users[session.id],
     reservation: reservations.new[ownProps.match.params.reservationId]
 })
 

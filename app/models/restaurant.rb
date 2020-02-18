@@ -30,6 +30,11 @@ class Restaurant < ApplicationRecord
 
     has_many :reservations, inverse_of: :restaurant, dependent: :destroy
 
+    has_many :reviews, inverse_of: :restaurant, dependent: :destroy
+    has_many :reviewers,
+        through: :reviews,
+        source: :user
+
     def self.find_by_search(search_term)
         # restaurants = Restaurant.includes(:city).includes(:cuisines)
 

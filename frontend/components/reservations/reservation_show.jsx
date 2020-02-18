@@ -19,6 +19,7 @@ import {
 
 
 import EditReservationFormContainer from './edit_reservation_form_container';
+import { Redirect } from 'react-router-dom';
 
 class ReservationShow extends React.Component {
     constructor(props) {
@@ -75,87 +76,95 @@ class ReservationShow extends React.Component {
     render() {
         let renderedComponent;
 
-        if (this.props.reservation && !this.props.reservation.cancellation) {
-            renderedComponent = (
-              <div className="show-reservation-content wrapper">
-                <div className="show-reservation-header">
-                  <FontAwesomeIcon icon={faCheckCircle}/>&nbsp;
-                  <div className="show-reservation-header-right">
-                    <h2>Thanks! Your reservation is confirmed.</h2>
-                    <h4>Confirmation #{this.props.reservation.confNum}</h4>
+        // *** PREVENT NON-OWNER && UNLOGGED IN TO SEE RESERVATION SHOW
+        
+        // if (!this.props.currentUser || (this.props.reservation && this.props.reservation.user_id !== this.props.currentUser.id)) {
+        //   renderedComponent = 
+        //   <Redirect to={`/denied`}/>
+        // } else {
+
+          if (this.props.reservation && !this.props.reservation.cancellation) {
+              renderedComponent = (
+                <div className="show-reservation-content wrapper">
+                  <div className="show-reservation-header">
+                    <FontAwesomeIcon icon={faCheckCircle}/>&nbsp;
+                    <div className="show-reservation-header-right">
+                      <h2>Thanks! Your reservation is confirmed.</h2>
+                      <h4>Confirmation #{this.props.reservation.confNum}</h4>
+                    </div>
                   </div>
+                  <div className="show-reservation-info">
+                    <div className="show-reservation-image">
+                      <img
+                        src={window.trashcanURL}
+                        alt="placeholder-restaurant-image"
+                        className="restaurant-index-item-img"
+                      />
+                    </div>
+                    <div className="show-reservation-details">
+                        <h3>{this.props.reservation.restaurant}</h3>
+                      <div className="show-reservation-time">
+                        <FontAwesomeIcon icon={faCalendar} />
+                        <p>
+                          {formatDate(this.props.reservation.date)},&nbsp;
+                          {formatOpeningTime(this.props.reservation.time)}
+                        </p>
+                      </div>
+                      <div className="show-reservation-time">
+                        <FontAwesomeIcon icon={faUser} />
+                        <p>{formatSeat(this.props.reservation.seats)}</p>
+                      </div>
+                    </div>
+                  </div>
+                    <hr />
+                    <div className="show-reservation-actions-container">
+
+                      {this.displayButtons()}
+                    </div>
+
+                    <EditReservationFormContainer 
+                      reservation={this.props.reservation}
+                      toggleEditForm={this.toggleEditForm}/>
                 </div>
-                <div className="show-reservation-info">
-                  <div className="show-reservation-image">
-                    <img
-                      src={window.trashcanURL}
-                      alt="placeholder-restaurant-image"
-                      className="restaurant-index-item-img"
-                    />
+              );
+          } else if (this.props.reservation && this.props.reservation.cancellation) {
+              renderedComponent = (
+                <div className="show-reservation-content wrapper">
+                  <div className="show-reservation-header" id='reservation-cancelled-header'>
+                    <FontAwesomeIcon icon={faTimesCircle} />
+                    <div className="show-reservation-header-right">
+                      <h2>This reservation was cancelled.</h2>
+                      <h4>Please contact the restaurant for further assistance.</h4>
+                    </div>
                   </div>
-                  <div className="show-reservation-details">
+                  <div className="show-reservation-info">
+                    <div className="show-reservation-image">
+                      <img
+                        src={window.trashcanURL}
+                        alt="placeholder-restaurant-image"
+                        className="restaurant-index-item-img"
+                      />
+                    </div>
+                    <div className="show-reservation-details">
                       <h3>{this.props.reservation.restaurant}</h3>
-                    <div className="show-reservation-time">
-                      <FontAwesomeIcon icon={faCalendar} />
-                      <p>
-                        {formatDate(this.props.reservation.date)},&nbsp;
-                        {formatOpeningTime(this.props.reservation.time)}
-                      </p>
+                      <div className="show-reservation-time">
+                        <FontAwesomeIcon icon={faCalendar} />
+                        <p>
+                          {formatDate(this.props.reservation.date)},&nbsp;
+                          {formatOpeningTime(this.props.reservation.time)}
+                        </p>
+                      </div>
+                      <div className="show-reservation-time">
+                        <FontAwesomeIcon icon={faUser} />
+                        <p>{formatSeat(this.props.reservation.seats)}</p>
+                      </div>
                     </div>
-                    <div className="show-reservation-time">
-                      <FontAwesomeIcon icon={faUser} />
-                      <p>{formatSeat(this.props.reservation.seats)}</p>
-                    </div>
-                  </div>
-                </div>
-                  <hr />
-                  <div className="show-reservation-actions-container">
-
-                    {this.displayButtons()}
-                  </div>
-
-                  <EditReservationFormContainer 
-                    reservation={this.props.reservation}
-                    toggleEditForm={this.toggleEditForm}/>
-              </div>
-            );
-        } else if (this.props.reservation && this.props.reservation.cancellation) {
-            renderedComponent = (
-              <div className="show-reservation-content wrapper">
-                <div className="show-reservation-header" id='reservation-cancelled-header'>
-                  <FontAwesomeIcon icon={faTimesCircle} />
-                  <div className="show-reservation-header-right">
-                    <h2>This reservation was cancelled.</h2>
-                    <h4>Please contact the restaurant for further assistance.</h4>
-                  </div>
-                </div>
-                <div className="show-reservation-info">
-                  <div className="show-reservation-image">
-                    <img
-                      src={window.trashcanURL}
-                      alt="placeholder-restaurant-image"
-                      className="restaurant-index-item-img"
-                    />
-                  </div>
-                  <div className="show-reservation-details">
-                    <h3>{this.props.reservation.restaurant}</h3>
-                    <div className="show-reservation-time">
-                      <FontAwesomeIcon icon={faCalendar} />
-                      <p>
-                        {formatDate(this.props.reservation.date)},&nbsp;
-                        {formatOpeningTime(this.props.reservation.time)}
-                      </p>
-                    </div>
-                    <div className="show-reservation-time">
-                      <FontAwesomeIcon icon={faUser} />
-                      <p>{formatSeat(this.props.reservation.seats)}</p>
                     </div>
                   </div>
-                  </div>
-                </div>
-            );
-            
-        }
+              );
+              
+          }
+        // }
 
         return (
             <div className='show-reservation-page'>

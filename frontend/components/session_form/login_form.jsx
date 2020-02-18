@@ -101,7 +101,7 @@ class LoginForm extends React.Component {
                     </form>
                     <hr />
                     <h3>New to OpenDumpster?&nbsp;
-                        <span onClick={this.signUpModal}>
+                        <span onClick={this.signUpModal} className='login-account-create'>
                             Create an Account
                         </span>
                     </h3>

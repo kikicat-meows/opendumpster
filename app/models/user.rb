@@ -23,8 +23,12 @@ class User < ApplicationRecord
     validates :password, length: { minimum: 6, allow_nil: true}
     before_validation :ensure_session_token
 
-
     has_many :reservations, inverse_of: :user, dependent: :destroy
+
+    has_many :reviews, inverse_of: :user, dependent: :destroy
+    has_many :reviewed_restaurants,
+        through: :reviews,
+        source: :restaurant
 
 
     def self.find_by_credentials(email, password)
