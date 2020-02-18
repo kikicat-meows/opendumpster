@@ -30,4 +30,4 @@ export const updateReservation = ({reservationId, reservation}) => (
         url: `api/reservations/${reservationId}`,
         data: { reservation },
     })
-)
+);
