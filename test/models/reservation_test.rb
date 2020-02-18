@@ -15,8 +15,9 @@
 #
 # Indexes
 #
-#  index_reservations_on_confirm  (confirm) UNIQUE
-#  index_reservations_on_user_id  (user_id)
+#  index_reservations_on_confirm        (confirm) UNIQUE
+#  index_reservations_on_restaurant_id  (restaurant_id)
+#  index_reservations_on_user_id        (user_id)
 #
 
 require 'test_helper'
