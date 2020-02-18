@@ -14,6 +14,7 @@ import {
   faCalendar,
   faUser,
 } from "@fortawesome/free-regular-svg-icons";
+import { Link } from 'react-router-dom';
 
 class BookReservationForm extends React.Component {
     constructor(props) {
@@ -82,7 +83,9 @@ class BookReservationForm extends React.Component {
                       />
                     </div>
                     <div className="book-reservation-details">
-                      <h3>{this.props.restaurant.name}</h3>
+                      <Link to={`/restaurants/${this.props.restaurant.id}`} target='_blank'>
+                        <h3>{this.props.restaurant.name}</h3>
+                      </Link>
                       <div className="book-reservation-time">
                         <FontAwesomeIcon icon={faCalendar} />
                         <p>
@@ -98,14 +101,17 @@ class BookReservationForm extends React.Component {
                   </div>
                   <div className="book-reservation-actions">
                     <button onClick={this.handleSubmit}>
-                        Complete Reservation
+                      Complete Reservation
                     </button>
                     <div>
-                        <a onClick={this.handleCancel}>Cancel</a>
+                      <a onClick={this.handleCancel}>Cancel</a>
                     </div>
                   </div>
                   <div className="book-reservation-disclaimer">
-                    <p>By clicking "Complete Reservation", you agree to the OpenDumpster Terms of Use and Privacy Policy.</p>
+                    <p>
+                      By clicking "Complete Reservation", you agree to the
+                      OpenDumpster Terms of Use and Privacy Policy.
+                    </p>
                   </div>
                 </form>
               </div>

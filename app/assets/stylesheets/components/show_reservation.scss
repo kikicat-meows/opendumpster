@@ -103,6 +103,11 @@
             
             a {
                 cursor: pointer;
+                color: $font-grey;
+
+                &:hover {
+                    color: $dark-grey;
+                }
             }
         }
     }
@@ -133,10 +138,14 @@
         }
 
         a.cancel-modify {
-            color: $ocean-blue-border;
+            color: $lightest-blue;
             font-size: 0.875rem;
             margin-left: auto;
             cursor: pointer;
+
+            &:hover {
+                color: $red;
+            }
         }
     }
 
@@ -244,6 +253,8 @@
                 display: inline-block;
                 font-size: 1rem !important;
                 text-shadow: none;
+                white-space: nowrap;
+                padding: 0.875rem 1.5rem 0.9375rem;
             }
 
         }
