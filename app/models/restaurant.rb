@@ -141,6 +141,23 @@ class Restaurant < ApplicationRecord
 
     end
 
+    def num_reviews
+        self.reviews.count
+    end
+
+    def ratings_array
+        self.reviews.pluck(:rating)
+    end
+
+    def avg_rating
+        reviews_count = self.num_reviews
+
+        return 0 if reviews_count == 0
+
+        total_ratings = self.ratings_array.sum
+
+        total_ratings * 1.0 / reviews_count
+    end
 end
 
 

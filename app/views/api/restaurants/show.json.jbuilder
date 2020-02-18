@@ -8,4 +8,6 @@
     json.city @restaurant.city.name
     json.cuisine @restaurant.map_cuisine_by_name
     json.hours @restaurant.open_close_hours
+    json.avg_rating @restaurant.avg_rating
+    json.num_reviews @restaurant.num_reviews
 # end

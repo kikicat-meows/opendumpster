@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, withRouter } from "react-router-dom";
 import { formatOpeningTime } from '../../util/format_time_util';
-
+import { formatNumReviews } from '../../util/format_rating_reviews_util';
 
 class RestaurantIndexItem extends React.Component {
     constructor(props) {
@@ -84,7 +84,7 @@ class RestaurantIndexItem extends React.Component {
                                 <Link className='restaurant-index-item-link' to={link} target='_blank'>{restaurant.name}</Link>
                             </div>
                             <div className='restaurant-index-item-rating'>
-                                Placeholder for Rating
+                                {Math.round(restaurant.avg_rating * 10) / 10}&nbsp;({formatNumReviews(restaurant.num_reviews)})
                             </div>
                             <div className='restaurant-index-item-info'>
                                 <span>{cuisines[0]}</span>
