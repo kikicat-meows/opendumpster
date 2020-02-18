@@ -11,13 +11,13 @@ import {
 import ConfirmReservationUpdate from "./confirm_reservation_update";
 
 const mSTP = (
-  { session, entities: { reservations }, errors },
+  { session, entities: { reservations, users }, errors },
   ownProps
 ) => {
   const params = new URLSearchParams(ownProps.history.location.search);
   let reservationId = params.get("reservationId");
   return {
-    currentUser: entities.users[session.id],
+    currentUser: users[session.id],
     reservationId: reservationId,
     reservation: reservations.new[reservationId],
     reservationForm: {
