@@ -35,6 +35,11 @@ class Restaurant < ApplicationRecord
         through: :reviews,
         source: :user
 
+    has_many :favorites, inverse_of: :restaurant, dependent: :destroy
+    has_many :supporters,
+        through: :favorites,
+        source: :user
+
     def self.find_by_search(search_term)
         # restaurants = Restaurant.includes(:city).includes(:cuisines)
 
