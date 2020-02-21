@@ -1,6 +1,8 @@
 import React from 'react';
 import RestaurantReviewItem from './restaurant_review_item';
 
+import NewReviewFormContainer from './new_review_form_container';
+
 class RestaurantReviews extends React.Component {
     constructor(props) {
         super(props);
@@ -48,7 +50,7 @@ class RestaurantReviews extends React.Component {
 
     createUserReview() {
         if (this.props.currentUser.visited_restaurant_ids.includes(this.props.restaurant.id)) {
-            return <span>Create User Review Container</span>;
+            return <NewReviewFormContainer restaurantId={this.props.restaurant.id}/>;
         } else {
             return '';
         }

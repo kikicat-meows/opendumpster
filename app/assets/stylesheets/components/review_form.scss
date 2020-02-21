@@ -1,0 +1,20 @@
+.review-ratings-container {
+    display: flex;
+    justify-content: flex-start;
+    // align-items: center;
+    font-size: 0.875rem;
+    font-weight: 500;
+
+    .review-ratings-form {
+        height: 16px;
+        line-height: 1.43;
+
+        .review-ratings-blank {
+            color: $grey;
+        }
+
+        .review-ratings-blank.selected {
+            color: $red;
+        }
+    }
+}

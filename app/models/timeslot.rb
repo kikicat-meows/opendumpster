@@ -36,7 +36,7 @@ class Timeslot < ApplicationRecord
     def self.find_timeslots_by_day(day)
         timeslots = Timeslot.where(day: day)
 
-        ids = timeslots.map { |el| el }
+        # ids = timeslots.map { |el| el }
     end
 
 end
