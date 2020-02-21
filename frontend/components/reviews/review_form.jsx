@@ -10,7 +10,12 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 class ReviewForm extends React.Component {
     constructor(props) {
         super(props);
-        this.state = this.props.review;
+        this.state = {
+            user_id: this.props.review.user_id,
+            restaurant_id: this.props.review.restaurant_id,
+            rating: this.props.review.rating,
+            comment: this.props.review.comment
+        };
 
         this.update = this.update.bind(this);
         this.renderErrors = this.renderErrors.bind(this);
@@ -18,6 +23,8 @@ class ReviewForm extends React.Component {
         this.getStarArray = this.getStarArray.bind(this);
         this.handleMouseEnter = this.handleMouseEnter.bind(this);
         this.handleMouseLeave = this.handleMouseLeave.bind(this);
+        this.clearForm = this.clearForm.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     update(field) {
@@ -102,6 +109,43 @@ class ReviewForm extends React.Component {
         })
     }
 
+    handleSubmit(e) {
+        e.preventDefault();
+        if (this.props.formType === 'new') {
+            const review = Object.assign({}, this.state);
+            setTimeout(() =>
+            this.props
+                .action(review)
+                .then(res =>
+                this.props.getRestaurantReviews(res.review.restaurant_id)
+                )
+            );
+        } else {
+            const review = {
+                review: this.state,
+                id: this.props.review.id
+            }
+            setTimeout(() =>
+                this.props.action(review)
+                    .then(res => this.props.getRestaurantReviews(res.review.restaurant_id)))
+            this.props.toggleEditForm();
+        }
+    }
+
+    clearForm() {
+        if (this.props.formType === 'new') {
+            let form = document.querySelector(".review-item-right-form");
+
+            this.setState({ rating: 0, comment: "" });
+
+            form.reset();
+        } else {
+            this.props.toggleEditForm();
+        }
+
+        this.props.clearReviewErrors();
+    }
+
     renderErrors() {
         return (
             <ul className="review-errors">
@@ -116,11 +160,40 @@ class ReviewForm extends React.Component {
         )
     }
 
+    displayActionButtons() {
+        let buttons;
+
+        if (this.props.formType === 'new') {
+            buttons =
+                <>  
+                    <div className="review-action submit" onClick={this.handleSubmit}>
+                        Submit
+                    </div>
+                    <div className="review-action clear" onClick={this.clearForm}>
+                        Clear
+                    </div>    
+                </>
+        } else {
+            buttons =
+                <>
+                    <div className="review-action update" onClick={this.handleSubmit}>
+                        Update
+                    </div>
+                    <div className="review-action cancel" onClick={this.clearForm}>
+                        Cancel
+                    </div>
+                </>
+        }
+
+        return buttons;
+    }
+
     render() {
         let user = this.props.currentUser;
+        let containerClassName = (this.props.formType === 'new') ? "review-form-container" : "review-form-container hidden";
 
         return (
-          <div className="review-form-container">
+          <div className={containerClassName}>
             <div className="review-item-left review-form">
               <div className="review-user-initials-container review-form">
                 <div className="review-user-initials-circle">
@@ -141,7 +214,8 @@ class ReviewForm extends React.Component {
                 </span>
               </div>
             </div>
-            <form className="review-item-right-form">
+            <form className="review-item-right-form" onSubmit={this.handleSubmit}>
+                {this.renderErrors()}
                 <div className="review-ratings-container">
                     <div className="review-ratings-form">
                         {this.displayStars()}
@@ -157,12 +231,7 @@ class ReviewForm extends React.Component {
                         />
                 </div>
                 <div className="review-actions review-form">
-                    <div className="review-action-submit">
-                        { this.props.formType === 'new' ? 'Submit' : 'Update'}
-                    </div>
-                    <div className="review-action-cancel">
-                        Cancel
-                    </div>
+                    {this.displayActionButtons()}
                 </div>
             </form>
           </div>

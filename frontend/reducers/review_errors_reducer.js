@@ -1,4 +1,5 @@
 import {
+    RECEIVE_RESTAURANT_REVIEWS,
     RECEIVE_REVIEW,
     RECEIVE_REV_ERRORS,
     CLEAR_REV_ERRORS
@@ -12,6 +13,9 @@ const reviewErrorsReducer = (state = [], action) => {
             return action.errors
 
         case RECEIVE_REVIEW:
+            return [];
+
+        case RECEIVE_RESTAURANT_REVIEWS:
             return [];
 
         case CLEAR_REV_ERRORS:

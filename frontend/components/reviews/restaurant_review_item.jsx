@@ -38,10 +38,10 @@ const RestaurantReviewItem = props => {
 
         actions = 
             <>
-                <div className="review-action-edit">
+                <div className="review-action edit" onClick={()=>props.toggleEditForm()}>
                     Edit
                 </div>
-                <div className="review-action-delete" onClick={()=>props.openModal(['deleteReview', props.review])}>
+                <div className="review-action delete" onClick={()=>props.openModal(['deleteReview', props.review])}>
                     Delete
                 </div>
             </>

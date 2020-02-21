@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 
 import { 
-    getRestaurantReviews,
+    getRestaurantReviews,clearReviewErrors
 } from '../../actions/review_actions';
 import {
     openModal
@@ -17,6 +17,7 @@ const mSTP = state => ({
 const mDTP = dispatch => ({
     getRestaurantReviews: id => dispatch(getRestaurantReviews(id)),
     openModal: ctx => dispatch(openModal(ctx)),
+    clearReviewErrors: () => dispatch(clearReviewErrors())
 });
 
 export default connect(mSTP, mDTP)(RestaurantReviews);

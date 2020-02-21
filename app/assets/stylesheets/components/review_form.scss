@@ -32,6 +32,7 @@
     max-height: calc(3rem * 2);
 
     .review-comment.review-form {
+        padding: 0.5rem;
         height: calc(3rem * 2);
         width: 100%;
         font-size: 0.875rem;
@@ -50,4 +51,13 @@
 .review-actions.review-form {
     justify-content: flex-start;
 
+}
+
+.review-errors {
+    margin: 0;
+}
+
+.review-err {
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
 }

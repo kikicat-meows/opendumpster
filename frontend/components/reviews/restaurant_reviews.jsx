@@ -2,10 +2,12 @@ import React from 'react';
 import RestaurantReviewItem from './restaurant_review_item';
 
 import NewReviewFormContainer from './new_review_form_container';
+import EditReviewFormContainer from './edit_review_form_container';
 
 class RestaurantReviews extends React.Component {
     constructor(props) {
         super(props);
+        this.toggleEditForm = this.toggleEditForm.bind(this);
     }
 
     componentDidMount() {
@@ -22,13 +24,17 @@ class RestaurantReviews extends React.Component {
     renderUserReview(userReview) {
         return (
                     <>
+                        <EditReviewFormContainer 
+                            review={userReview[0]}
+                            toggleEditForm={this.toggleEditForm}/>
                         {
                             userReview.map(review => 
                                 <RestaurantReviewItem
                                     key="user" 
                                     review={review}
                                     currentUser={this.props.currentUser}
-                                    openModal={this.props.openModal}/>
+                                    openModal={this.props.openModal}
+                                    toggleEditForm={this.toggleEditForm}/>
                             )
                         }
                     </>
@@ -54,6 +60,14 @@ class RestaurantReviews extends React.Component {
         } else {
             return '';
         }
+    }
+    
+    toggleEditForm() {
+        let editForm = document.querySelector('.review-form-container');
+        let userComment = document.querySelector('.review-item-container-user');
+        this.props.clearReviewErrors();
+        editForm.classList.toggle('hidden');
+        userComment.classList.toggle('hidden');
     }
 
     render () {
