@@ -11,10 +11,43 @@
 
         .review-ratings-blank {
             color: $grey;
+            cursor: pointer;
         }
 
         .review-ratings-blank.selected {
             color: $red;
         }
+
+        .review-ratings-blank.active {
+            color: $orange;
+        }
+
+        .review-ratings-blank.inactive {
+            color: $grey;
+        }
     }
+}
+
+.review-comment-container.review-form {
+    max-height: calc(3rem * 2);
+
+    .review-comment.review-form {
+        height: calc(3rem * 2);
+        width: 100%;
+        font-size: 0.875rem;
+        font-weight: normal;
+        border-radius: 2px;
+        border: 1px solid $light-grey;
+        resize: none;
+        overflow: auto;
+
+        &:focus {
+            outline: none;
+        }
+    }
+}
+
+.review-actions.review-form {
+    justify-content: flex-start;
+
 }

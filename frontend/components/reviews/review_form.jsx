@@ -16,6 +16,8 @@ class ReviewForm extends React.Component {
         this.renderErrors = this.renderErrors.bind(this);
         this.selectStars = this.selectStars.bind(this);
         this.getStarArray = this.getStarArray.bind(this);
+        this.handleMouseEnter = this.handleMouseEnter.bind(this);
+        this.handleMouseLeave = this.handleMouseLeave.bind(this);
     }
 
     update(field) {
@@ -35,6 +37,8 @@ class ReviewForm extends React.Component {
                     value={count}
                     className='review-ratings-blank selected'
                     onClick={this.selectStars}
+                    onMouseEnter={this.handleMouseEnter}
+                    onMouseLeave={this.handleMouseLeave}
                     />
             )
             count ++;
@@ -49,6 +53,8 @@ class ReviewForm extends React.Component {
                     value={count}
                     className='review-ratings-blank'
                     onClick={this.selectStars}
+                    onMouseEnter={this.handleMouseEnter}
+                    onMouseLeave={this.handleMouseLeave}
                     />                
             )
             count ++;
@@ -64,10 +70,37 @@ class ReviewForm extends React.Component {
 
     selectStars(e) {
         let selectedRating = parseInt(e.currentTarget.id);
+        let starsArray = this.getStarArray(e.currentTarget);
+
+        starsArray.forEach(star => {
+          star.classList.remove("active");
+          star.classList.remove("inactive");
+        });
 
         this.setState({rating: selectedRating});
     }
+
+    handleMouseEnter(e) {
+        let starsArray = this.getStarArray(e.currentTarget);
+        let currentStar = parseInt(e.currentTarget.id);
+
+        for (let i = 0; i < currentStar; i++) {
+            starsArray[i].classList.add('active');
+        }
+
+        for (let i = currentStar; i < starsArray.length; i++) {
+            starsArray[i].classList.add('inactive');
+        }
+    }
     
+    handleMouseLeave(e) {
+        let starsArray = this.getStarArray(e.currentTarget);
+
+        starsArray.forEach(star => {
+            star.classList.remove('active');
+            star.classList.remove('inactive');
+        })
+    }
 
     renderErrors() {
         return (
@@ -88,15 +121,15 @@ class ReviewForm extends React.Component {
 
         return (
           <div className="review-form-container">
-            <div className="review-item-left">
-              <div className="review-user-initials-container">
+            <div className="review-item-left review-form">
+              <div className="review-user-initials-container review-form">
                 <div className="review-user-initials-circle">
                   <div className="review-user-initials">
                     {user.fname[0] + user.lname[0]}
                   </div>
                 </div>
               </div>
-              <div className="review-user-username-container">
+              <div className="review-user-username-container review-form">
                 <span className="review-user-username">
                   {user.fname + " " + user.lname[0]}
                 </span>
@@ -112,6 +145,23 @@ class ReviewForm extends React.Component {
                 <div className="review-ratings-container">
                     <div className="review-ratings-form">
                         {this.displayStars()}
+                    </div>
+                </div>
+                <div className="review-comment-container review-form">
+                    <textarea
+                        className='review-comment review-form'
+                        value={this.state.comment}
+                        onChange={this.update('comment')}
+                        placeholder='Please leave your comments, questions, or suggestions here.'
+                        wrap='true' 
+                        />
+                </div>
+                <div className="review-actions review-form">
+                    <div className="review-action-submit">
+                        { this.props.formType === 'new' ? 'Submit' : 'Update'}
+                    </div>
+                    <div className="review-action-cancel">
+                        Cancel
                     </div>
                 </div>
             </form>
