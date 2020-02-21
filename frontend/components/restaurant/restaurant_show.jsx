@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { formatOpeningTime, formatClosingTime } from '../../util/format_time_util';
 
 import RestaurantReservationContainer from './restaurant_reservation_container';
+import RestaurantReviewsContainer from '../reviews/restaurant_reviews_container';
 
 
 class RestaurantShow extends React.Component {
@@ -22,6 +23,7 @@ class RestaurantShow extends React.Component {
     componentDidUpdate(prevProps) {
         if (prevProps.match.params.restaurantId !== this.props.match.params.restaurantId) {
             this.props.requestARestaurant(this.props.match.params.restaurantId);
+            this.props.getRestaurantReviews(this.props.match.params.restaurantId);
         }
     }
 
@@ -55,9 +57,17 @@ class RestaurantShow extends React.Component {
                 <div className="restaurant-show-page-content wrapper">
                   <div className="show-left">
                     <div className="restaurant-show-overview">
-                      <h1>{restaurant.name}</h1>
+                      <div className="restaurant-show-name">
+                        <h1>{restaurant.name}</h1>
+                      </div>
+                      <div className="restaurant-show-description">
                       <p>{restaurant.description}</p>
+                      </div>
                     </div>
+                    <div className="restaurant-show-content">
+                      <RestaurantReviewsContainer restaurant={restaurant}/>
+                    </div>
+
                   </div>
 
                   <div className="show-right">

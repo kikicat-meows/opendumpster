@@ -5,6 +5,9 @@ import {
 import {
     clearTimeslots
 } from '../../actions/timeslot_actions';
+import {
+    getRestaurantReviews
+} from '../../actions/review_actions';
 import { clearReservationErrors } from "../../actions/reservation_actions";
 
 import RestaurantShow from './restaurant_show';
@@ -21,6 +24,7 @@ const mDTP = dispatch => ({
     dispatch(requestARestaurant(id)),
     clearTimeslots: () => dispatch(clearTimeslots()),
     clearReservationErrors: () => dispatch(clearReservationErrors()),
+    getRestaurantReviews: id => dispatch(getRestaurantReviews(id)),
 });
 
 

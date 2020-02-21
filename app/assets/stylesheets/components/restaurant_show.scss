@@ -20,6 +20,51 @@
 
     .restaurant-show-overview {
         padding: 2rem 1rem 1rem;
+
+        .restaurant-show-name {
+            padding-bottom: 2rem;
+            border-bottom: 1px solid $light-grey;
+            margin: 0 0 1rem;
+
+            h1 {
+                outline: none;
+                margin: 0;
+                overflow: hidden;
+                font-size: 2.5rem;
+                font-weight: 700;
+                line-height: 56px;
+            }
+        }
+
+        .restaurant-show-description {
+            margin-bottom: 1rem;
+            line-height: 24px;
+        }
+    }
+
+    .restaurant-show-content {
+        margin: 0 1rem;
+
+        .reviews {
+            padding: 0 0 4rem;
+
+            .reviews-header {
+                font-size: 1.5rem;
+                font-weight: bold;
+                line-height: 1.33;
+                border-bottom: 1px solid $light-grey;
+                padding-bottom: 1rem;
+                margin: 0 0 1rem;
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .no-reviews {
+                font-size: 1rem;
+                margin-top: 1rem;
+                margin-bottom: 1rem;
+            }
+        }
     }
 
     .restaurant-show-addinfo {
@@ -59,7 +104,7 @@
     // border: 1px solid black;
     width: 60%;
     background: $white;
-    
+
 }
 
 .show-right {
@@ -86,7 +131,7 @@
         h2 {
             height: 100%;
             font-size: 1.3rem;
-            border-bottom: 1px solid $grey;
+            border-bottom: 1px solid $light-grey;
             display: flex;
             justify-content: center;
             flex-direction: column;
@@ -106,7 +151,7 @@
             position: relative;
             padding-top: 1rem;
             padding-left: 0.5rem;
-            border-bottom: 1px solid $grey;
+            border-bottom: 1px solid $light-grey;
             flex: 1 50%;
 
             &:hover {
@@ -156,7 +201,7 @@
 
             .restaurant-show-search-date, .restaurant-show-search-time {
                 flex: 1 50%;
-                border-bottom: 1px solid $grey;
+                border-bottom: 1px solid $light-grey;
 
                 &:hover {
                     border-bottom: 1px solid $red;
