@@ -1,6 +1,7 @@
 import {
     RECEIVE_RESTAURANT_REVIEWS,
-    RECEIVE_REVIEW
+    RECEIVE_REVIEW,
+    REMOVE_REVIEW
 } from '../actions/review_actions';
 
 const reviewsReducer = (state = {}, action) => {
@@ -13,6 +14,10 @@ const reviewsReducer = (state = {}, action) => {
 
       case RECEIVE_REVIEW:
         nextState[action.review.id] = action.review;
+        return nextState;
+
+      case REMOVE_REVIEW:
+        delete nextState[action.reviewId];
         return nextState;
         
       default:

@@ -28,6 +28,13 @@ class Api::ReviewsController < ApplicationController
     def destroy
         @review = Review.find_by(id: params[:id])
         
+        ActiveRecord::Base.transaction do
+            if @review.user_id == current_user.id
+                @review.destroy!
+            else
+                render json: ["Not allowed to delete someone else's review."], status: 418
+            end
+        end
     end
 
     private

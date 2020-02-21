@@ -2,6 +2,7 @@ import * as ReviewAPIUtil from '../util/review_api_util';
 
 export const RECEIVE_RESTAURANT_REVIEWS = 'RECEIVE_RESTAURANT_REVIEWS';
 export const RECEIVE_REVIEW = 'RECEIVE_REVIEW';
+export const REMOVE_REVIEW = 'REMOVE_REVIEW';
 
 export const RECEIVE_REV_ERRORS = 'RECEIVE_RES_ERRORS';
 export const CLEAR_REV_ERRORS = 'CLEAR_REV_ERRORS';
@@ -16,6 +17,11 @@ const receiveAReview = review => ({
     type: RECEIVE_REVIEW,
     review
 });
+
+const removeReview = reviewId => ({
+    type: REMOVE_REVIEW,
+    reviewId
+})
 
 export const receiveReviewErrors = errors => ({
     type: RECEIVE_REV_ERRORS,
@@ -44,8 +50,8 @@ export const updateReview = review => dispatch => (
         .fail(errors => dispatch(receiveReviewErrors(errors.responseJSON)))
 );
 
-export const deleteReview = id => dispatch => (
-    ReviewAPIUtil.deleteReview(id)
-        .then(review => dispatch(receiveAReview(review)))
+export const deleteReview = reviewId => dispatch => (
+    ReviewAPIUtil.deleteReview(reviewId)
+        .then(() => dispatch(removeReview(reviewId)))
         .fail(errors => dispatch(receiveReviewErrors(errors.responseJSON)))
 );

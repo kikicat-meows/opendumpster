@@ -14,7 +14,7 @@ class RestaurantReviews extends React.Component {
     // sort by newest review creation date, then by alphbaetical order
     sortReviewsByNewest(reviewsArr) {
         return reviewsArr.sort((a, b) =>
-            a.created_at < b.created_at ? 1 : a.created_at === b.created_at ? (a.username > b.username ? 1 : -1) : -1);
+            a.updated_at < b.updated_at ? 1 : a.updated_at === b.updated_at ? (a.username > b.username ? 1 : -1) : -1);
     }
 
     renderUserReview(userReview) {
@@ -25,7 +25,8 @@ class RestaurantReviews extends React.Component {
                                 <RestaurantReviewItem
                                     key="user" 
                                     review={review}
-                                    currentUser={this.props.currentUser}/>
+                                    currentUser={this.props.currentUser}
+                                    openModal={this.props.openModal}/>
                             )
                         }
                     </>

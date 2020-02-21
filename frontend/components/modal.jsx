@@ -7,6 +7,7 @@ import SignUpFormContainer from './session_form/signup_form_container';
 import LogInFormContainer from './session_form/login_form_container';
 import CancelReservationContainer from './reservations/cancel_reservation_container';
 import DropdownNavContainer from './greeting/dropdown_nav_container';
+import DeleteReviewContainer from './reviews/delete_review_container';
 
 const mSTP = ({ui}) => ({
     modal: ui.modal
@@ -24,7 +25,16 @@ const Modal = ({modal, closeModal}) => {
     let component;
 
     if (Array.isArray(modal)) {
-        component = <CancelReservationContainer id={modal[1]} user_id={modal[2]}/>
+        if (modal[0] === 'cancel') {
+                component = <CancelReservationContainer 
+                                id={modal[1]} 
+                                user_id={modal[2]}
+                                />
+                                
+        } else if (modal[0] === 'deleteReview') {
+                component = <DeleteReviewContainer review={modal[1]} />;
+        }
+        
     } else {
         switch (modal) {
         case "login":

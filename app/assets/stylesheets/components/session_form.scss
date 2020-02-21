@@ -27,7 +27,9 @@
     }
 }
 
-.cancel-modal-content {    background: #fff;
+.cancel-modal-content {    
+    border-radius: 3px;
+    background: #fff;
     padding: 3rem 2rem;
     width: 600px;
     position: absolute;
@@ -48,6 +50,16 @@
         font-size: 1.1rem;
         color: $grey;
         cursor: pointer;
+    }
+
+    .cancel-discard-link-review {
+        display: block;
+        padding: 1.25rem 1.75rem 1rem;
+        font-weight: 700;
+        font-size: 1rem;
+        color: $grey;
+        cursor: pointer;
+
     }
     
 }

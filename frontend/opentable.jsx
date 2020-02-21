@@ -34,6 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.updateReservation = ReservationActions.updateReservation;
     window.getUserReservations = ReservationActions.getUserReservations;
     window.getRestaurantReviews = ReviewActions.getRestaurantReviews;
+    window.deleteReview = ReviewActions.deleteReview;
 
     const root = document.getElementById('root');
     ReactDOM.render(<Root store={store}/>, root);

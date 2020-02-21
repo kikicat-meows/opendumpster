@@ -41,7 +41,7 @@ const RestaurantReviewItem = props => {
                 <div className="review-action-edit">
                     Edit
                 </div>
-                <div className="review-action-delete">
+                <div className="review-action-delete" onClick={()=>props.openModal(['deleteReview', props.review])}>
                     Delete
                 </div>
             </>
