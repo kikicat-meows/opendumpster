@@ -47,3 +47,14 @@ export const formatClosingTime = (timeString) => {
 
     return formatTime;
 };
+
+
+export const getCurrentTimeInteger = () => {
+    let today = new Date();
+
+    let hours = today.getHours();
+    let minutes = today.getMinutes();
+    let minutesFraction = Math.round( (minutes / 60 ) * 10) / 10;
+
+    return hours + minutesFraction;
+}

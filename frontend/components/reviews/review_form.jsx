@@ -141,6 +141,8 @@ class ReviewForm extends React.Component {
             form.reset();
         } else {
             this.props.toggleEditForm();
+
+            this.setState({ rating: this.props.review.rating, comment: this.props.review.comment });
         }
 
         this.props.clearReviewErrors();

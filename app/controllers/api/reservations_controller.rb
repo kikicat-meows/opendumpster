@@ -34,11 +34,25 @@ class Api::ReservationsController < ApplicationController
 
     def update
         @reservation = Reservation.find_by(id: params[:id])
-
-        if @reservation.update(reservation_params)
-            render :show
+        
+        if @reservation.user_id != current_user.id 
+            render json: ["You cannot modify someone else's appointment"], status: 418
         else
-            render json: @reservation.errors.full_messages, status: 418
+            today = Date.today
+            time = Time.now
+            hour = time.hour
+            min = time.min
+            format_time = hour + (min / 60.0)
+
+            if @reservation.date < today || @reservation.date == today && @reservation.time <= format_time
+                render json: ['You cannot change a reservation that happened in the past'], status: 418
+            else
+                if @reservation.update(reservation_params)
+                    render :show
+                else
+                    render json: @reservation.errors.full_messages, status: 418
+                end
+            end
         end
     end
 

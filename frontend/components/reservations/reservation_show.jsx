@@ -1,9 +1,11 @@
 import React from 'react';
 import {
-    formatOpeningTime
+    formatOpeningTime,
+    getCurrentTimeInteger
 } from '../../util/format_time_util';
 import {
-    formatDate
+    formatDate,
+    getTodayDateString
 } from '../../util/format_date_util';
 import {
     formatSeat
@@ -38,30 +40,43 @@ class ReservationShow extends React.Component {
     }
 
     displayButtons() {
+        let today = getTodayDateString();
+        let currentTime = getCurrentTimeInteger();
+
         if (this.props.reservation && !this.props.reservation.cancellation) {
+          let resDate = this.props.reservation.date;
+          let resTime = this.props.reservation.time;
+
+          if (resDate > today || (resDate === today && resTime > currentTime)) {
             return (
-              <div className="show-reservation-actions">
-                <button 
-                  className="show-reservations-action-button"
-                  onClick={this.toggleEditForm}>
-                  Modify
-                </button>
-                <div>
-                  <a
-                    className="show-reservation-actions-link"
-                    onClick={() =>
-                      this.props.openModal([
-                        "cancel",
-                        this.props.match.params.reservationId,
-                        this.props.reservation.user_id
-                      ])
-                    }
+              <>
+                <hr />
+
+                <div className="show-reservation-actions">
+                  <button
+                    className="show-reservations-action-button"
+                    onClick={this.toggleEditForm}
                   >
-                    Cancel
-                  </a>
+                    Modify
+                  </button>
+                  <div>
+                    <a
+                      className="show-reservation-actions-link"
+                      onClick={() =>
+                        this.props.openModal([
+                          "cancel",
+                          this.props.match.params.reservationId,
+                          this.props.reservation.user_id
+                        ])
+                      }
+                    >
+                      Cancel
+                    </a>
+                  </div>
                 </div>
-              </div>
+              </>
             );
+          }
         }
     }
 
@@ -116,7 +131,6 @@ class ReservationShow extends React.Component {
                       </div>
                     </div>
                   </div>
-                    <hr />
                     <div className="show-reservation-actions-container">
 
                       {this.displayButtons()}
