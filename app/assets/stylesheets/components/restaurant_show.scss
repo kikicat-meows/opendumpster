@@ -1,3 +1,8 @@
+.restaurant-show-page-container {
+    background-color: $white;
+}
+
+
 .restaurant-show-page-banner {
     width: 100%;
     height: 459px;
@@ -18,6 +23,59 @@
     margin-bottom: 2rem;
     margin-top: -3rem;
 
+
+    .restaurant-show-nav {
+        z-index: 11;
+        position: sticky;
+        top: 0px;
+        background: $white;
+
+        .res-nav {
+            height: 48px;
+            border-radius: 2px 2px 0 0;
+            padding: 0 0.5rem;
+            display: flex;
+            position: relative;
+            margin: 0;
+
+            &:before {
+                content: '';
+                position: absolute;
+                right: 1rem;
+                bottom: 0;
+                left: 1rem;
+                border-bottom: 1px solid $light-grey;
+            }
+
+            .res-nav-link {
+                padding: 14px 0.5rem;
+                position: relative;
+                cursor: pointer;
+                display: inline-block;
+                text-decoration: none;
+                font-size: 0.9rem;
+                line-height: 20px;
+                color: $darker-grey;
+
+                &:hover {
+                    color: $red;
+                }
+            }
+            
+            .res-nav-link.active {
+                color: $red;
+            }
+
+            .overview-link {
+                margin-right: 0.5rem;
+            }
+
+            .review-link {
+                margin-left: 0.5rem;
+            }
+        }
+    }
+
     .restaurant-show-overview {
         padding: 2rem 1rem 1rem;
 
@@ -35,6 +93,76 @@
                 line-height: 56px;
             }
         }
+
+        .restaurant-show-summary {
+            display: flex;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+
+            .restaurant-show-summ-rate-review {
+                display: flex;
+                margin-left: 0;
+
+                .restaurant-show-summ-rate {
+                    margin-top: 2px;
+                    margin-right: 0.5rem;
+                    float: right;
+                    display: flex;
+                    text-overflow: ellipsis;
+
+                    .restaurant-show-summ-rate-container {
+                        display: flex;
+                    }
+
+                    .restaurant-show-summ-rate-num {
+                        align-self: center;
+                        margin: 0 0 0 0.25rem;
+                        font-size: 0.9rem;
+                        line-height: 20px;
+                    }
+                }
+
+                .restaurant-show-summ-review {
+                    margin-left: 0.5rem;
+                    margin-right: 0.25rem;
+                    display: flex;
+                    text-overflow: ellipsis;
+
+                    svg {
+                        width: 20px;
+                        height: 20px;
+                        vertical-align: middle;
+                    }
+
+                    span {
+                        align-self: center;
+                        margin: 0 0 0 0.25rem;
+                        font-size: 0.9rem;
+                        line-height: 20px;
+                    }
+                }
+            }
+
+            .restaurant-show-summ-cuisine {
+                margin-left: 0.5rem;
+                display: flex;
+                text-overflow: ellipsis;
+
+                    svg {
+                        width: 20px;
+                        height: 20px;
+                        vertical-align: middle;
+                    }
+
+                    span {
+                        align-self: center;
+                        margin: 0 0 0 0.25rem;
+                        font-size: 0.9rem;
+                        line-height: 20px;
+                    }
+            }
+        }
+
 
         .restaurant-show-description {
             margin-bottom: 1rem;
@@ -117,8 +245,12 @@
 
 
 .restaurant-show-search {
-    border: 1px solid black;
     border-radius: 5px;
+    position: sticky;
+    top: 0px;
+    background: $white;
+    z-index: 11;
+    box-shadow: 0 2px 8px rgba(153,153,153,0.4);
 
     .restaurant-show-search-header {
         height: 3.2rem;

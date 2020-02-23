@@ -24,7 +24,7 @@
         padding-left: 2.5%;
         line-height: 20px;
 
-        div {
+        .restaurant-index-header, .restaurant-index-item-rating, .restaurant-index-item-info, .restaurant-index-item-times {
             width: 100%;
             // align-items: center;
             display: flex;
@@ -52,6 +52,14 @@
         .restaurant-index-item-rating {
             line-height: 1rem;
             white-space: nowrap;
+
+            .restaurant-index-item-rating-container {
+                display: flex;
+            }
+
+            .restaurant-index-item-review-count {
+                margin-left: 15px;
+            }
         }
 
 
@@ -105,3 +113,4 @@
     }
 
 }
+

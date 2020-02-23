@@ -120,3 +120,24 @@ a {
 .hidden {
     display: none;
 }
+
+.rating-star {
+    color: $grey;
+}
+
+.rating-star.filled {
+    color: $red;
+}
+
+.rating-star-fracCont {
+    width: 1.125em;
+    position: relative;
+
+    .rating-star-fraction {
+        z-index: 10;
+        position: absolute;
+        top: 0;
+        left: 0;
+
+    }
+}
