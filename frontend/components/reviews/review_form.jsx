@@ -116,8 +116,10 @@ class ReviewForm extends React.Component {
             setTimeout(() =>
             this.props
                 .action(review)
-                .then(res =>
-                this.props.getRestaurantReviews(res.review.restaurant_id)
+                .then(res => {
+                    this.props.getRestaurantReviews(res.review.restaurant_id);
+                    this.props.requestARestaurant(res.review.restaurant_id);
+                }
                 )
             );
         } else {
@@ -127,7 +129,10 @@ class ReviewForm extends React.Component {
             }
             setTimeout(() =>
                 this.props.action(review)
-                    .then(res => this.props.getRestaurantReviews(res.review.restaurant_id)))
+                    .then(res => {
+                        this.props.getRestaurantReviews(res.review.restaurant_id);
+                        this.props.requestARestaurant(res.review.restaurant_id);
+                    }))
             this.props.toggleEditForm();
         }
     }

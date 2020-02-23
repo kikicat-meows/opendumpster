@@ -5,6 +5,12 @@ import {
     deleteReview
 } from '../../actions/review_actions';
 import {
+    updateUser
+} from '../../actions/session_actions';
+import {
+    requestARestaurant
+} from '../../actions/restaurant_actions';
+import {
     closeModal
 } from '../../actions/modal_actions';
 
@@ -16,6 +22,8 @@ const mSTP = state => ({
 
 const mDTP = dispatch => ({
     deleteReview: id => dispatch(deleteReview(id)),
+    updateUser: id => dispatch(updateUser(id)),
+    requestARestaurant: id => dispatch(requestARestaurant(id)),
     closeModal: () => dispatch(closeModal()),
 })
 

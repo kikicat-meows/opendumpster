@@ -12,7 +12,9 @@ class DeleteReview extends React.Component {
         this.props.deleteReview(this.props.review.id)
             .then(res => {
             this.props.closeModal();
+            this.props.updateUser(this.props.review.user_id);
             this.props.history.push(`/restaurants/${this.props.review.restaurant_id}#reviews`);
+            this.props.requestARestaurant(this.props.review.restaurant_id);
           });
         
     }
