@@ -103,11 +103,25 @@ class User < ApplicationRecord
     end
 
     def visited_restaurants
-        past_reservations = self.reservations.includes(:timeslot)
-                                .where(reservations: {cancellation: false})
-                                .where('reservations.date < ?', Date.today)
-                                .pluck(:restaurant_id)
-                                .uniq
+        time_now = Time.now
+        hour = time_now.hour
+        min = time_now.min / 60.0
+        time = (hour + min).round(1) + 1
+
+        past_res1 = self.reservations.includes(:timeslot)
+                        .where(reservations: {cancellation: false})
+                        .where('reservations.date < ?', Date.today)
+                        .pluck(:restaurant_id)
+                        .uniq
+
+        past_res2 = self.reservations.includes(:timeslot)
+                        .where(reservations: {cancellation: false})
+                        .where('reservations.date = ?', Date.today)
+                        .where('timeslots.time < ?', time)
+                        .pluck(:restaurant_id)
+                        .uniq
+
+        past_res1.concat(past_res2).uniq
     end
 
 end

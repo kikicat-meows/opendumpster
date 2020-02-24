@@ -13,6 +13,7 @@ class UserReservations extends React.Component {
   componentDidMount() {
     if (this.props.currentUser) {
       this.props.getUserReservations(this.props.currentUser.id);
+      this.props.getUserReviews(this.props.currentUser.id);
     }
   }
 
@@ -75,7 +76,7 @@ class UserReservations extends React.Component {
       pastRes = (
         <>
           {sortedRes.map(reservation => (
-            <PastResItem reservation={reservation} key={reservation.id} />
+            <PastResItem reservation={reservation} key={reservation.id} review={this.props.reviews[reservation.restaurant_id]}/>
           ))}
         </>
       );

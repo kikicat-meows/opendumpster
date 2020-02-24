@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
+import { Link } from 'react-scroll';
 import { formatOpeningTime, formatClosingTime } from '../../util/format_time_util';
 import { displayRatingStars } from '../../util/display_avg_rating_stars_util';
 import { formatReviewCountCap } from '../../util/format_review_count_util';
@@ -70,13 +71,13 @@ class RestaurantShow extends React.Component {
         let overviewClass;
         let reviewsClass;
 
-        if (this.props.location.hash === '#reviews') {
-          overviewClass = 'res-nav-link';
-          reviewsClass = 'res-nav-link active'
-        } else {
-          overviewClass = 'res-nav-link active';
-          reviewsClass = 'res-nav-link';
-        }
+        // if (this.props.location.hash === '#reviews') {
+        //   overviewClass = 'res-nav-link';
+        //   reviewsClass = 'res-nav-link active'
+        // } else {
+        //   overviewClass = 'res-nav-link active';
+        //   reviewsClass = 'res-nav-link';
+        // }
         
         let mountedComponent = null;
         if (restaurant && restaurant.hours) {
@@ -92,16 +93,32 @@ class RestaurantShow extends React.Component {
                     <nav className="restaurant-show-nav">
                       <ul className="res-nav">
                         <li className="overview-link">
-                          <Link className={`${overviewClass}`} 
+                          {/* <Link className={`res-nav-link`} 
                           onClick={() => this.smoothScroll('overview')}
-                          to={`/restaurants/${restaurant.id}#overview`}>
+                          to={`/restaurants/${restaurant.id}#overview`}> */}
+                          <Link
+                            className='res-nav-link'
+                            activeClass='active'
+                            to='overview'
+                            spy={true}
+                            smooth={true}
+                            offset={-50}
+                            duration={500}>
                             Overview
                           </Link>
                         </li>
                         <li className="review-link">
-                          <Link className={`${reviewsClass}`}
+                          {/* <Link className={`res-nav-link`}
                           onClick={() => this.smoothScroll('reviews')}
-                          to={`/restaurants/${restaurant.id}#reviews`}>
+                          to={`/restaurants/${restaurant.id}#reviews`}> */}
+                          <Link
+                            className='res-nav-link'
+                            activeClass='active'
+                            to='reviews'
+                            spy={true}
+                            smooth={true}
+                            offset={-50}
+                            duration={500}>                          
                             Reviews
                           </Link>
                         </li>
@@ -135,7 +152,7 @@ class RestaurantShow extends React.Component {
                       <p>{restaurant.description}</p>
                       </div>
                     </div>
-                    <div className="restaurant-show-content">
+                    <div className="restaurant-show-content" id='reviews'>
                       <RestaurantReviewsContainer restaurant={restaurant}/>
                     </div>
 

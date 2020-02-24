@@ -11,7 +11,7 @@ import RestaurantReviews from './restaurant_reviews';
 
 const mSTP = state => ({
     currentUser: state.entities.users[state.session.id],
-    reviews: Object.values(state.entities.reviews),
+    reviews: Object.values(state.entities.reviews.restaurant),
 });
 
 const mDTP = dispatch => ({

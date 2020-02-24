@@ -30,14 +30,18 @@ export const formatDateSlash = dateString => {
 
 export const getTodayDateString = () => {
   const today = new Date();
+
+  let dateArray = today.toLocaleDateString().split('/');
+
   
-  let year = today.getUTCFullYear();
-  let month = today.getUTCMonth() + 1;
-  let date = today.getUTCDate();
+  let year = dateArray[2];
+  let month = dateArray[0];
+  let date = dateArray[1];
 
   let formatMonth = (month < 10) ? `0${month}` : month;
   let formatDate = (date < 10) ? `0${date}` : date;
 
   return `${year}-${formatMonth}-${formatDate}`;
+
 
 }

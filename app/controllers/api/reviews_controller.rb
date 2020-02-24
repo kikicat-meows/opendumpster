@@ -1,13 +1,22 @@
 class Api::ReviewsController < ApplicationController
 
     def index
-        @restaurant = Restaurant.find_by(id: params[:restaurant_id])
-        @reviews = @restaurant.reviews
-        @users = @reviews.map do |review|
-            User.find_by(id: review.user_id)
+
+        if params[:user_id]
+            @user = User.find_by(id: params[:user_id])
+            @reviews = @user.reviews
+            render :user
         end
 
-        render :index
+        if params[:restaurant_id]
+            @restaurant = Restaurant.find_by(id: params[:restaurant_id])
+            @reviews = @restaurant.reviews
+            @users = @reviews.map do |review|
+                User.find_by(id: review.user_id)
+            end
+
+            render :index
+        end
     end
 
     def show

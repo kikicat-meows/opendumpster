@@ -10,3 +10,4 @@ json.fname user.fname
 json.lname user.lname
 json.visited_restaurant_ids user.visited_restaurants
 json.reviews_count user.reviews.count
+json.favorite_restaurant_ids user.favorite_restaurants.ids

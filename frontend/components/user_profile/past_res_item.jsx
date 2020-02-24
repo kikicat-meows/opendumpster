@@ -7,6 +7,8 @@ import { formatSeat } from "../../util/format_seat_util";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookmark, faCommentAlt } from '@fortawesome/free-regular-svg-icons';
 
+import PastResReview from './past_res_review';
+
 const PastResItem = props => {
   const link = `/restaurants/${props.reservation.restaurant_id}`;
   let cancelledString = props.reservation.cancellation ? <p className="user-page-upcoming-date">Cancelled</p> : "";
@@ -17,12 +19,26 @@ const PastResItem = props => {
         &nbsp;Save this restaurant
       </span>
     </div>
+  ) : props.review ? (
+    <>
+    <div className="user-page-links-float">
+      <Link className="user-page-past-res-link" to={`${link}`} target='_blank'>
+        <FontAwesomeIcon icon={faCommentAlt} />
+        &nbsp;Edit Review
+      </Link>
+      <span className="user-page-past-res-link">
+        <FontAwesomeIcon icon={faBookmark} />
+        &nbsp;Save this restaurant
+      </span>
+    </div>
+    <PastResReview review={props.review} />
+    </>
   ) : (
     <div className="user-page-links-float">
-      <span className="user-page-past-res-link">
+      <Link className="user-page-past-res-link" to={`${link}`} target='_blank'>
         <FontAwesomeIcon icon={faCommentAlt} />
         &nbsp;Write Review
-      </span>
+      </Link>
       <span className="user-page-past-res-link">
         <FontAwesomeIcon icon={faBookmark} />
         &nbsp;Save this restaurant
