@@ -20,10 +20,14 @@ class Api::FavoritesController < ApplicationController
     def destroy
         @favorite = Favorite.find_by(id: params[:id])
 
-        if current_user.id === @favorite.user_id
-            @favorite.destroy!
-        else
-            render json: ["Cannot remove someone else's saved restaurant"], status: 418
+        ActiveRecord::Base.transaction do 
+            if current_user.id === @favorite.user_id
+                @user = User.find_by(id: @favorite.user_id)
+                @favorite.destroy!
+                render 'api/users/show', user: @user
+            else
+                render json: ["Cannot remove someone else's saved restaurant"], status: 418
+            end
         end
     end
 

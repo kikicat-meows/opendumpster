@@ -8,6 +8,7 @@ import * as APIUtil from './util/session_api_util';
 import * as ReservationActions from './actions/reservation_actions';
 import * as TimeslotActions from './actions/timeslot_actions';
 import * as ReviewActions from './actions/review_actions';
+import * as FavoriteActions from './actions/favorite_actions';
 
 document.addEventListener('DOMContentLoaded', () => {
     let store;
@@ -35,6 +36,9 @@ document.addEventListener('DOMContentLoaded', () => {
     window.getUserReservations = ReservationActions.getUserReservations;
     window.getRestaurantReviews = ReviewActions.getRestaurantReviews;
     window.deleteReview = ReviewActions.deleteReview;
+    window.createNewFavorite = FavoriteActions.createNewFavorite;
+    window.deleteFavorite = FavoriteActions.deleteFavorite;
+    window.requestUserFavorites = FavoriteActions.requestUserFavorites;
 
     const root = document.getElementById('root');
     ReactDOM.render(<Root store={store}/>, root);
