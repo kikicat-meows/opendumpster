@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :users, only: [:create, :show, :update] do
       resources :reservations, only: [:index]
       resources :reviews, only: [:index]
+      resources :favorites, only: [:index]
     end
 
 
@@ -21,6 +22,8 @@ Rails.application.routes.draw do
     resources :reservations, only: [:show, :create, :update]
 
     resources :reviews, only: [:show, :create, :update, :destroy]
+
+    resources :favorites, only: [:create, :destroy]
 
   end
 
