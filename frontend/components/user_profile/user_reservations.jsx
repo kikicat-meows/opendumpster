@@ -117,7 +117,6 @@ class UserReservations extends React.Component {
     let cancelledRes;
     let userFavoritesArray = this.props.currentUser.favorites;
 
-    console.log(userFavoritesArray);
     if (this.props.reservations.cancelled.length > 0) {
       let sortedRes = this.sortCancelledReservations();
 

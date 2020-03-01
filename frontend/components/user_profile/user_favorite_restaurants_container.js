@@ -9,7 +9,7 @@ import UserFavorites from './user_favorite_restaurants';
 
 const mSTP = state => ({
     currentUser: state.entities.users[state.session.id],
-    favorites: state.entities.favorites,
+    favorites: Object.values(state.entities.favorites),
 });
 
 const mDTP = dispatch => ({

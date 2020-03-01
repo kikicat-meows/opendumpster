@@ -59,14 +59,14 @@
     }
 }
 
-.user-page-reservations {
+.user-page-reservations, .user-page-favorites {
     position: relative;
     padding-left: 1rem;
     padding-right: 1rem;
     float: left;
     width: 100%;
 
-    .upcoming-res {
+    .upcoming-res, .favorites {
         margin-top: 2rem;
     }
 
@@ -138,6 +138,30 @@
                     line-height: 1.5rem;
                     z-index: 0;
 
+                    .user-page-favorite-book {
+                        margin-top: 0;
+                        position: absolute;
+                        right: 0;
+                        top: 1.5rem;
+
+                        .user-page-fav-button {
+                            width: auto;
+                            padding: 0.75rem 1.75rem 0.8125rem;
+                            font-size: 0.8125rem;
+                            margin-bottom: 1rem;
+                            display: inline-block;
+                            color: $white;
+                            border-radius: 3px;
+                            background-color: $red;
+                            border-color: $darker-red;
+                            transition: background-color 300ms ease-out;
+
+                            &:hover {
+                                background-color: $darker-red;
+                            }
+                        }
+                    }
+
                     .user-page-rest-row-image {
                         max-height: 5rem;
                         width: 5rem;
@@ -179,17 +203,41 @@
                         color: black;
                     }
 
-                    .user-page-upcoming-date, .user-page-upcoming-seats {
+                    .user-page-upcoming-date, .user-page-upcoming-seats, .user-page-ratings-container {
                         font-size: 0.875rem;
                         line-height: 1.5rem;
                         color: $darker-grey;
+                    }
+
+                    .user-page-ratings-container {
+                        display: flex;
+                        padding: 0.25rem 0;
+
+                        .user-page-ratings {
+                            display: flex;
+                            align-items: center;
+                            white-space: nowrap;
+
+                            .rating-star-fracCont {
+                                display: flex;
+                                align-items: center;
+
+                                .rating-star-fraction {
+                                    top: -3.5px;
+                                }
+                            }
+
+                            .rating-star.filled {
+                                color: $orange;
+                            }
+                        }
                     }
 
                     .user-page-upcoming-res-links {
                         display: flex;
                         flex-direction: column;
                         padding: 0;
-                        padding-bottom: 0.5rem;
+                        // padding-bottom: 0.5rem;
                         font-size: 0.875rem;
 
                         .user-page-links-float {
@@ -206,6 +254,7 @@
                                 }
                             }
 
+
                             .user-page-past-res-link {
                                 margin-right: 1rem;
                                 float: left;
@@ -214,6 +263,24 @@
 
                                 &:hover {
                                     color: $darker-red;
+                                }
+
+
+                            }
+                            .user-page-past-res-link-favorites {
+                                margin-right: 1rem;
+                                float: left;
+                                display: flex;
+                                cursor: pointer;
+                                align-items: center;
+                                color: $darker-grey;
+
+                                svg {
+                                    color: $red;
+                                }
+
+                                span {
+                                    margin-left: 0.25rem;
                                 }
                             }
                         }

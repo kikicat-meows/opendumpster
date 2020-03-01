@@ -68,7 +68,6 @@ class RestaurantShow extends React.Component {
 
     handleFavorite(e) {
       e.preventDefault();
-      console.log('clicked');
 
       if (!this.props.currentUser) {
         this.props.openModal('login');
