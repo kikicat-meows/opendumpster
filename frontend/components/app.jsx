@@ -34,10 +34,8 @@ const App = () => (
         <main>
         <Header />
         <Switch>
-            {/* <AuthRoute path="/login" component={LoginFormContainer} /> */}
-            {/* <AuthRoute path="/signup" component={SignupFormContainer} /> */}
-            <Route exact path='/my/profile' component={UserReservationsContainer}/>
-            <Route exact path='/my/favorites' component={UserFavoritesContainer}/>
+            <ProtectedRoute exact path='/my/profile' component={UserReservationsContainer}/>
+            <ProtectedRoute exact path='/my/favorites' component={UserFavoritesContainer}/>
             <Route exact path='/reservations/new' component={BookReservationFormContainer}/>
             <Route exact path='/reservations/change' component={ConfirmReservationUpdateContainer}/>
             <Route exact path='/reservations/:reservationId' component={ReservationShowContainer}/>
