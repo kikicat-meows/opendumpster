@@ -26,6 +26,7 @@ import ReservationShowContainer from './reservations/reservation_show_container'
 import ConfirmReservationUpdateContainer from './reservations/confirm_reservation_update_container';
 
 import UserReservationsContainer from './user_profile/user_reservations_container';
+import UserFavoritesContainer from './user_profile/user_favorite_restaurants_container';
 
 const App = () => (
     <div>
@@ -36,6 +37,7 @@ const App = () => (
             {/* <AuthRoute path="/login" component={LoginFormContainer} /> */}
             {/* <AuthRoute path="/signup" component={SignupFormContainer} /> */}
             <Route exact path='/my/profile' component={UserReservationsContainer}/>
+            <Route exact path='/my/favorites' component={UserFavoritesContainer}/>
             <Route exact path='/reservations/new' component={BookReservationFormContainer}/>
             <Route exact path='/reservations/change' component={ConfirmReservationUpdateContainer}/>
             <Route exact path='/reservations/:reservationId' component={ReservationShowContainer}/>

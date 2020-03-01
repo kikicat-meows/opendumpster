@@ -63,21 +63,35 @@ class UserReservations extends React.Component {
     let past = this.props.reservations.past;
 
     return past.sort((a, b) =>
-      a.date < b.date ? 1 : a.date === b.date ? (a.time < b.time ? 1 : -1) : -1
+      a.date < b.date ? 
+        1 : a.date === b.date ? 
+          (a.time < b.time ? 1 : 
+              a.time === b.time ? 
+              (a.restaurant < b.restaurant ? 1 : -1 ) : -1) : -1
     );
   }
 
   displayPastReservations() {
     let pastRes;
+    let userFavoritesArray = this.props.currentUser.favorites;
 
     if (this.props.reservations.past.length > 0) {
       let sortedRes = this.sortPastReservations();
 
       pastRes = (
         <>
-          {sortedRes.map(reservation => (
-            <PastResItem reservation={reservation} key={reservation.id} review={this.props.reviews[reservation.restaurant_id]}/>
-          ))}
+          {sortedRes.map(reservation => {
+            let favoriteItem = userFavoritesArray.find( ({ restaurant_id }) => restaurant_id === reservation.restaurant_id );
+
+            return <PastResItem
+                      currentUser={this.props.currentUser}
+                      createNewFavorite={this.props.createNewFavorite} 
+                      deleteFavorite={this.props.deleteFavorite}
+                      favorite={favoriteItem}
+                      reservation={reservation} 
+                      key={reservation.id} 
+                      review={this.props.reviews[reservation.restaurant_id]}/>
+          })}
         </>
       );
     } else {
@@ -95,21 +109,30 @@ class UserReservations extends React.Component {
     let cancelled = this.props.reservations.cancelled;
 
     return cancelled.sort((a, b) =>
-      a.date < b.date ? 1 : a.date === b.date ? (a.time < b.time ? 1 : -1) : -1
+      a.date < b.date ? 1 : a.date === b.date ? (a.time < b.time ? 1 : a.time === b.time ? (a.restaurant < b.restaurant ? 1 : -1 ) : -1 ) : -1
     );
   }
 
   displayCancelledReservations() {
     let cancelledRes;
+    let userFavoritesArray = this.props.currentUser.favorites;
 
+    console.log(userFavoritesArray);
     if (this.props.reservations.cancelled.length > 0) {
       let sortedRes = this.sortCancelledReservations();
 
       cancelledRes = (
         <>
-          {sortedRes.map(reservation => (
-            <PastResItem reservation={reservation} key={reservation.id} />
-          ))}
+          {sortedRes.map(reservation => {
+            let favoriteItem = userFavoritesArray.find( ({ restaurant_id }) => restaurant_id === reservation.restaurant_id );
+            return <PastResItem 
+                      currentUser={this.props.currentUser}
+                      createNewFavorite={this.props.createNewFavorite}
+                      deleteFavorite={this.props.deleteFavorite}
+                      favorite={favoriteItem}
+                      reservation={reservation} 
+                      key={reservation.id}/>
+          })}
         </>
       );
     } else {

@@ -9,10 +9,61 @@
     background-image: image-url('res-show-ph-banner.png');
     background-size: cover;
     background-position: center;
+    position: relative;
     
     img {
         width: 100%;
     }
+}
+
+.restaurant-show-favorite {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background-color: $white;
+
+    .favorite-button-container {
+        text-align: center;
+
+        .favorite-button {
+            width: 15rem;
+            padding: 16px 12px;
+            border: 1px solid $font-grey;
+            cursor: pointer;
+
+            &:hover {
+                padding: 15px 11px;
+                border: 2px solid $red;
+            }
+
+            .fav-button-text {
+                font-size: 1rem;
+                line-height: 1.5;
+                display: flex;
+                justify-content: center;
+                text-overflow: ellipsis;
+                
+                svg {
+                    vertical-align: middle;
+                    overflow: hidden;
+                    width: 20px;
+                    height: 20px;
+                }
+
+                .fav-button-icon {
+                    color: $red;
+                }
+
+                .fav-text {
+                    font-size: 0.9rem;
+                    align-self: center;
+                    margin: 0 0 0 0.25rem;
+                    line-height: 20px;
+                }
+            }
+        }
+    }
+
 }
 
 

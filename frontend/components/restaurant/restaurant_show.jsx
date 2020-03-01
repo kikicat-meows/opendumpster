@@ -9,8 +9,8 @@ import RestaurantReservationContainer from './restaurant_reservation_container';
 import RestaurantReviewsContainer from '../reviews/restaurant_reviews_container';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCommentAlt } from "@fortawesome/free-regular-svg-icons";
-import { faUtensils } from '@fortawesome/free-solid-svg-icons';
+import { faBookmark, faCommentAlt } from "@fortawesome/free-regular-svg-icons";
+import * as Solid from '@fortawesome/free-solid-svg-icons';
 
 
 class RestaurantShow extends React.Component {
@@ -18,6 +18,7 @@ class RestaurantShow extends React.Component {
         super(props);
         // this.showPage = this.showPage.bind(this);
         this.smoothScroll = this.smoothScroll.bind(this);
+        this.handleFavorite = this.handleFavorite.bind(this);
     };
 
     componentDidMount() {
@@ -65,20 +66,90 @@ class RestaurantShow extends React.Component {
       });
     }
 
+    handleFavorite(e) {
+      e.preventDefault();
+      console.log('clicked');
+
+      if (!this.props.currentUser) {
+        this.props.openModal('login');
+        return;
+      } else {
+        let userFavoritesArray = this.props.currentUser.favorites.filter(
+          el =>
+            el.restaurant_id.toString() === this.props.restaurantId.toString()
+        );
+        
+        if (!userFavoritesArray.length) {
+          this.props.createNewFavorite(this.props.favoriteForm);
+        } else {
+          this.props.deleteFavorite(userFavoritesArray[0].id);
+        }
+      }
+    }
+
+    displayFavorite() {
+      let favoriteRender;
+
+      if (!this.props.currentUser) {
+        favoriteRender = 
+          <div className="restaurant-show-favorite">
+            <div className="favorite-button-container">
+              <div className="favorite-button" onClick={this.handleFavorite}>
+                <div className="fav-button-text">
+                  <FontAwesomeIcon icon={faBookmark} />
+                  <div className="fav-text">
+                    Save this restaurant
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      } else {
+        let userFavoritesArray = this.props.currentUser.favorites.filter(el => el.restaurant_id.toString() === this.props.restaurantId.toString());
+
+        if (!userFavoritesArray.length) {
+          favoriteRender = 
+            <div className="restaurant-show-favorite">
+              <div className="favorite-button-container" >
+                <div className="favorite-button" onClick={this.handleFavorite}>
+                  <div className="fav-button-text">
+                    <FontAwesomeIcon icon={faBookmark} />
+                    <div className="fav-text">
+                      Save this restaurant
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>          
+        } else {
+          favoriteRender = 
+            <div className="restaurant-show-favorite">
+              <div className="favorite-button-container">
+                <div className="favorite-button" onClick={this.handleFavorite}>
+                  <div className="fav-button-text">
+                    <FontAwesomeIcon icon={Solid.faBookmark} className='fav-button-icon'/>
+                    <div className="fav-text">
+                      Restaurant saved!
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>             
+        }
+
+      }
+
+      return favoriteRender;
+    }
+
+
+
 
     render() {
         let { restaurant } = this.props;
         let overviewClass;
         let reviewsClass;
 
-        // if (this.props.location.hash === '#reviews') {
-        //   overviewClass = 'res-nav-link';
-        //   reviewsClass = 'res-nav-link active'
-        // } else {
-        //   overviewClass = 'res-nav-link active';
-        //   reviewsClass = 'res-nav-link';
-        // }
-        
         let mountedComponent = null;
         if (restaurant && restaurant.hours) {
 
@@ -86,6 +157,7 @@ class RestaurantShow extends React.Component {
               <div className="restaurant-show-page-container">
                 <div className="restaurant-show-page-banner">
                   {/* <img src={window.showbannerURL} alt="placeholder show banner"/> */}
+                  {this.displayFavorite()}
                 </div>
 
                 <div className="restaurant-show-page-content wrapper">
@@ -93,9 +165,6 @@ class RestaurantShow extends React.Component {
                     <nav className="restaurant-show-nav">
                       <ul className="res-nav">
                         <li className="overview-link">
-                          {/* <Link className={`res-nav-link`} 
-                          onClick={() => this.smoothScroll('overview')}
-                          to={`/restaurants/${restaurant.id}#overview`}> */}
                           <Link
                             className='res-nav-link'
                             activeClass='active'
@@ -108,9 +177,6 @@ class RestaurantShow extends React.Component {
                           </Link>
                         </li>
                         <li className="review-link">
-                          {/* <Link className={`res-nav-link`}
-                          onClick={() => this.smoothScroll('reviews')}
-                          to={`/restaurants/${restaurant.id}#reviews`}> */}
                           <Link
                             className='res-nav-link'
                             activeClass='active'
@@ -144,7 +210,7 @@ class RestaurantShow extends React.Component {
                           </div>
                         </div>
                         <div className="restaurant-show-summ-cuisine">
-                            <FontAwesomeIcon icon={faUtensils} />
+                            <FontAwesomeIcon icon={Solid.faUtensils} />
                             <span>{restaurant.cuisine[0]}</span>
                         </div>
                       </div>

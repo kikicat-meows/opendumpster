@@ -6,18 +6,28 @@ import { formatSeat } from "../../util/format_seat_util";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookmark, faCommentAlt } from '@fortawesome/free-regular-svg-icons';
+import * as Solid from '@fortawesome/free-solid-svg-icons';
 
 import PastResReview from './past_res_review';
 
 const PastResItem = props => {
+  let bookmarked = props.favorite ? (
+    <span className="user-page-past-res-link" onClick={ ()=> props.deleteFavorite(props.favorite.id)}>
+      <FontAwesomeIcon icon={Solid.faBookmark} />
+      &nbsp;Restaurant saved
+    </span>
+  ) : (
+    <span className="user-page-past-res-link" onClick={ () => props.createNewFavorite({ user_id: props.currentUser.id, restaurant_id: props.reservation.restaurant_id })}>
+      <FontAwesomeIcon icon={faBookmark} />
+      &nbsp;Save this restaurant
+    </span>
+  );  
+
   const link = `/restaurants/${props.reservation.restaurant_id}`;
   let cancelledString = props.reservation.cancellation ? <p className="user-page-upcoming-date">Cancelled</p> : "";
   let cancelledLinks = props.reservation.cancellation ? (
     <div className="user-page-links-float">
-      <span className="user-page-past-res-link">
-        <FontAwesomeIcon icon={faBookmark} />
-        &nbsp;Save this restaurant
-      </span>
+      {bookmarked}
     </div>
   ) : props.review ? (
     <>
@@ -26,10 +36,7 @@ const PastResItem = props => {
         <FontAwesomeIcon icon={faCommentAlt} />
         &nbsp;Edit Review
       </Link>
-      <span className="user-page-past-res-link">
-        <FontAwesomeIcon icon={faBookmark} />
-        &nbsp;Save this restaurant
-      </span>
+      {bookmarked}
     </div>
     <PastResReview review={props.review} />
     </>
@@ -39,10 +46,7 @@ const PastResItem = props => {
         <FontAwesomeIcon icon={faCommentAlt} />
         &nbsp;Write Review
       </Link>
-      <span className="user-page-past-res-link">
-        <FontAwesomeIcon icon={faBookmark} />
-        &nbsp;Save this restaurant
-      </span>
+      {bookmarked}
     </div>
   );    
 
