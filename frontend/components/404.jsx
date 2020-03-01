@@ -2,7 +2,7 @@ import React from 'react';
 
 
 const ErrorPage = ownProps => (
-    <div className="error-page-content">
+    <div className="error-page-content wrapper">
         <h1>Oops!</h1>
         <h3>We can't seem to find the page you're looking for.</h3>
         <br />
